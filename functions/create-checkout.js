@@ -55,15 +55,7 @@ exports.handler = async (event) => {
       quantity: validatedQuantity,
     },
     {
-      price_data: {
-        currency: 'eur',
-        unit_amount: 999,
-        product_data: {
-          name: 'alper',
-          description: 'product.description',
-          images: [product.image],
-        },
-      },
+      price: 'price_1OVs5BG1TW3EeJHZotMqsRt9',
       quantity: validatedQuantity,
     },
   ],
