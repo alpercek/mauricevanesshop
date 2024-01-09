@@ -1,3 +1,16 @@
+import * as prismic from '@prismicio/client'
+
+const repositoryName = 'mauricevanesshop'
+const accessToken = 'https://mauricevanesshop.cdn.prismic.io/api/v2' // Set an access token
+const routes = [
+  // Update to match your website's URL structure
+  { type: 'page', path: '/:uid' },
+  { type: 'home', path: '/' },
+]
+
+const client = prismic.createClient(repositoryName, { routes, accessToken })
+console.log(client)
+console.log('alper')
 /*
  * This function creates a Stripe Checkout session and returns the session ID
  * for use with Stripe.js (specifically the redirectToCheckout method).
@@ -22,7 +35,6 @@ const inventory = require('./data/products.json');
 exports.handler = async (event) => {
   const { sku, quantity } = JSON.parse(event.body);
   const product = inventory.find((p) => p.sku === sku);
-  const somequantitiy = $store.state.prismic.settings.data.somenumber
   // ensure that the quantity is within the allowed range
   const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
 
@@ -56,7 +68,7 @@ exports.handler = async (event) => {
     },
     {
       price: 'price_1OVs5BG1TW3EeJHZotMqsRt9',
-      quantity: somequantitiy,
+      quantity: 1,
     },
   ],
     // We are using the metadata to track which items were purchased.
