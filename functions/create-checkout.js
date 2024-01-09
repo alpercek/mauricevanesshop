@@ -22,7 +22,7 @@ const inventory = require('./data/products.json');
 exports.handler = async (event) => {
   const { sku, quantity } = JSON.parse(event.body);
   const product = inventory.find((p) => p.sku === sku);
-  
+  const somequantitiy = $store.state.prismic.settings.data.somenumber
   // ensure that the quantity is within the allowed range
   const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
 
@@ -56,7 +56,7 @@ exports.handler = async (event) => {
     },
     {
       price: 'price_1OVs5BG1TW3EeJHZotMqsRt9',
-      quantity: validatedQuantity,
+      quantity: somequantitiy,
     },
   ],
     // We are using the metadata to track which items were purchased.
