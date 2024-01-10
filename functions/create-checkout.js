@@ -2,6 +2,7 @@
 import * as prismic from '@prismicio/client'
 import fetch from 'node-fetch'
 import Stripe from 'stripe'
+import inventory from './data/products.json'
 
 const routes = [
   {
@@ -10,7 +11,7 @@ const routes = [
   },
 ]
 
-const repoName = 'your-repo-name'
+const repoName = 'mauricevanesshop'
 const client = prismic.createClient(repoName, { routes, fetch })
 
 const init = async () => {
@@ -46,7 +47,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
  * The important thing is that the product info is loaded from somewhere trusted
  * so you know the pricing information is accurate.
  */
-const inventory = require('./data/products.json');
 
 exports.handler = async (event) => {
   const { sku, quantity } = JSON.parse(event.body);
