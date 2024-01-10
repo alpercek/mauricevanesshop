@@ -1,4 +1,4 @@
-import * as prismic from 'https://cdn.skypack.dev/@prismicio/client'
+import * as prismic from '@prismicio/client'
 
 const repositoryName = 'mauricevanesshop'
 const accessToken = 'https://mauricevanesshop.cdn.prismic.io/api/v2' // Set an access token
