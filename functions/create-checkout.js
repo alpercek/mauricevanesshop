@@ -1,4 +1,4 @@
-import * as prismic from '@prismicio/client'
+import * as prismic from 'https://cdn.skypack.dev/@prismicio/client'
 
 const repositoryName = 'mauricevanesshop'
 const accessToken = 'https://mauricevanesshop.cdn.prismic.io/api/v2' // Set an access token
@@ -10,7 +10,6 @@ const routes = [
 
 const client = prismic.createClient(repositoryName, { routes, accessToken })
 console.log(client)
-console.log('alper')
 /*
  * This function creates a Stripe Checkout session and returns the session ID
  * for use with Stripe.js (specifically the redirectToCheckout method).
