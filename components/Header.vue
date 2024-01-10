@@ -1,7 +1,7 @@
 <template>
-  <Bounded as="header" y-padding="sm">
-    <div class="flex flex-wrap items-baseline justify-between gap-x-10 gap-y-3 leading-none">
-      <NuxtLink to="/" class="text-2xl tracking-tight !no-underline font-metrikmid !tracking-tighter">
+  <div class="p-5">
+    <div class="flex flex-wrap items-start justify-between gap-x-10 gap-y-3 leading-none">
+      <NuxtLink to="/" class="text-2xl !no-underline font-platform">
         {{ $prismic.asText(settings.data.siteTitle) }}
       </NuxtLink>
       
@@ -14,13 +14,13 @@
 
 
 
-        <ul class="flex flex-wrap gap-6 md:gap-4 pr-8 hidden md:flex">
+        <ul class="flex flex-wrap gap-3 pr-3 hidden md:flex">
           <li
             v-for="item in navigation.data.links"
             :key="$prismic.asText(item.label)"
-            class="tracking-tight text-slate-800 font-circular text-sm"
+            class="tracking-tight text-slate-800 font-garamond text-xs"
           >
-            <PrismicLink :field="item.link">
+            <PrismicLink v-if="$prismic.asText(item.label) != 'Home'" :field="item.link">
               {{ $prismic.asText(item.label) }}
             </PrismicLink>
           </li>
@@ -31,14 +31,14 @@
           <li
             v-for="item in navigation.data.links"
             :key="$prismic.asText(item.label)"
-            class="tracking-tight text-slate-800 font-circular"
+            class="tracking-tight text-slate-800 font-garamond"
           >
             <PrismicLink :field="item.link">
               {{ $prismic.asText(item.label) }}
             </PrismicLink>
           </li>
         </ul>
-  </Bounded>
+      </div>
 </template>
 
 <script>

@@ -31,39 +31,27 @@
           ]
         }
       },
+      "linked": {
+        "type": "Group",
+        "config": {
+          "label": "linked",
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "link",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {
-            "main_image": {
-              "type": "SharedSlice"
-            },
-            "project": {
-              "type": "SharedSlice"
-            },
-            "about_image": {
-              "type": "SharedSlice"
-            },
-            "about_info": {
-              "type": "SharedSlice"
-            },
-            "enlarged_slider": {
-              "type": "SharedSlice"
-            },
-            "education": {
-              "type": "SharedSlice"
-            },
-            "collections": {
-              "type": "SharedSlice"
-            },
-            "bibliography": {
-              "type": "SharedSlice"
-            },
-            "exhibitions": {
-              "type": "SharedSlice"
-            }
-          }
+          "choices": {}
         }
       }
     }

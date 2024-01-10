@@ -4,20 +4,16 @@
 
 
 @font-face {
-  font-family: "METRIK";
-  src: url("../styles/Metrik.otf");
+  font-family: "COOPERBT";
+  src: url("../styles/CooperBT-Light.otf");
 }
 @font-face {
-  font-family: "CIRCULAR";
-  src: url("../styles/Circular.otf");
+  font-family: "GARAMOND";
+  src: url("../styles/GaramondPremrPro.otf");
 }
 @font-face {
-  font-family: "METRIKBOLD";
-  src: url("../styles/MetrikBold.otf");
-}
-@font-face {
-  font-family: "CIRCULARBOLD";
-  src: url("../styles/CircularBold.otf");
+  font-family: "PLATFORM";
+  src: url("../styles/Platform-Medium.otf");
 }
 @font-face {
   font-family: "METRIKMID";

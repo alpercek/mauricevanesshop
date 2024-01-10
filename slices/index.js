@@ -3,39 +3,51 @@
 import AboutImage from './AboutImage';
 import AboutText from './AboutText';
 import Bibliography from './Bibliography';
+import BookInfo from './BookInfo';
 import Collections from './Collections';
 import ContactInfo from './ContactInfo';
 import Education from './Education';
 import EnlargedSlider from './EnlargedSlider';
 import Exhibitions from './Exhibitions';
+import Highlight from './Highlight';
+import Listings from './Listings';
 import MainImage from './MainImage';
 import Project from './Project';
 import Residencies from './Residencies';
+import Slider from './Slider';
 
 export {
 	AboutImage,
 	AboutText,
 	Bibliography,
+	BookInfo,
 	Collections,
 	ContactInfo,
 	Education,
 	EnlargedSlider,
 	Exhibitions,
+	Highlight,
+	Listings,
 	MainImage,
 	Project,
 	Residencies,
+	Slider,
 };
 
 export const components = {
 	about_image: AboutImage,
 	about_text: AboutText,
 	bibliography: Bibliography,
+	book_info: BookInfo,
 	collections: Collections,
 	about_info: ContactInfo,
 	education: Education,
 	enlarged_slider: EnlargedSlider,
 	exhibitions: Exhibitions,
+	highlight: Highlight,
+	listings: Listings,
 	main_image: MainImage,
 	project: Project,
 	residencies: Residencies,
+	slider: Slider,
 };

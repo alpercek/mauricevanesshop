@@ -5,10 +5,33 @@
         "primary": {}
       }
     },
-    "ContactInfo": {}
+    "ContactInfo": {},
+    "Slider": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "BookInfo": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "Highlight": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "Listings": {
+      "default": {
+        "primary": {}
+      }
+    }
   },
   "_cts": {
-    "page": {},
-    "settings": {}
+    "page": {
+      "linked": {}
+    },
+    "settings": {},
+    "product": {}
   }
 }

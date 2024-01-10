@@ -1,0 +1,58 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "authors": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Nulla consequat magna ipsum tempor velit officia excepteur incididunt. Lorem consectetur velit laboris exercitation eiusmod consectetur elit enim sunt Lorem aliqua eiusmod laborum. Minim tempor est consequat est elit sint est dolor laborum nostrud elit tempor aliquip duis ullamco."
+            }
+          }
+        ]
+      },
+      "year": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Laborum laborum id adipisicing."
+            }
+          }
+        ]
+      },
+      "isbn": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Excepteur exercitation voluptate ut ullamco duis do laborum. Anim incididunt anim esse id non."
+            }
+          }
+        ]
+      },
+      "language": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Elit nulla enim Lorem voluptate occaecat magna amet consequat fugiat in."
+            }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  }
+]

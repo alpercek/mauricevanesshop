@@ -5,14 +5,9 @@
       {
         "type": "heading1",
         "content": {
-          "text": "Village"
+          "text": "Branch"
         }
       }
     ]
-  },
-  "somenumber": {
-    "__TYPE__": "FieldContent",
-    "value": "23",
-    "type": "Number"
   }
 }
