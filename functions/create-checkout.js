@@ -1,12 +1,31 @@
 
-const Prismic = require('@prismicio/client');
-const apiEndpoint = 'https://mauricevanesshop.cdn.prismic.io/api/v2'
-const client = Prismic.client(apiEndpoint, {})
+import * as prismic from '@prismicio/client'
+import fetch from 'node-fetch'
+import Stripe from 'stripe'
+
+const routes = [
+  {
+    type: 'page',
+    path: '/:uid',
+  },
+]
+
+const repoName = 'your-repo-name'
+const client = prismic.createClient(repoName, { routes, fetch })
 
 const init = async () => {
-  const data = await client.query('')
-  console.log(data)
+  const pages = await client.getAllByType('page', {
+    orderings: {
+      field: 'document.first_publication_date',
+      direction: 'desc',
+    },
+    lang: 'en-us',
+  })
+  console.log(pages)
+
+  const firstPageDescriptionAsHTML = prismic.asHTML(pages[0].data.description)
 }
+
 init()
 /*
  * This function creates a Stripe Checkout session and returns the session ID
@@ -14,7 +33,7 @@ init()
  *
  * @see https://stripe.com/docs/payments/checkout/one-time
  */
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2020-03-02',
   maxNetworkRetries: 2,
 });
