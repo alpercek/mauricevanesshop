@@ -1,7 +1,7 @@
 
 const Prismic = require('@prismicio/client');
 const apiEndpoint = 'https://mauricevanesshop.cdn.prismic.io/api/v2'
-const client = Prismic.client(apiEndpoint, { req })
+const client = Prismic.client(apiEndpoint, {})
 
 const init = async () => {
   const data = await client.query('')
