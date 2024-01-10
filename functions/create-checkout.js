@@ -1,15 +1,13 @@
-import * as prismic from '@prismicio/client'
 
-const repositoryName = 'mauricevanesshop'
-const accessToken = 'https://mauricevanesshop.cdn.prismic.io/api/v2' // Set an access token
-const routes = [
-  // Update to match your website's URL structure
-  { type: 'page', path: '/:uid' },
-  { type: 'home', path: '/' },
-]
+const Prismic = require('@prismicio/client');
+const apiEndpoint = 'https://mauricevanesshop.cdn.prismic.io/api/v2'
+const client = Prismic.client(apiEndpoint, { req })
 
-const client = prismic.createClient(repositoryName, { routes, accessToken })
-console.log(client)
+const init = async () => {
+  const data = await client.query('')
+  console.log(data)
+}
+init()
 /*
  * This function creates a Stripe Checkout session and returns the session ID
  * for use with Stripe.js (specifically the redirectToCheckout method).
