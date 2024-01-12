@@ -55,6 +55,7 @@
         const form = new FormData(event.target);
         const data = {
           sku: form.get('sku'),
+          quantity: 1
         };
 
         const response = await fetch('/.netlify/functions/create-checkout', {
