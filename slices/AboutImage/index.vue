@@ -1,4 +1,4 @@
-<template><Bounded as="section" :style="{'border-top-color':slice.primary.color}" class="bg-white w-screen pb-8">
+<template><div class="bg-white w-screen pb-11 pl-36">
   <div class="relative">
    
       
@@ -10,7 +10,7 @@
         </div>
     </VueSlickCarousel><div v-if="slice.items.length > 1" class="flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2"> <button @click="showPrev" class="hidden md:block"><i :style="{'border-color':slice.primary.arrowcolor}" class="arrow left "></i></button><button @click="showNext" class="hidden md:block"><i :style="{'border-color':slice.primary.arrowcolor}" class="arrow right"></i></button></div>
   
-  </div></Bounded>
+  </div></div>
 </template>
 
 <script>

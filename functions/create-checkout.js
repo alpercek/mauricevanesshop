@@ -54,6 +54,11 @@ exports.handler = async (event) => {
   // ensure that the quantity is within the allowed range
   const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
 
+  const test = JSON.stringify({
+    price: 'price_1OVs5BG1TW3EeJHZotMqsRt9',
+    quantity: 1,
+  },)
+
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
     payment_method_types: ['card'],
@@ -86,6 +91,7 @@ exports.handler = async (event) => {
       price: 'price_1OVs5BG1TW3EeJHZotMqsRt9',
       quantity: 1,
     },
+    JSON.parse(test)
   ],
     // We are using the metadata to track which items were purchased.
     // We can access this meatadata in our webhook handler to then handle

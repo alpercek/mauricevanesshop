@@ -11,33 +11,6 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "AboutInfo",
       "primary": {
-        "title": {
-          "type": "StructuredText",
-          "config": {
-            "label": "name and location",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
-        },
-        "email": {
-          "type": "StructuredText",
-          "config": {
-            "label": "email",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
-        },
-        "base": {
-          "type": "StructuredText",
-          "config": {
-            "label": "base",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
-        },
         "instagram": {
           "type": "StructuredText",
           "config": {
@@ -51,15 +24,6 @@
           "type": "StructuredText",
           "config": {
             "label": "website",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
-        },
-        "personalinstagram": {
-          "type": "StructuredText",
-          "config": {
-            "label": "personalinstagram",
             "placeholder": "",
             "allowTargetBlank": true,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"

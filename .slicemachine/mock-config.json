@@ -5,7 +5,11 @@
         "primary": {}
       }
     },
-    "ContactInfo": {},
+    "ContactInfo": {
+      "default": {
+        "primary": {}
+      }
+    },
     "Slider": {
       "default": {
         "primary": {}
@@ -25,12 +29,15 @@
       "default": {
         "primary": {}
       }
+    },
+    "AboutText": {
+      "default": {
+        "primary": {}
+      }
     }
   },
   "_cts": {
-    "page": {
-      "linked": {}
-    },
+    "page": {},
     "settings": {},
     "product": {}
   }

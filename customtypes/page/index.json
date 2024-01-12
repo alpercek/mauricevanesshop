@@ -31,27 +31,21 @@
           ]
         }
       },
-      "linked": {
-        "type": "Group",
-        "config": {
-          "label": "linked",
-          "fields": {
-            "link": {
-              "type": "Link",
-              "config": {
-                "label": "link",
-                "placeholder": "",
-                "select": null
-              }
-            }
-          }
-        }
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "about_image": {
+              "type": "SharedSlice"
+            },
+            "about_text": {
+              "type": "SharedSlice"
+            },
+            "about_info": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     }
