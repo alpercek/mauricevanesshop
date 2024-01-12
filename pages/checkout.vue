@@ -63,7 +63,7 @@
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(data),
+          body: localStorage.orders,
         }).then((res) => res.json());
 
         const stripe = Stripe(response.publishableKey);

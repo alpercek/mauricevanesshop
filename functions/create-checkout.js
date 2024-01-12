@@ -27,6 +27,20 @@ const init = async () => {
 
 init()
 /*
+
+{
+      price_data: {
+        currency: 'eur',
+        unit_amount: product.amount,
+        product_data: {
+          name: product.name,
+          description: product.description,
+          images: [product.image],
+        },
+      },
+      quantity: validatedQuantity,
+    },
+
  * This function creates a Stripe Checkout session and returns the session ID
  * for use with Stripe.js (specifically the redirectToCheckout method).
  *
@@ -47,10 +61,10 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
  */
 
 exports.handler = async (event) => {
-  const { sku, quantity } = JSON.parse(event.body);
-  const product = inventory.find((p) => p.sku === sku);
+  console.log(JSON.parse(event.body))
+  //const product = inventory.find((p) => p.sku === sku);
   // ensure that the quantity is within the allowed range
-  const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
+  //const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
 
   const test = JSON.stringify({
     price: 'price_1OVs5BG1TW3EeJHZotMqsRt9',
@@ -73,18 +87,6 @@ exports.handler = async (event) => {
     success_url: `${process.env.URL}/success.html`,
     cancel_url: process.env.URL,
     line_items: [
-      {
-      price_data: {
-        currency: 'eur',
-        unit_amount: product.amount,
-        product_data: {
-          name: product.name,
-          description: product.description,
-          images: [product.image],
-        },
-      },
-      quantity: validatedQuantity,
-    },
     {
       price: 'price_1OVs5BG1TW3EeJHZotMqsRt9',
       quantity: 1,
@@ -98,9 +100,9 @@ exports.handler = async (event) => {
     metadata: {
       items: JSON.stringify([
         {
-          sku: product.sku,
-          name: product.name,
-          quantity: validatedQuantity,
+          sku: 'product.sku',
+          name: 'product.name',
+          quantity: 1,
         },
       ]),
     },
