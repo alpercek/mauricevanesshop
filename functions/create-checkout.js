@@ -86,9 +86,8 @@ console.log(test)
      */
     success_url: `${process.env.URL}/success.html`,
     cancel_url: process.env.URL,
-    line_items: [
-    JSON.parse(test)
-  ],
+    line_items: 
+    JSON.parse(test),
     // We are using the metadata to track which items were purchased.
     // We can access this meatadata in our webhook handler to then handle
     // the fulfillment process.
