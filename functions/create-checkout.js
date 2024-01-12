@@ -52,22 +52,9 @@ exports.handler = async (event) => {
   //const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
   const line_itemss = []
   const pages = await client.getByIDs(JSON.parse(event.body))
-  
-  const test = JSON.stringify({
-    price_data: {
-      currency: 'eur',
-      unit_amount: pages.results[0].data.price*100,
-      product_data: {
-        name: pages.results[0].data.title[0].text,
-        description: pages.results[0].data.description[0].text,
-        images: [pages.results[0].data.image.url],
-      },
-    },
-    quantity: 1,
-  },)
 
   for (let i = 0; i < pages.results.length; i++) {
-    test = JSON.stringify(
+    line_itemss.push(
       {
       price_data: {
         currency: 'eur',
@@ -82,7 +69,8 @@ exports.handler = async (event) => {
     }
       )
   }
-console.log(line_itemss)
+  const test = JSON.stringify(line_itemss)
+console.log(test)
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
     payment_method_types: ['card'],
