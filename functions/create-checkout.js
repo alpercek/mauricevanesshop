@@ -52,15 +52,15 @@ exports.handler = async (event) => {
   //const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
   
   const pages = await client.getByIDs(JSON.parse(event.body))
-  console.log(pages)
+  console.log(pages.results[0].data)
   
   const test = JSON.stringify({
     price_data: {
       currency: 'eur',
       unit_amount: pages.results[0].data.price,
       product_data: {
-        name: pages.results[0].data.title.text,
-        description: pages.results[0].data.description.text,
+        name: 'pages.results[0].data.title.text',
+        description: 'pages.results[0].data.description.text',
         images: [pages.results[0].data.image.url],
       },
     },
