@@ -2,7 +2,6 @@
 import * as prismic from '@prismicio/client'
 import fetch from 'node-fetch'
 import Stripe from 'stripe'
-import inventory from './data/products.json'
 
 const routes = [
   {
@@ -13,19 +12,6 @@ const routes = [
 
 const repoName = 'mauricevanesshop'
 const client = prismic.createClient(repoName, { routes, fetch })
-
-const init = async () => {
-  const pages = await client.getAllByType('page', {
-    orderings: {
-      field: 'document.first_publication_date',
-      direction: 'desc',
-    },
-    lang: 'en-us',
-  })
-  console.log(pages)
-}
-
-init()
 /*
 
 {
@@ -61,11 +47,13 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
  */
 
 exports.handler = async (event) => {
-  console.log(JSON.parse(event.body))
   //const product = inventory.find((p) => p.sku === sku);
   // ensure that the quantity is within the allowed range
   //const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
-
+  
+  const pages = await client.getByIDs(JSON.parse(event.body))
+  console.log(pages)
+  
   const test = JSON.stringify({
     price: 'price_1OVs5BG1TW3EeJHZotMqsRt9',
     quantity: 1,
