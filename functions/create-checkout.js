@@ -50,9 +50,8 @@ exports.handler = async (event) => {
   //const product = inventory.find((p) => p.sku === sku);
   // ensure that the quantity is within the allowed range
   //const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
-  
+  const line_itemss = []
   const pages = await client.getByIDs(JSON.parse(event.body))
-  console.log(pages.results[0].data)
   
   const test = JSON.stringify({
     price_data: {
@@ -67,6 +66,23 @@ exports.handler = async (event) => {
     quantity: 1,
   },)
 
+  for (let i = 0; i < pages.results.length; i++) {
+    line_itemss.push(
+      {
+      price_data: {
+        currency: 'eur',
+        unit_amount: pages.results[i].data.price*100,
+        product_data: {
+          name: pages.results[i].data.title[0].text,
+          description: pages.results[i].data.description[0].text,
+          images: [pages.results[i].data.image.url],
+        },
+      },
+      quantity: 1,
+    }
+      )
+  }
+console.log(line_itemss)
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
     payment_method_types: ['card'],
@@ -83,10 +99,6 @@ exports.handler = async (event) => {
     success_url: `${process.env.URL}/success.html`,
     cancel_url: process.env.URL,
     line_items: [
-    {
-      price: 'price_1OVs5BG1TW3EeJHZotMqsRt9',
-      quantity: 1,
-    },
     JSON.parse(test)
   ],
     // We are using the metadata to track which items were purchased.
