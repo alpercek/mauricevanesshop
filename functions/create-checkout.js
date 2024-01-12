@@ -67,7 +67,7 @@ exports.handler = async (event) => {
   },)
 
   for (let i = 0; i < pages.results.length; i++) {
-    line_itemss.push(
+    test = JSON.stringify(
       {
       price_data: {
         currency: 'eur',
