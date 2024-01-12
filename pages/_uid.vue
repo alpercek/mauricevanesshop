@@ -6,7 +6,10 @@
     <prismic-rich-text :field="page.data.description" class="font-garamond text-sm w-[25rem]" />
     <prismic-rich-text :field="page.data.extra_line" class="font-cooperbt text-sm tracking-[-0.01em] pt-5"/>
     <div class="font-cooperbt text-sm tracking-[-0.01em] font-bold pb-5">€{{ page.data.price }},–</div>
-    <div class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 hover:bg-sky-200">ORDER</div>
+    <form @submit="addToCart($event)">
+    <input type="hidden" name="uid" :value="page.id" />
+    <button class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 hover:bg-sky-200">ORDER</button>
+    </form>
       </div>
     <div :style="{'color':page.data.color}" class="absolute top-[39.5rem] right-[66.25vw] font-cooperbt text-lg tracking-[-0.01em] flex"><prismic-rich-text :field="page.data.littlenumber" class="text-2xl pr-1"/> <prismic-rich-text :field="page.data.title" class="translate-y-0.5"/></div>
   </div>
@@ -33,6 +36,16 @@ export default {
     }
   },
   methods: { 
+    addToCart (event) {
+      event.preventDefault();
+      const form = new FormData(event.target);
+      var orderList = []
+      if(localStorage.orders){
+        orderList = JSON.parse(localStorage.orders)
+      }
+      orderList.push(form.get('uid'))
+      localStorage.orders = JSON.stringify(orderList)
+    }
 },
 mounted(){
 }

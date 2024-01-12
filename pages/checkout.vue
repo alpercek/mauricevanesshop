@@ -1,33 +1,16 @@
 <template>
     <div>
-      <main>
-      <section class="products"></section>
-    </main>
-
-    <footer>
-    </footer>
-
-    <template id="product">
-      <div class="product">
-        <img src="" alt="" />
-        <h2>name</h2>
-        <p class="description">description</p>
-        <p class="price">price</p>
-        <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post">
-          <label for="quantity">Quantity</label>
-          <input
-            type="number"
-            id="quantity"
-            name="quantity"
-            value="1"
-            min="1"
-            max="10"
-          />
+      <div class="px-48">
+        <div v-for="(item, i) in filtered" :key="`slice-item-${i}`" class="flex gap-4 pt-4">
+    <PrismicImage :field="item.data.image" class=" h-[100px] w-[100px] border object-cover"/><div>
+    <div :style="{'color':item.data.color}" class="flex justify-start font-cooperbt text-xl">{{ String.fromCharCode(	0x2776 + i) }}<prismic-rich-text :field="item.data.title" class="" /></div>
+    <div class="pt-5 font-garamond">€{{item.data.price}},–</div></div>
+  </div>
+        <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post" class="pt-8">
           <input type="hidden" name="sku" value="DEMO002" />
-          <button type="submit">Buy Now Alper</button>
+          <button class="font-metrik text-xs border border-black rounded-full py-1 px-2 hover:bg-sky-200" type="submit">Proceed to Checkout</button>
         </form>
       </div>
-    </template>
     </div>
   </template>
   
@@ -36,7 +19,9 @@
   
   export default {
     async asyncData ({ $prismic, store }) {
-      const page = await $prismic.api.getByUID('page', 'home')
+      const page = await $prismic.api.query(
+      $prismic.predicates.at('document.type','product')
+    )
       await store.dispatch('prismic/load')
       return {
         page
@@ -45,12 +30,13 @@
 
     data () {
       return { components, 
+        filtered: [],
       }
       
     },
     head () {
       return {
-        title: this.$prismic.asText(this.page.data.title)
+        title: 'Checkout'
       }
     },
     methods: {
@@ -69,7 +55,6 @@
         const form = new FormData(event.target);
         const data = {
           sku: form.get('sku'),
-          quantity: Number(form.get('quantity')),
         };
 
         const response = await fetch('/.netlify/functions/create-checkout', {
@@ -94,6 +79,17 @@
       },
   },
   mounted(){
+    if(localStorage.orders){
+      const targetorders = JSON.parse(localStorage.orders)
+    for (let i = 0; i < this.page.results.length; i++) {
+      for (let j = 0; j < targetorders.length; j++) {
+        if(this.page.results[i].id == targetorders[j]){
+        this.filtered.push(this.page.results[i])
+      }
+        
+      }
+    }
+  }
     }
   }
   </script>

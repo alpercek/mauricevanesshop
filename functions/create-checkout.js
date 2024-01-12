@@ -23,8 +23,6 @@ const init = async () => {
     lang: 'en-us',
   })
   console.log(pages)
-
-  const firstPageDescriptionAsHTML = prismic.asHTML(pages[0].data.description)
 }
 
 init()
@@ -49,7 +47,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
  */
 
 exports.handler = async (event) => {
-  const { sku, quantity } = JSON.parse(event.body);
+  const { sku } = JSON.parse(event.body);
   const product = inventory.find((p) => p.sku === sku);
   // ensure that the quantity is within the allowed range
   const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
