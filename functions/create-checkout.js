@@ -57,10 +57,10 @@ exports.handler = async (event) => {
   const test = JSON.stringify({
     price_data: {
       currency: 'eur',
-      unit_amount: pages.results[0].data.price,
+      unit_amount: pages.results[0].data.price*100,
       product_data: {
-        name: 'pages.results[0].data.title.text',
-        description: 'pages.results[0].data.description.text',
+        name: pages.results[0].data.title[0].text,
+        description: pages.results[0].data.description[0].text,
         images: [pages.results[0].data.image.url],
       },
     },
