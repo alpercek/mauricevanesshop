@@ -55,8 +55,16 @@ exports.handler = async (event) => {
   console.log(pages)
   
   const test = JSON.stringify({
-    price: pages.results[0].data.price,
-    quantity: 1,
+    price_data: {
+      currency: 'eur',
+      unit_amount: pages.results[0].data.price,
+      product_data: {
+        name: pages.results[0].data.title,
+        description: pages.results[0].data.description,
+        images: [pages.results[0].data.image],
+      },
+    },
+    quantity: validatedQuantity,
   },)
 
   const session = await stripe.checkout.sessions.create({
