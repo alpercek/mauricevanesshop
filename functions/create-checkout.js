@@ -64,7 +64,7 @@ exports.handler = async (event) => {
         images: [pages.results[0].data.image],
       },
     },
-    quantity: validatedQuantity,
+    quantity: 1,
   },)
 
   const session = await stripe.checkout.sessions.create({
