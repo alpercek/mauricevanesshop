@@ -55,7 +55,7 @@ exports.handler = async (event) => {
   console.log(pages)
   
   const test = JSON.stringify({
-    price: 'price_1OVs5BG1TW3EeJHZotMqsRt9',
+    price: pages.results[0].data.price,
     quantity: 1,
   },)
 
