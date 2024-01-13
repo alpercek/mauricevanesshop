@@ -51,6 +51,7 @@ exports.handler = async (event) => {
   // ensure that the quantity is within the allowed range
   //const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
   const line_itemss = []
+  const meta_itemss = []
   const pages = await client.getByIDs(JSON.parse(event.body))
 
   for (let i = 0; i < pages.results.length; i++) {
@@ -67,6 +68,12 @@ exports.handler = async (event) => {
       },
       quantity: 1,
     }
+      )
+      meta_itemss.push(
+        {
+          name: pages.results[i].data.title[0].text,
+          quantity: 1,
+        }
       )
   }
   const test = JSON.stringify(line_itemss)
@@ -93,13 +100,7 @@ console.log(test)
     // the fulfillment process.
     // In a real application you would track this in an order object in your database.
     metadata: {
-      items: JSON.stringify([
-        {
-          sku: 'product.sku',
-          name: 'product.name',
-          quantity: 1,
-        },
-      ]),
+      items: JSON.stringify(meta_itemss),
     },
   });
 
