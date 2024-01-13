@@ -12,8 +12,9 @@
   </div>
         <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post" class="pt-8">
           <input type="hidden" name="sku" value="DEMO002" />
-          <button class="font-metrik text-xs border border-black rounded-full py-1 px-2 hover:bg-sky-200" type="submit">Proceed to Checkout</button>
+          <button id="asdf" class="font-metrik text-xs border border-black rounded-full py-1 px-2 hover:bg-sky-200 hidden" type="submit">Proceed to Checkout</button>
         </form>
+        <div id="sdf" class="font-metrik text-xs">There are no items in the cart. Hit the <NuxtLink to="/" class="border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 hover:bg-sky-200">ORDER</NuxtLink> button in product pages to add items to the cart.</div>
       </div>
     </div>
   </template>
@@ -55,6 +56,12 @@
           }
           event.target.parentElement.remove()
           localStorage.orders = JSON.stringify(itemarray)
+          document.getElementsByClassName('counter')[0].innerText = itemarray.length
+          document.getElementsByClassName('counter')[1].innerText = itemarray.length
+          if (itemarray.length == 0) {
+            document.getElementById('asdf').style.display = 'none'
+            document.getElementById('sdf').style.display = 'block'
+          }
         },
 
         format(amount, currency) {
@@ -107,6 +114,10 @@
       }
         
       }
+    }
+    if(targetorders.length > 0){
+    document.getElementById('asdf').style.display = 'block'
+    document.getElementById('sdf').style.display = 'none'
     }
   }
     }

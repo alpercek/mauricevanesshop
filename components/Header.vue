@@ -7,7 +7,7 @@
       
       <nav>
         <div class="flex md:hidden gap-x-3">
-          <NuxtLink to="/checkout"><img src="../static/cart.svg" class="w-5 h-5"/></NuxtLink>
+          <NuxtLink to="/checkout" class="relative"><img src="../static/cart.svg" class="w-5 h-5"/><span class="counter text-[7px] absolute top-1/2 -translate-y-3/4 left-1/2">0</span></NuxtLink>
         <div @click="sshowMobileMenu = !sshowMobileMenu" class="space-y-1 pt-1">
           <div class="w-5 h-0.5 bg-gray-600"></div>
           <div class="w-5 h-0.5 bg-gray-600"></div>
@@ -25,6 +25,7 @@
             <PrismicLink v-if="$prismic.asText(item.label) != 'Home'" :field="item.link">
               {{ $prismic.asText(item.label) }}
             </PrismicLink>
+            <span v-if="$prismic.asText(item.label) == 'Shopping Cart'">(<span class="counter">0</span>)</span>
           </li>
         </ul>
       </nav>
@@ -57,6 +58,13 @@ export default {
     settings: {
       type: Object,
       required: true
+    }
+  },
+  mounted(){
+    if(localStorage.orders){
+      const targetorders = JSON.parse(localStorage.orders)
+      document.getElementsByClassName('counter')[0].innerText = targetorders.length
+      document.getElementsByClassName('counter')[1].innerText = targetorders.length
     }
   }
 }

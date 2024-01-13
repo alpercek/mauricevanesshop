@@ -9,7 +9,7 @@
     <div class="absolute md:static top-[62vh] pl-3 md:pl-0 pt-11 md:pt-0">
     <form @submit="addToCart($event)">
     <input type="hidden" name="uid" :value="page.id" />
-    <button class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 hover:bg-sky-200">ORDER</button>
+    <button class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">ORDER</button>
     </form>
     <div :style="{'color':page.data.color}" class="md:absolute md:top-[39.5rem] right-[66.25vw] font-cooperbt text-lg tracking-[-0.01em] flex pt-6 md:pt-0 pl-1 md:pl-0"><prismic-rich-text :field="page.data.littlenumber" class="text-2xl pr-1"/> <prismic-rich-text :field="page.data.title" class="translate-y-0.5"/></div>
   </div>
@@ -47,6 +47,8 @@ export default {
       }
       orderList.push(form.get('uid'))
       localStorage.orders = JSON.stringify(orderList)
+      document.getElementsByClassName('counter')[0].innerText = orderList.length
+      document.getElementsByClassName('counter')[1].innerText = orderList.length
     }
 },
 mounted(){
