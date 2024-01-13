@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white px-4 overflow-hidden pb-7 pl-40">
+  <div class="bg-white px-4 overflow-hidden pb-7 pt-9 md:pt-0 pl-9 md:pl-40">
     <div>
       <div class="max-w-sm grid grid-cols-1 items-center gap-10 justify-items-start">
         <div class="text-sm font-cooperbt flex "><a :href="'https://www.instagram.com/' + $prismic.asText(slice.primary.instagram)" class="hover:underline"> @{{ $prismic.asText(slice.primary.instagram) }}</a></div>

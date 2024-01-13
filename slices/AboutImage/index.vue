@@ -1,4 +1,4 @@
-<template><div class="bg-white w-screen pb-11 pl-36">
+<template><div class="bg-white w-screen md:pb-11 md:pl-36">
   <div class="relative">
    
       

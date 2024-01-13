@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div class="px-48">
+      <div class="md:px-48 px-4">
         <div v-for="(item, i) in filtered" :key="`slice-item-${i}`" class="flex gap-4 pt-4">
     <PrismicImage :field="item.data.image" class=" h-[100px] w-[100px] border object-cover"/><div>
     <div :style="{'color':item.data.color}" class="flex justify-start font-cooperbt text-xl">{{ String.fromCharCode(	0x2776 + i) }}<prismic-rich-text :field="item.data.title" class="" /></div>

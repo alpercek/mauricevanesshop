@@ -1,9 +1,9 @@
 <template>
   <div class="pb-5">
-  <div class="relative w-[56vw] m-auto border border-[#707070]">
+  <div class="relative md:w-[56vw] m-auto md:border border-[#707070]">
    <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000" :autoplay="true" >
       <div v-for="(item, i) in slice.items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
-          <PrismicImage :field="item.image" class="m-auto h-[37.5rem]"/>
+          <PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[37.5rem] object-cover md:object-scale-down w-full"/>
         </div>
     </VueSlickCarousel>
     <div v-if="slice.items.length > 1" class="flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2"> <button @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext" class="hidden md:block"><i class="arrow right"></i></button></div>

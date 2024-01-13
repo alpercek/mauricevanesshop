@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <table class="ml-[43vw] font-cooperbt text-left tracking-[-0.01em] text-sm">
+    <table class="md:ml-[43vw] font-cooperbt text-left tracking-[-0.01em] text-sm mt-28 md:mt-0 ml-7 md:ml-0">
       <tbody>
       <tr>
         <th class="w-[8.6rem]">Authors:</th>

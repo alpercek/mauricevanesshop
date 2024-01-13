@@ -1,7 +1,7 @@
 <template>
-  <div class="pl-40 bg-white px-4 overflow-hidden">
+  <div class="pt-1.5 md:pt-0 md:pl-40 bg-white px-9 overflow-hidden">
     <div>
-      <div class="max-w-sm md:max-w-sm grid grid-cols-1 md:justify-items-stretch items-center gap-4 justify-items-start text-lg font-garamond md:text-sm !leading-5"><div v-for="(item, i) in slice.items" :key="`slice-item-${i}` ">    
+      <div class="max-w-sm md:max-w-sm grid grid-cols-1 md:justify-items-stretch items-center gap-4 justify-items-start font-garamond text-sm !leading-5"><div v-for="(item, i) in slice.items" :key="`slice-item-${i}` ">    
           <PrismicRichText :field="item.text" />
         </div></div></div>
       </div>
