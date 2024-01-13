@@ -61,7 +61,7 @@ export default {
   },
 
   prismic: {
-    endpoint: "https://mauricevanesshop.cdn.prismic.io/api/v2",
+    endpoint: "https://scannedfootballphotos.cdn.prismic.io/api/v2",
     modern: true,
     
     linkResolver: (doc) => {

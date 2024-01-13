@@ -1,6 +1,6 @@
 {
   "//": "sm.json is deprecated, if you were importing values from this file please now import them from slicemachine.config.json, else you can safely delete this file",
-  "apiEndpoint": "https://mauricevanesshop.cdn.prismic.io/api/v2",
+  "apiEndpoint": "https://scannedfootballphotos.cdn.prismic.io/api/v2",
   "_latest": "0.3.0",
   "libraries": ["@/slices"],
   "framework": "previousNuxt"
