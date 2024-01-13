@@ -10,7 +10,7 @@ const routes = [
   },
 ]
 
-const repoName = 'mauricevanesshop'
+const repoName = 'scannedfootballphotos'
 const client = prismic.createClient(repoName, { routes, fetch })
 /*
 
