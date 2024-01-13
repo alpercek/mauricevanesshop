@@ -1,13 +1,16 @@
 <template>
   <div class="pb-5">
   <div class="relative md:w-[56vw] m-auto md:border border-[#707070]">
-   <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000" :autoplay="true" >
+   <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="speed" :autoplay="true" >
       <div v-for="(item, i) in slice.items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
           <PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[37.5rem] object-cover md:object-scale-down w-full"/>
         </div>
+        <div v-if="video.url" class="m-auto pt-1.5 relative">
+        <video onclick="this.play(); this.nextElementSibling.remove()" type="video/mp4" playsinline id="vd" :src="video.url" class="md:m-auto h-[62vh] md:h-[37.5rem] object-cover md:object-scale-down w-full cursor-pointer"></video>
+        <div class="pointer-events-none absolute top-3/4 left-1/2 -translate-x-1/2 text-2xl bg-white px-1.5 rounded-full font-metrik">click to play &#x23F5;</div>
+      </div>
     </VueSlickCarousel>
-    <div v-if="slice.items.length > 1" class="flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2"> <button @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext" class="hidden md:block"><i class="arrow right"></i></button></div>
-  
+    <div v-if="slice.items.length > 1" class="md:flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2 hidden"> <button @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext" class="hidden md:block"><i class="arrow right"></i></button></div>
   </div>
 </div>
 </template>
@@ -23,6 +26,12 @@
     data(){
     return{
     sshowMobileMenu: false,
+    speed: 5000
+    }
+  },
+  computed: {
+    video(){
+      return this.slice.primary.video
     }
   },
   methods: {
