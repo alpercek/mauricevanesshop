@@ -23,7 +23,7 @@ exports.handler = async ({ body, headers }) => {
     if (stripeEvent.type === 'checkout.session.completed') {
       const eventObject = stripeEvent.data.object;
       const items = JSON.parse(eventObject.metadata.items);
-      const shippingDetails = eventObject.shipping;
+      const shippingDetails = eventObject.shipping_details;
 
       // Here make an API call / send an email to your fulfillment provider.
       const purchase = { items, shippingDetails };
