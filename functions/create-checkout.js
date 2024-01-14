@@ -55,8 +55,9 @@ exports.handler = async (event) => {
   const pages = await client.getByIDs(JSON.parse(event.body))
 
 
-if(pages.results[i].data.description[0]){
+
   for (let i = 0; i < pages.results.length; i++) {
+    if(pages.results[i].data.description[0]){
     line_itemss.push(
       {
       price_data: {
@@ -72,30 +73,24 @@ if(pages.results[i].data.description[0]){
       quantity: 1,
     }
       )
-      meta_itemss.push(
-        {
-          name: pages.results[i].data.title[0].text,
-          quantity: 1,
-        }
-      )
-  }
-}
-else {
-  for (let i = 0; i < pages.results.length; i++) {
-    line_itemss.push(
-      {
-      price_data: {
-        currency: 'eur',
-        unit_amount: pages.results[i].data.price*100,
-        product_data: {
-          name: pages.results[i].data.title[0].text,
-          description: 'no description',
-          images: [pages.results[i].data.image.url],
-        },
-      },
-      quantity: 1,
     }
-      )
+    else {
+      line_itemss.push(
+        {
+        price_data: {
+          currency: 'eur',
+          unit_amount: pages.results[i].data.price*100,
+          product_data: {
+            name: pages.results[i].data.title[0].text,
+            description: 'no description',
+            
+            images: [pages.results[i].data.image.url],
+          },
+        },
+        quantity: 1,
+      }
+        )
+    }
       meta_itemss.push(
         {
           name: pages.results[i].data.title[0].text,
@@ -103,7 +98,6 @@ else {
         }
       )
   }
-}
 
 
   const test = JSON.stringify(line_itemss)
