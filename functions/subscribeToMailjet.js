@@ -25,7 +25,7 @@ const payload = {
 };
 
 const response = await axios.post(
- 'https://api.mailjet.com/v3/REST/contact&#39',
+ 'https://api.mailjet.com/v3/REST/contact',
   payload,
   {
     auth: {
