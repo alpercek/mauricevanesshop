@@ -32,6 +32,10 @@
         <th><prismic-rich-text :field="page.data.slices[1].primary.year" /></th>
       </tr>
       <tr>
+        <th>Edition:</th>
+        <th><prismic-rich-text :field="page.data.slices[1].primary.edition" /></th>
+      </tr>
+      <tr>
         <th>Pages:</th>
         <th><prismic-rich-text :field="page.data.slices[1].primary.pages" /></th>
       </tr>

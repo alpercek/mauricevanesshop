@@ -68,6 +68,17 @@
             }
           }
         ]
+      },
+      "edition": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Adipisicing ex tempor aute id voluptate duis ipsum id et nostrud ut qui id."
+            }
+          }
+        ]
       }
     },
     "items": [
