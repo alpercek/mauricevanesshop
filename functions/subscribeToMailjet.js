@@ -1,53 +1,66 @@
-const axios = require('axios');
+const axios = require("axios");
 
-exports.handler = async function(event, context) {
-  try {
-    if (event.httpMethod !== 'POST') {
-      return {
-        statusCode: 405,
-        body: JSON.stringify({ message: 'Method Not Allowed' })
-      };
-    }
-
-
-const { email } = JSON.parse(event.body);
-
-if (!email) {
-  return {
-    statusCode: 400,
-    body: JSON.stringify({ message: 'Missing email in request body' })
-  };
-}
-
-const payload = {
-  Email: email,
-  ContactsLists: [process.env.MAILJET_LIST_ID],
-};
-
-const response = await axios.post(
- 'https://api.mailjet.com/v3/REST/contact',
-  payload,
-  {
-    auth: {
-      username: process.env.MJ_APIKEY_PUBLIC,
-      password: process.env.MJ_APIKEY_PRIVATE
-    }
+exports.handler = async (event) => {
+  const parsedData = new URLSearchParams(event.body);
+  const dataObj = {};
+  for (var pair of parsedData.entries()) {
+    dataObj[pair[0]] = pair[1];
   }
-);
+  console.log("DataObj: ", dataObj);
+  const email = dataObj.email;
 
-return {
-  statusCode: response.status,
-  body: JSON.stringify({ message: 'Subscriber added successfully' })
-};
+  // Get environment variables
+  const { MJ_APIKEY_PUBLIC, MJ_APIKEY_PRIVATE, MJ_LIST_ID } = process.env;
 
+  // Create the contact in Mailjet
+  try {
+    const response = await axios.post(
+      "https://api.mailjet.com/v3/REST/contact",
+      {
+        IsExcludedFromCampaigns: "false",
+        Email: email,
+      },
+      {
+        auth: {
+          username: MJ_APIKEY_PUBLIC,
+          password: MJ_APIKEY_PRIVATE,
+        },
+      }
+    );
+
+    // Add the contact to the contact list
+    await axios.post(
+      `https://api.mailjet.com/v3/REST/contactslist/${MJ_LIST_ID}/managemanycontacts`,
+      {
+        Action: "addnoforce", //addforce,addnoforce,remove
+        Contacts: [
+          {
+            Email: email,
+          },
+        ],
+      },
+      {
+        auth: {
+          username: MJ_APIKEY_PUBLIC,
+          password: MJ_APIKEY_PRIVATE,
+        },
+      }
+    );
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: "Contact added to Mailjet successfully",
+      }),
+    };
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error adding contact to Mailjet:", error);
 
-
-return {
-  statusCode: error.response ? error.response.status : 500,
-  body: JSON.stringify({ message: 'An error occurred' })
-};
-
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+        message: "Failed to add contact to Mailjet",
+      }),
+    };
   }
 };

@@ -1,8 +1,8 @@
 <template>
   <div class="pb-32">
     <SliceZone :slices="page.data.slices" :components="components" />
+    <!--newsletter-->
     <form class="pl-9 md:pl-40 email-form font-cooperbt pt-5" name="newsletter" method="POST" netlify netlify-honeypot="bot-field" action="/.netlify/functions/subscribeToMailjet">
-      <!--newsletter-->
   <label for="email" class="sr-only"> Email </label>
   <div class="">
     <input required type="email" name="email" id="email" placeholder="Sign up for newsletter" class="py-1 px-2 rounded-full" />
