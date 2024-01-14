@@ -3,7 +3,7 @@
       <div class="md:px-48 px-4">
         <div v-for="(item, i) in filtered" :key="`slice-item-${i}`" class="flex gap-4 pt-4">
     <PrismicImage :field="item.data.image" class=" h-[100px] w-[100px] border object-cover"/><div>
-    <div :style="{'color':item.data.color}" class="flex justify-start font-cooperbt text-xl"><span v-if="item.uid == 0" class="text-sm pr-1 translate-y-1">⓿</span><span v-else class="text-2xl pr-1 -translate-y-0.5">{{ String.fromCharCode(	0x2775 + Number(item.uid)) }}</span><prismic-rich-text :field="item.data.title" class="" /></div>
+    <div :style="{'color':item.data.color}" class="flex justify-start font-cooperbt text-xl"><span v-if="item.data.number == 0" class="text-sm pr-1 translate-y-1">⓿</span><span v-else class="text-2xl pr-1 -translate-y-0.5">{{ String.fromCharCode(	0x2775 + Number(item.data.number)) }}</span><prismic-rich-text :field="item.data.title" class="" /></div>
     <div class="pt-5 font-garamond">€{{item.data.price}},–</div></div>
     <form @submit="remove($event)" class="pt-8">
           <input type="hidden" name="id" :value="item.id" />
