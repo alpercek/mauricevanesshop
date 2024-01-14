@@ -13,7 +13,7 @@
 </div>
 <div class="md:pb-36">
   <NuxtLink :to="'/'+page.results[0].uid">
-  <div :style="{'color':page.results[0].data.color}" class="flex justify-center pt-2.5 md:pt-5 font-cooperbt text-xl">⓿<prismic-rich-text :field="page.results[0].data.title" class="" /></div>
+  <div :style="{'color':page.results[0].data.color}" class="flex justify-center pt-2.5 md:pt-5 font-cooperbt text-xl"><span v-if="page.results[0].uid == 0" class="text-2xl pr-1">⓿</span><span v-else class="text-2xl pr-1">{{ String.fromCharCode(	0x2775 + Number(page.results[0].uid)) }}</span><prismic-rich-text :field="page.results[0].data.title" class="" /></div>
   <div class="text-center font-garamond hidden md:block"><prismic-rich-text :field="page.results[0].data.description" class="pt-8" />
   <prismic-rich-text :field="page.results[0].data.extra_line" class="italic pt-5" />
   <div class="italic pt-5">€{{ page.results[0].data.price }},–</div></div>
