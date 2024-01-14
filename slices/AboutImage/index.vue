@@ -1,8 +1,13 @@
 <template><div class="bg-white w-screen md:pb-11 md:pl-36">
-  <div class="relative">
+  <div class="relative md:w-1/2">
    
       
-    <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000" :autoplay="true" >
+    <VueSlickCarousel ref="carousel" :arrows="false" :dots="true" :adaptiveHeight="true" :autoplaySpeed="5000" :autoplay="true">
+      <template #customPaging="page">
+      <div class="custom-dot !font-normal text-lg">
+        {{ String.fromCharCode(	0x2160 + page) }}
+      </div>
+    </template>
       <div v-for="(item, i) in slice.items" :key="`slice-item-${i}` " class="relative">    
           <PrismicImage :field="item.image" class="h-[62vh] md:h-[27.313rem] object-cover md:object-scale-down w-full md:w-min"/>
           <PrismicRichText :field="item.fig" class="hidden text-xs md:block px-4 md:px-0 max-w-xs text-gray-300 !pl-2 pt-1 font-circular"/>
@@ -59,5 +64,15 @@
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
 }
+.slick-dots{
+width: unset;
+bottom: calc(-1rem -7px);
+color: #9A9A9A;
+left: 12px;
 
+
+}
+.slick-dots li{
+  width: 1rem;
+}
 </style>

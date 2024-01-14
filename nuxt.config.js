@@ -6,7 +6,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Pip Passchier',
+    title: 'SCANNEDFOOTBALLPHOTOS',
     script: [
       { src: 'https://js.stripe.com/v3' },
     ],
@@ -19,11 +19,11 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Pip Passchier'
+        content: 'For the past four years, I have been collecting photography from 90s football magazines. The photographs I found capture a candidness and spontaneity that is rarely seen today.'
       },
       { name: 'format-detection', content: 'telephone=no' }
     ],
-    link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }]
+    //link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }]
   },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules

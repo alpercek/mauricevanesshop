@@ -1,7 +1,7 @@
 {
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "addition"
+    "value": "fuel"
   },
   "title": {
     "__TYPE__": "StructuredTextContent",
@@ -9,7 +9,7 @@
       {
         "type": "paragraph",
         "content": {
-          "text": "Enim quis culpa ad elit aute duis sint aliqua ad labore sit ut. Ut cillum ad aute et ipsum mollit ea magna pariatur proident do reprehenderit nostrud adipisicing. Nulla elit esse eu excepteur ea id et irure adipisicing magna cillum deserunt."
+          "text": "Id velit sint cillum nulla."
         }
       }
     ]
@@ -20,7 +20,7 @@
       {
         "type": "paragraph",
         "content": {
-          "text": "Ut consectetur ullamco ex ullamco ex nostrud."
+          "text": "Et quis ad mollit qui proident et incididunt excepteur reprehenderit veniam elit quis eiusmod. Excepteur non aute voluptate do laboris reprehenderit aliqua sit ullamco laborum esse labore voluptate tempor. Do adipisicing mollit pariatur magna adipisicing voluptate culpa."
         }
       }
     ]
@@ -29,13 +29,13 @@
     "__TYPE__": "ImageContent",
     "origin": {
       "id": "main",
-      "url": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
-      "width": 8640,
-      "height": 8640
+      "url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+      "width": 5616,
+      "height": 3744
     },
-    "url": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
-    "width": 8640,
-    "height": 8640,
+    "url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+    "width": 5616,
+    "height": 3744,
     "edit": {
       "zoom": 1,
       "crop": {
@@ -52,42 +52,43 @@
       {
         "type": "paragraph",
         "content": {
-          "text": "Dolor tempor sit deserunt Lorem anim irure incididunt pariatur irure officia ullamco nostrud non adipisicing fugiat. Reprehenderit elit deserunt exercitation aliqua amet non deserunt incididunt aute."
+          "text": "Nisi excepteur minim laborum consectetur. Exercitation deserunt anim ut."
         }
       }
     ]
   },
   "price": {
     "__TYPE__": "FieldContent",
-    "value": "45",
+    "value": "83",
     "type": "Number"
   },
   "color": {
     "__TYPE__": "FieldContent",
-    "value": "#1d7a71",
+    "value": "#4e76db",
     "type": "Color"
-  },
-  "littlenumber": {
-    "__TYPE__": "StructuredTextContent",
-    "value": [
-      {
-        "type": "paragraph",
-        "content": {
-          "text": "Laboris tempor excepteur nisi elit anim voluptate velit mollit deserunt do sit nostrud et. Id deserunt culpa laborum nisi mollit incididunt id aliquip reprehenderit ipsum."
-        }
-      }
-    ]
   },
   "slices": {
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "slider$6cd4f287-6d0d-49e0-865e-f4f00d41ee56",
+        "key": "slider$f368176d-c4e4-4219-8dd4-427071abd759",
         "name": "slider",
         "widget": {
           "__TYPE__": "SharedSliceContent",
           "variation": "default",
-          "primary": {},
+          "primary": {
+            "video": {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "id": "mock_Media_link",
+                "kind": "image/jpeg",
+                "name": "mock_name",
+                "url": "https://source.unsplash.com/daily",
+                "size": "0",
+                "__TYPE__": "FileLink"
+              }
+            }
+          },
           "items": [
             {
               "__TYPE__": "GroupItemContent",
@@ -98,13 +99,13 @@
                     "__TYPE__": "ImageContent",
                     "origin": {
                       "id": "main",
-                      "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
-                      "width": 4016,
-                      "height": 6016
+                      "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
+                      "width": 4000,
+                      "height": 4000
                     },
-                    "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
-                    "width": 4016,
-                    "height": 6016,
+                    "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
+                    "width": 4000,
+                    "height": 4000,
                     "edit": {
                       "zoom": 1,
                       "crop": {
@@ -122,30 +123,63 @@
         }
       },
       {
-        "key": "book_info$52366d3a-7479-4b67-8213-ca575d11d6d7",
+        "key": "book_info$69cd503b-c24c-42c8-bddf-fd3822ddf387",
         "name": "book_info",
         "widget": {
           "__TYPE__": "SharedSliceContent",
           "variation": "default",
           "primary": {
-            "authors": {
-              "__TYPE__": "StructuredTextContent",
-              "value": [
-                {
-                  "type": "paragraph",
-                  "content": {
-                    "text": "Consectetur elit ad nulla ea aliqua qui voluptate non sit magna nostrud. Deserunt aute ut adipisicing nostrud proident."
-                  }
-                }
-              ]
-            },
             "year": {
               "__TYPE__": "StructuredTextContent",
               "value": [
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Incididunt incididunt pariatur exercitation sint sit consectetur officia ut ut cillum officia sit fugiat proident. Mollit reprehenderit excepteur aliqua adipisicing commodo amet elit minim enim Lorem esse quis nostrud culpa."
+                    "text": "Ullamco dolor irure minim ipsum ea sunt incididunt aliquip nisi aliquip qui sit ea id. Reprehenderit laborum nulla tempor id ex aute excepteur commodo ipsum nisi cillum minim do sint tempor. Qui nisi sunt do eiusmod non consequat aliquip mollit."
+                  }
+                }
+              ]
+            },
+            "pages": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Incididunt enim nisi sunt. Eiusmod labore veniam nulla consectetur pariatur in nostrud sit laborum laborum sunt."
+                  }
+                }
+              ]
+            },
+            "dimensions": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Ad eiusmod consequat veniam ad proident do aliqua dolor sint sint dolore dolore."
+                  }
+                }
+              ]
+            },
+            "paper": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Est id officia commodo."
+                  }
+                }
+              ]
+            },
+            "copyright": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Adipisicing aliquip eu eu ut adipisicing proident ut sunt labore. Ex duis labore esse esse minim duis nostrud do anim duis enim nulla ea cupidatat. Commodo laborum est reprehenderit adipisicing nostrud fugiat irure officia ea anim amet occaecat labore."
                   }
                 }
               ]
@@ -156,18 +190,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Laborum occaecat proident esse voluptate proident aute amet esse ipsum ipsum Lorem aute occaecat. Velit magna nulla sint. Occaecat aliqua et do nisi ad adipisicing mollit do non nostrud ad aliquip."
-                  }
-                }
-              ]
-            },
-            "language": {
-              "__TYPE__": "StructuredTextContent",
-              "value": [
-                {
-                  "type": "paragraph",
-                  "content": {
-                    "text": "Aliqua officia mollit magna laborum ut nostrud."
+                    "text": "Reprehenderit adipisicing deserunt mollit magna ullamco laborum esse tempor velit nisi."
                   }
                 }
               ]

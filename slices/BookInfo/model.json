@@ -11,15 +11,6 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "BookInfo",
       "primary": {
-        "authors": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Authors",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
-        },
         "year": {
           "type": "StructuredText",
           "config": {
@@ -29,19 +20,46 @@
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         },
-        "isbn": {
+        "pages": {
           "type": "StructuredText",
           "config": {
-            "label": "ISBN",
+            "label": "Pages",
             "placeholder": "",
             "allowTargetBlank": true,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         },
-        "language": {
+        "dimensions": {
           "type": "StructuredText",
           "config": {
-            "label": "Language",
+            "label": "Dimensions",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "paper": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Paper",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "copyright": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Copyright",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "isbn": {
+          "type": "StructuredText",
+          "config": {
+            "label": "ISBN",
             "placeholder": "",
             "allowTargetBlank": true,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"

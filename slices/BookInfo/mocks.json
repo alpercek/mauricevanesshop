@@ -3,17 +3,6 @@
     "__TYPE__": "SharedSliceContent",
     "variation": "default",
     "primary": {
-      "authors": {
-        "__TYPE__": "StructuredTextContent",
-        "value": [
-          {
-            "type": "paragraph",
-            "content": {
-              "text": "Nulla consequat magna ipsum tempor velit officia excepteur incididunt. Lorem consectetur velit laboris exercitation eiusmod consectetur elit enim sunt Lorem aliqua eiusmod laborum. Minim tempor est consequat est elit sint est dolor laborum nostrud elit tempor aliquip duis ullamco."
-            }
-          }
-        ]
-      },
       "year": {
         "__TYPE__": "StructuredTextContent",
         "value": [
@@ -36,13 +25,46 @@
           }
         ]
       },
-      "language": {
+      "pages": {
         "__TYPE__": "StructuredTextContent",
         "value": [
           {
             "type": "paragraph",
             "content": {
-              "text": "Elit nulla enim Lorem voluptate occaecat magna amet consequat fugiat in."
+              "text": "Magna irure aliqua labore nostrud aliquip nostrud mollit cupidatat mollit consectetur velit."
+            }
+          }
+        ]
+      },
+      "paper": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Ex et incididunt mollit exercitation eu elit mollit mollit culpa anim."
+            }
+          }
+        ]
+      },
+      "copyright": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Nisi commodo consectetur occaecat ullamco dolore duis quis magna culpa minim adipisicing."
+            }
+          }
+        ]
+      },
+      "dimensions": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Laborum aute ipsum mollit officia sunt nisi cupidatat ad ea proident laborum id. Magna minim voluptate aliqua velit sit amet duis commodo excepteur."
             }
           }
         ]

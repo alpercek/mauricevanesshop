@@ -17,7 +17,14 @@
     },
     "BookInfo": {
       "default": {
-        "primary": {}
+        "primary": {
+          "dimensions": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
       }
     },
     "Highlight": {
