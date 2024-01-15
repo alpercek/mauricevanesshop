@@ -108,7 +108,7 @@ console.log(test)
     payment_method_types: ['card', 'ideal'],
     billing_address_collection: 'auto',
     shipping_address_collection: {
-      allowed_countries: ['NL'],
+      allowed_countries: [ship],
     },
     /*
      * This env var is set by Netlify and inserts the live site URL. If you want
