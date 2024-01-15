@@ -46,6 +46,7 @@
     data () {
       return { components, 
         filtered: [],
+        ids: []
       }
       
     },
@@ -94,10 +95,9 @@
         document.getElementsByClassName('quantity').forEach((element) => quantity.push(element.value))
         const form = new FormData(event.target);
         const data = {
-          orders: {id: JSON.parse(localStorage.orders), quantity: quantity},
+          orders: {id: this.ids, quantity: quantity},
           ship: form.get('shipping')
         };
-        console.log(data)
         const response = await fetch('/.netlify/functions/create-checkout', {
           method: 'POST',
           headers: {
@@ -122,11 +122,11 @@
   mounted(){
     if(localStorage.orders){
       const targetorders = JSON.parse(localStorage.orders)
-      console.log(targetorders)
     for (let i = 0; i < this.page.results.length; i++) {
       for (let j = 0; j < targetorders.length; j++) {
         if(this.page.results[i].id == targetorders[j]){
         this.filtered.push(this.page.results[i])
+        this.ids.push(this.page.results[i].id)
       }
         
       }
