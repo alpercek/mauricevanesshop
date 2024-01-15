@@ -94,8 +94,7 @@
         document.getElementsByClassName('quantity').forEach((element) => quantity.push(element.value))
         const form = new FormData(event.target);
         const data = {
-          orders: JSON.parse(localStorage.orders),
-          quantity: quantity,
+          orders: {id: JSON.parse(localStorage.orders), quantity: quantity},
           ship: form.get('shipping')
         };
         console.log(data)

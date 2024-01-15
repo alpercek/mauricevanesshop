@@ -50,10 +50,10 @@ exports.handler = async (event) => {
   //const product = inventory.find((p) => p.sku === sku);
   // ensure that the quantity is within the allowed range
   //const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
-  const { orders, quantity, ship } = JSON.parse(event.body);
+  const { orders, ship } = JSON.parse(event.body);
   const line_itemss = []
   const meta_itemss = []
-  const pages = await client.getByIDs(orders)
+  const pages = await client.getByIDs(orders.id)
   const shippingstuff = await client.getSingle('shipping')
   const shippingcost = shippingstuff.data.list.filter((word) => word.code == ship)[0].cost
   for (let i = 0; i < pages.results.length; i++) {
@@ -70,7 +70,7 @@ exports.handler = async (event) => {
           images: [pages.results[i].data.image.url],
         },
       },
-      quantity: quantity[i],
+      quantity: orders.quantity[i],
     }
       )
     }
@@ -87,14 +87,14 @@ exports.handler = async (event) => {
             images: [pages.results[i].data.image.url],
           },
         },
-        quantity: quantity[i],
+        quantity: orders.quantity[i],
       }
         )
     }
       meta_itemss.push(
         {
           name: pages.results[i].data.title[0].text,
-          quantity: quantity[i],
+          quantity: orders.quantity[i],
         }
       )
   }
