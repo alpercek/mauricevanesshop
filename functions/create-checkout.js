@@ -55,7 +55,7 @@ exports.handler = async (event) => {
   const meta_itemss = []
   const pages = await client.getByIDs(orders)
   const shippingstuff = await client.getSingle('shipping')
-  const shippingcost = shippingstuff.data.list.filter((word) => word.code == 'NL')[0].cost
+  const shippingcost = shippingstuff.data.list.filter((word) => word.code == ship)[0].cost
   for (let i = 0; i < pages.results.length; i++) {
     if(pages.results[i].data.description[0]){
     line_itemss.push(
