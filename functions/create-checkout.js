@@ -58,7 +58,8 @@ exports.handler = async (event) => {
   console.log(shippingstuff)
   const shippingcost = shippingstuff.data.list.filter((word) => word.code == ship)[0].cost
   const converted = shippingcost*100
-  const fixed = converted.toFixed(2)
+  const fixed = Math.round(converted * 1e2) / 1e2
+  console.log(fixed)
   for (let i = 0; i < pages.results.length; i++) {
     if(pages.results[i].data.description[0]){
     line_itemss.push(
