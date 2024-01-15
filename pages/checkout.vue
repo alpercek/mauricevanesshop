@@ -11,6 +11,10 @@
         </form>
   </div>
         <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post" class="pt-8">
+          <label for="shipping" class="font-metrik text-sm pl-1">Ship to:</label>
+          <select id="shipping" name="shipping" class="text-sm">
+            <option v-for="(item, i) in shipping.data.list" :key="`slice-item-${i}`" :value="item.code">{{ item.code }} €{{ item.cost }}</option>
+          </select>
           <input type="hidden" name="sku" value="DEMO002" />
           <button id="asdf" class="font-metrik text-xs border border-black rounded-full py-1 px-2 hover:bg-sky-200 hidden" type="submit">Proceed to Checkout</button>
         </form>
@@ -44,6 +48,11 @@
         title: 'Checkout'
       }
     },
+    computed: {
+    shipping() {
+      return this.$store.state.prismic.shipping
+    }
+},
     methods: {
         remove(event){
           event.preventDefault();
@@ -78,16 +87,17 @@
 
         const form = new FormData(event.target);
         const data = {
-          sku: form.get('sku'),
-          quantity: 1
+          orders: JSON.parse(localStorage.orders),
+          quantity: 1,
+          ship: form.get('shipping')
         };
-
+        console.log(data)
         const response = await fetch('/.netlify/functions/create-checkout', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: localStorage.orders,
+          body: JSON.stringify(data),
         }).then((res) => res.json());
 
         const stripe = Stripe(response.publishableKey);

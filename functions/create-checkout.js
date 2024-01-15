@@ -50,9 +50,10 @@ exports.handler = async (event) => {
   //const product = inventory.find((p) => p.sku === sku);
   // ensure that the quantity is within the allowed range
   //const validatedQuantity = quantity > 0 && quantity < 11 ? quantity : 1;
+  const { orders, quantity, ship } = JSON.parse(event.body);
   const line_itemss = []
   const meta_itemss = []
-  const pages = await client.getByIDs(JSON.parse(event.body))
+  const pages = await client.getByIDs(orders)
 
 
 

@@ -1,0 +1,28 @@
+{
+  "list": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "code",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "steep",
+              "type": "Text"
+            }
+          ],
+          [
+            "cost",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "61",
+              "type": "Number"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+}

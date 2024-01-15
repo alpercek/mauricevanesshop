@@ -1,0 +1,32 @@
+{
+  "id": "shipping",
+  "label": "shipping",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "list": {
+        "type": "Group",
+        "config": {
+          "label": "list",
+          "fields": {
+            "code": {
+              "type": "Text",
+              "config": {
+                "label": "2 letter country code",
+                "placeholder": ""
+              }
+            },
+            "cost": {
+              "type": "Number",
+              "config": {
+                "label": "cost",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

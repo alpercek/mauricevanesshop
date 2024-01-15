@@ -112,6 +112,9 @@ export default {
         
         this.$refs.carousel.prev()
       },
+      removeDuplicates(data){
+      return [...new Set(data)]
+    },
     addToCart (event) {
       event.preventDefault();
       const form = new FormData(event.target);
@@ -120,9 +123,10 @@ export default {
         orderList = JSON.parse(localStorage.orders)
       }
       orderList.push(form.get('uid'))
-      localStorage.orders = JSON.stringify(orderList)
-      document.getElementsByClassName('counter')[0].innerText = orderList.length
-      document.getElementsByClassName('counter')[1].innerText = orderList.length
+      const nodupe = this.removeDuplicates(orderList)
+      localStorage.orders = JSON.stringify(nodupe)
+      document.getElementsByClassName('counter')[0].innerText = nodupe.length
+      document.getElementsByClassName('counter')[1].innerText = nodupe.length
     }
 },
 name: 'MyComponent',
