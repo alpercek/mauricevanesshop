@@ -70,7 +70,7 @@ exports.handler = async (event) => {
           images: [pages.results[i].data.image.url],
         },
       },
-      quantity: 1,
+      quantity: quantity[i],
     }
       )
     }
@@ -87,14 +87,14 @@ exports.handler = async (event) => {
             images: [pages.results[i].data.image.url],
           },
         },
-        quantity: 1,
+        quantity: quantity[i],
       }
         )
     }
       meta_itemss.push(
         {
           name: pages.results[i].data.title[0].text,
-          quantity: 1,
+          quantity: quantity[i],
         }
       )
   }
