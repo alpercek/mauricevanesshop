@@ -1,5 +1,6 @@
 <template>
     <div>
+      {{ shipping.data.list }}
       <div class="md:px-48 px-4">
         <div v-for="(item, i) in filtered" :key="`slice-item-${i}`" class="flex gap-4 pt-4">
     <PrismicImage :field="item.data.image" class=" h-[100px] w-[100px] border object-cover"/><div>
@@ -95,9 +96,11 @@
         document.getElementsByClassName('quantity').forEach((element) => quantity.push(element.value))
         const form = new FormData(event.target);
         const data = {
-          orders: {id: this.ids, quantity: quantity},
+          orders: this.ids, 
+          quantity: quantity,
           ship: form.get('shipping')
         };
+        console.log(data)
         const response = await fetch('/.netlify/functions/create-checkout', {
           method: 'POST',
           headers: {
