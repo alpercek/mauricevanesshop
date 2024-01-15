@@ -69,7 +69,7 @@
           if (index !== -1) {
           itemarray.splice(index, 1);
           }
-          event.target.parentElement.remove()
+          event.target.parentElement.parentElement.parentElement.parentElement.remove()
           localStorage.orders = JSON.stringify(itemarray)
           document.getElementsByClassName('counter')[0].innerText = itemarray.length
           document.getElementsByClassName('counter')[1].innerText = itemarray.length
