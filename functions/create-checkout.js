@@ -57,6 +57,8 @@ exports.handler = async (event) => {
   const shippingstuff = await client.getSingle('shipping')
   console.log(shippingstuff)
   const shippingcost = shippingstuff.data.list.filter((word) => word.code == ship)[0].cost
+  const converted = shippingcost*100
+  const fixed = converted.toFixed(2)
   for (let i = 0; i < pages.results.length; i++) {
     if(pages.results[i].data.description[0]){
     line_itemss.push(
@@ -104,7 +106,7 @@ exports.handler = async (event) => {
     {
     price_data: {
       currency: 'eur',
-      unit_amount: shippingcost*100,
+      unit_amount: fixed,
       product_data: {
         name: 'Shipping Cost',
       },
