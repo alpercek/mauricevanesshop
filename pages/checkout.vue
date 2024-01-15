@@ -1,5 +1,6 @@
 <template>
     <div>
+      {{ shipping.data.list.filter((word) => word.code == 'NL')[0].cost }}
       <div class="md:px-48 px-4">
         <div v-for="(item, i) in filtered" :key="`slice-item-${i}`" class="flex gap-4 pt-4">
     <PrismicImage :field="item.data.image" class=" h-[100px] w-[100px] border object-cover"/><div>
