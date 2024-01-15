@@ -54,8 +54,8 @@ exports.handler = async (event) => {
   const line_itemss = []
   const meta_itemss = []
   const pages = await client.getByIDs(orders)
-
-
+  const shippingstuff = await client.getSingle('shipping')
+  console.log(shippingstuff)
 
   for (let i = 0; i < pages.results.length; i++) {
     if(pages.results[i].data.description[0]){
@@ -99,7 +99,19 @@ exports.handler = async (event) => {
         }
       )
   }
-
+//shipping
+  line_itemss.push(
+    {
+    price_data: {
+      currency: 'eur',
+      unit_amount: 10*100,
+      product_data: {
+        name: 'Shipping Cost',
+      },
+    },
+    quantity: 1,
+  }
+    )
 
   const test = JSON.stringify(line_itemss)
 console.log(test)
