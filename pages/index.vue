@@ -24,7 +24,7 @@
     <div v-for="(item, i) in page.results" :key="`slice-item-${i}`" class="pt-9 md:pt-0" v-if="i != 0">
     <NuxtLink :to="'/'+item.uid">
     <PrismicImage :field="item.data.image" class="h-[62vh] md:h-[38.5vw] w-full md:border object-cover"/>
-    <div :style="{'color':item.data.color}" class="flex justify-center pt-4 md:pt-5 font-cooperbt text-xl"><span class="text-2xl pr-1">{{ String.fromCharCode(	0x2775 + Number(item.data.number)) }}</span><prismic-rich-text :field="item.data.title" class="" /></div>
+    <div :style="{'color':item.data.color}" class="flex justify-center pt-4 md:pt-5 font-cooperbt text-xl"><span class=""><span v-if="item.data.number == 0" class="text-sm pr-1 translate-y-1">⓿</span><span v-else class="text-2xl pr-1">{{ String.fromCharCode(	0x2775 + Number(item.data.number)) }}</span></span><prismic-rich-text :field="item.data.title" class="" /></div>
     </NuxtLink>
   </div>
 </div>
