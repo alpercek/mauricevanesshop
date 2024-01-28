@@ -45,7 +45,14 @@
   },
   "_cts": {
     "page": {},
-    "settings": {},
+    "settings": {
+      "splashtexttop": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    },
     "product": {},
     "shipping": {}
   }

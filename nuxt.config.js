@@ -75,19 +75,34 @@ export default {
     htmlSerializer(type, element, content, children) {
       switch (type) {
         case 'heading1':
-          return /* html */ `<h1 class="font-semibold leading-tight tracking-tight md:leading-tight text-4xl md:text-5xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
+          return /* html */ `<h1 class="tracking-[-0.02em] text-8xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
             ''
           )}</h1>`
 
         case 'heading2':
-          return /* html */ `<h2 class="font-semibold leading-tight tracking-tight md:leading-tight text-3xl md:text-4xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
+          return /* html */ `<h2 class="tracking-[-0.02em] text-6xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
             ''
           )}</h2>`
-
+          
         case 'heading3':
-          return /* html */ `<h3 class="font-semibold leading-tight tracking-tight md:leading-tight text-xl md:text-2xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
-            ''
+            return /* html */ `<h3 class="tracking-[-0.02em] text-3xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
+              ''
           )}</h3>`
+
+          case 'heading5':
+            return /* html */ `<h5 class="tracking-[-0.02em] text-3xl md:text-5xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
+              ''
+          )}</h5>`
+
+          case 'heading6':
+            return /* html */ `<h6 class="tracking-[-0.02em] text-4xl md:text-6xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
+              ''
+          )}</h6>`
+  
+        case 'heading4':
+          return /* html */ `<h4 class="tracking-[-0.02em] text-5xl md:text-7xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
+            ''
+          )}</h4>`
 
         case 'paragraph':
           return /* html */ `<p class="mb-7 last:mb-0">${children.join('')}</p>`

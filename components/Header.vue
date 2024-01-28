@@ -1,10 +1,10 @@
 <template>
+  <div>
   <div class="px-2.5 py-2 md:p-5">
     <div class="flex flex-wrap items-start justify-between md:gap-x-10 gap-y-3 leading-none">
       <NuxtLink to="/" class="text-xl md:text-2xl !no-underline font-platform">
         {{ $prismic.asText(settings.data.siteTitle) }}
       </NuxtLink>
-      
       <nav>
         <div class="flex md:hidden gap-x-3">
           <NuxtLink to="/checkout" class="relative"><img src="../static/cart.svg" class="w-5 h-5"/><span class="counter text-[7px] absolute top-1/2 -translate-y-3/4 left-1/2">0</span></NuxtLink>
@@ -42,13 +42,26 @@
           </li>
         </ul>
       </div>
+        <vue-marquee-slider
+        v-if="settings.data.marquee"
+      class="lg:w-[17rem] w-screen text-[#FF0000] text-base font-cooperbt lg:absolute top-[1.25rem] left-1/2 lg:-translate-x-1/2"
+      id="marquee-slider-text"
+      :speed="settings.data.marquee[0].text.length*220" 
+      :width="settings.data.marquee[0].text.length*10">
+        <div>{{ settings.data.marquee[0].text }}</div>
+      </vue-marquee-slider>
+      </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import VueMarqueeSlider from 'vue-marquee-slider'
+Vue.use(VueMarqueeSlider)
 export default {
   data(){
     return{
-    sshowMobileMenu: false}
+    sshowMobileMenu: false,
+  }
   },
   props: {
     navigation: {
@@ -66,7 +79,7 @@ export default {
       document.getElementsByClassName('counter')[0].innerText = targetorders.length
       document.getElementsByClassName('counter')[1].innerText = targetorders.length
     }
-  }
+  },
 }
 </script>
 <style>
