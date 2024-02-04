@@ -2,7 +2,7 @@
   <div class="relative md:w-1/2">
    
       
-    <VueSlickCarousel ref="carousel" :arrows="false" :dots="true" :adaptiveHeight="true" :autoplaySpeed="5000" :autoplay="true">
+    <VueSlickCarousel ref="carousel" :arrows="false" :dots="true" :adaptiveHeight="true" :speed="1500" :autoplaySpeed="5000" :autoplay="true">
       <template #customPaging="page">
       <div class="custom-dot !font-normal text-lg">
         {{ String.fromCharCode(	0x2160 + page) }}

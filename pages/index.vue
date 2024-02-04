@@ -3,7 +3,7 @@
     <div v-if="page.results[0].data.slices[0]">
     <div class="relative md:w-[56vw] m-auto">
       <NuxtLink :to="'/'+page.results[0].uid">
-    <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000" :autoplay="true">
+    <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000" :speed="1500" :autoplay="true">
     <div v-for="(item, i) in page.results[0].data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
         <PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[43.5rem] object-cover md:object-scale-down w-full"/>
     </div>

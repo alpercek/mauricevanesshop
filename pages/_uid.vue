@@ -3,7 +3,7 @@
     <!-- slider -->
     <div v-if="page.data.slices[0]" class="pb-5">
   <div class="relative md:w-[56vw] m-auto">
-   <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed" :autoplay="true" >
+   <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed" :speed="1500" :autoplay="true" >
     <template #customPaging="page">
       <div class="custom-dot !font-normal text-lg asd">
         {{ String.fromCharCode(	0x2160 + page) }}
@@ -64,7 +64,7 @@
     <input type="hidden" name="uid" :value="page.id" />
     <button class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">ORDER</button>
     </form>
-    <div class="absolute md:static top-[62vh] pl-3 md:pl-0 pt-11 md:pt-0">
+    <div class="absolute md:static top-[62vh] pl-3 md:pl-0 pt-11 md:pt-0 pointer-events-none">
     <div :style="{'color':page.data.color}" class="md:absolute md:top-[39.5rem] right-[66.25vw] font-cooperbt text-lg tracking-[-0.01em] flex pl-1 md:pl-0"><span v-if="page.data.number == 0" class="text-2xl pr-1">⓿</span><span v-else class="text-2xl pr-1">{{ String.fromCharCode(	0x2775 + Number(page.data.number)) }}</span><prismic-rich-text :field="page.data.title" class="translate-y-0.5"/></div>
   </div>
   </div>

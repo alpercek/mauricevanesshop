@@ -1,7 +1,7 @@
 <template>
   <div class="pb-5">
   <div class="relative md:w-[56vw] m-auto">
-   <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="speed" :autoplay="true" >
+   <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="speed" :speed="1500" :autoplay="true" >
       <div v-for="(item, i) in slice.items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
           <PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[37.5rem] object-cover md:object-scale-down w-full"/>
         </div>
