@@ -42,6 +42,7 @@ export default {
     alper.style.bottom = '100vh'
     setTimeout(() => {
       alper.remove()
+      document.getElementById('marquee-slider-text').style.display = 'block'
     }, 4000);
   }
 }
