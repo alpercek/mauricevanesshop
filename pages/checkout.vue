@@ -27,7 +27,7 @@
   </div>
 </div>
 
-<div class="border-y border-black pt-4 pb-5 text-right font-garamond text-lg pr-3.5">Total<span class="pl-9 underline">{{ total() }}</span></div>
+<div class="border-y border-black pt-4 pb-5 text-right font-garamond text-lg pr-3.5">Total<span class="pl-9 underline">{{ sum }}</span></div>
 
         <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post" class="pt-8">
           <label for="shipping" class="font-garamond text-lg">Shipping destination:</label>
@@ -61,7 +61,8 @@
       return { components, 
         filtered: [],
         ids: [],
-        countries
+        countries,
+        sum: 0
       }
       
     },
@@ -85,8 +86,11 @@
           if (index !== -1) {
           itemarray.splice(index, 1);
           }
-          event.target.parentElement.parentElement.remove()
           localStorage.orders = JSON.stringify(itemarray)
+          this.load()
+          if (itemarray.length == 0) {
+            event.target.parentElement.parentElement.remove()
+          }
           document.getElementsByClassName('counter')[0].innerText = itemarray.length
           document.getElementsByClassName('counter')[1].innerText = itemarray.length
           if (itemarray.length == 0) {
@@ -136,14 +140,14 @@
         }
       },
       total() {
-        let sum = 0
+        this.sum = 0
         for (let i = 0; i < this.filtered.length; i++ ) {
-          sum += this.filtered[i].data.price
+          this.sum += this.filtered[i].data.price
         }
-        return sum
-      }
-  },
-  mounted(){
+      },
+      load() {
+    this.ids.length = 0
+    this.filtered.length = 0
     if(localStorage.orders){
       const targetorders = JSON.parse(localStorage.orders)
     for (let i = 0; i < this.page.results.length; i++) {
@@ -160,6 +164,11 @@
     document.getElementById('sdf').style.display = 'none'
     }
   }
+  this.total()
+      }
+  },
+  mounted(){
+    this.load()
     }
   }
   </script>
