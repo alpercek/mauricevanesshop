@@ -23,6 +23,22 @@
           "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
+      "add_to_cart_sound": {
+        "type": "Link",
+        "config": {
+          "label": "add to cart sound",
+          "placeholder": "",
+          "select": "media"
+        }
+      },
+      "faqpdf": {
+        "type": "Link",
+        "config": {
+          "label": "FAQpdf",
+          "placeholder": "",
+          "select": "media"
+        }
+      },
       "splashimage": {
         "type": "Image",
         "config": {

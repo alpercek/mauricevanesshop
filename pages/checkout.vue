@@ -1,28 +1,41 @@
 <template>
     <div>
-      <div class="md:px-48 px-4">
-        <div v-for="(item, i) in filtered" :key="`slice-item-${i}`" class="flex gap-4 pt-4">
-    <PrismicImage :field="item.data.image" class=" h-[100px] w-[100px] border object-cover"/><div>
-    <div :style="{'color':item.data.color}" class="flex justify-start font-cooperbt text-xl"><span v-if="item.data.number == 0" class="text-sm pr-1 translate-y-1">⓿</span><span v-else class="text-2xl pr-1 -translate-y-0.5">{{ String.fromCharCode(	0x2775 + Number(item.data.number)) }}</span><prismic-rich-text :field="item.data.title" class="" /></div>
-    <div class="pt-5 font-garamond flex justify-evenly">€{{item.data.price}},–  <span><label>Quantity:</label> <input
+      <div class="md:px-12 px-9">
+        <div class="pt-3.5 flex gap-2.5 justify-between text-lg font-garamond border-b border-black"><p class="w-40 text-center">Item</p> <p class="w-20 text-center">Quantity</p> <p class="w-20 text-center">Price</p></div>
+        <div class="pt-5 space-y-4 pb-6">
+        <div v-for="(item, i) in filtered" :key="`slice-item-${i}`" class="flex gap-2.5 font-garamond justify-between">
+    <div class="w-40 md:w-auto text-center font-cooperbt text-sm tracking-[-0.02em] flex justify-center">
+      <PrismicImage :field="item.data.image" class=" h-[100px] w-[100px] border object-cover hidden md:block"/>
+      <div><div :style="{'background-color':item.data.color}" class="rounded-full w-5 h-5 text-white m-auto">{{ item.data.number }}</div><prismic-rich-text :style="{'color':item.data.color}" :field="item.data.title" /></div>
+    </div>
+        <div class="w-20 text-center">
+          <input
             type="number"
             class="quantity"
             value="1"
             min="1"
             max="10"
-          /></span>
-        <span><form @submit="remove($event)" class="">
+          />
+        </div>
+        <p class="w-20 text-center">{{item.data.price}}</p> 
+        <div class="absolute right-0 mr-5">
+          <form @submit="remove($event)">
           <input type="hidden" name="id" :value="item.id" />
-          <button class="font-metrik text-xs border border-black rounded-full py-1 px-2 hover:bg-sky-200" type="submit">Remove</button>
-        </form></span></div></div>
+          <button class="font-metrik text-xs" type="submit">╳</button>
+          </form>
+        </div>
   </div>
+</div>
+
+<div class="border-y border-black pt-4 pb-5 text-right font-garamond text-lg pr-3.5">Total<span class="pl-9 underline">{{ total() }}</span></div>
+
         <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post" class="pt-8">
-          <label for="shipping" class="font-metrik text-sm pl-1">Ship to:</label>
-          <select id="shipping" name="shipping" class="text-sm">
-            <option v-for="(item, i) in shipping.data.list" :key="`slice-item-${i}`" :value="item.code">{{ item.code }} €{{ item.cost }}</option>
+          <label for="shipping" class="font-garamond text-lg">Shipping destination:</label>
+          <select id="shipping" name="shipping" class="font-garamond text-lg w-[calc(100vw-14rem)] truncate">
+            <option v-if="cntry = countries.find(a=>a.code==item.code)" v-for="(item, i) in shipping.data.list" :key="`slice-item-${i}`" :value="item.code">{{ cntry.name }}</option>
           </select>
           <input type="hidden" name="sku" value="DEMO002" />
-          <button id="asdf" class="font-metrik text-xs border border-black rounded-full py-1 px-2 hover:bg-sky-200 hidden" type="submit">Proceed to Checkout</button>
+          <button id="asdf" class="font-metrik text-base border border-black rounded-full py-1 px-2 hover:bg-sky-200 hidden mt-12 mx-auto" type="submit">CHECKOUT</button>
         </form>
         <div id="sdf" class="font-metrik text-xs">There are no items in the cart. Hit the <NuxtLink to="/" class="border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 hover:bg-sky-200">ORDER</NuxtLink> button in product pages to add items to the cart.</div>
       </div>
@@ -31,6 +44,7 @@
   
   <script>
   import { components } from '~/slices'
+  import countries from '../static/countries.json'
   
   export default {
     async asyncData ({ $prismic, store }) {
@@ -46,7 +60,8 @@
     data () {
       return { components, 
         filtered: [],
-        ids: []
+        ids: [],
+        countries
       }
       
     },
@@ -70,7 +85,7 @@
           if (index !== -1) {
           itemarray.splice(index, 1);
           }
-          event.target.parentElement.parentElement.parentElement.parentElement.remove()
+          event.target.parentElement.parentElement.remove()
           localStorage.orders = JSON.stringify(itemarray)
           document.getElementsByClassName('counter')[0].innerText = itemarray.length
           document.getElementsByClassName('counter')[1].innerText = itemarray.length
@@ -120,6 +135,13 @@
           console.error(error);
         }
       },
+      total() {
+        let sum = 0
+        for (let i = 0; i < this.filtered.length; i++ ) {
+          sum += this.filtered[i].data.price
+        }
+        return sum
+      }
   },
   mounted(){
     if(localStorage.orders){

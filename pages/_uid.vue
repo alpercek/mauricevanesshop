@@ -10,10 +10,10 @@
       </div>
     </template>
       <div v-for="(item, i) in page.data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
-          <PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[37.5rem] object-cover md:object-scale-down w-full"/>
+          <PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/>
         </div>
         <div v-if="video.url" class="m-auto pt-1.5 relative">
-        <video onclick="this.play(); this.nextElementSibling.remove()" type="video/mp4" playsinline id="vd" :src="video.url" class="md:m-auto h-[62vh] md:h-[37.5rem] object-cover md:object-scale-down w-full cursor-pointer"></video>
+        <video onclick="this.play(); this.nextElementSibling.remove()" type="video/mp4" playsinline id="vd" :src="video.url" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full cursor-pointer"></video>
         <div class="pointer-events-none absolute top-3/4 left-1/2 -translate-x-1/2 text-2xl bg-white px-1.5 rounded-full font-metrik">click to play &#x23F5;</div>
       </div>
     </VueSlickCarousel>
@@ -23,9 +23,9 @@
 <!-- rest -->
     <div>
       <div class="md:ml-[43vw] mt-14 md:mt-0">
-    <prismic-rich-text :field="page.data.description" class="font-garamond text-sm w-[25rem] pl-4 md:pl-0" />
+    <prismic-rich-text :field="page.data.description" class="font-garamond text-base w-[25rem] pl-4 md:pl-0" />
 <!-- bookinfo-->
-<table v-if="page.data.slices[1]" class="font-cooperbt text-left tracking-[-0.01em] text-xs ml-7 md:ml-0 mt-9 md:mt-7">
+<table v-if="page.data.slices[1]" class="font-cooperbt text-left tracking-[-0.01em] text-base ml-7 md:ml-0 mt-9 md:mt-7">
       <tbody>
       <tr>
         <th class="w-[8.6rem]">Year:</th>
@@ -58,14 +58,14 @@
     </tbody>
     </table>
 
-    <prismic-rich-text :field="page.data.extra_line" class="font-cooperbt text-sm tracking-[-0.01em] pt-7 md:pt-5 pl-5 md:pl-0"/>
-    <div class="font-cooperbt text-sm tracking-[-0.01em] font-bold md:pb-5 pl-5 md:pl-0">€{{ page.data.price }},–</div>
+    <prismic-rich-text :field="page.data.extra_line" class="font-cooperbt text-base tracking-[-0.01em] pt-7 md:pt-5 pl-5 md:pl-0"/>
+    <div class="font-cooperbt text-base tracking-[-0.01em] font-bold md:pb-5 pl-5 md:pl-0">€{{ page.data.price }},–</div>
     <form @submit="addToCart($event)" class="pl-5 md:pl-0 mt-1 md:mt-0">
     <input type="hidden" name="uid" :value="page.id" />
     <button class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">ORDER</button>
     </form>
     <div class="absolute md:static top-[62vh] pl-3 md:pl-0 pt-11 md:pt-0 pointer-events-none">
-    <div :style="{'color':page.data.color}" class="md:absolute md:top-[39.5rem] right-[66.25vw] font-cooperbt text-lg tracking-[-0.01em] flex pl-1 md:pl-0"><span v-if="page.data.number == 0" class="text-2xl pr-1">⓿</span><span v-else class="text-2xl pr-1">{{ String.fromCharCode(	0x2775 + Number(page.data.number)) }}</span><prismic-rich-text :field="page.data.title" class="translate-y-0.5"/></div>
+    <div :style="{'color':page.data.color}" class="md:absolute md:top-[calc(50vh+3.5rem)] right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0"><span v-if="page.data.number == 0" class="text-2xl pr-1">⓿</span><span v-else class="text-2xl pr-1">{{ String.fromCharCode(	0x2775 + Number(page.data.number)) }}</span><prismic-rich-text :field="page.data.title" class="translate-y-0.5"/></div>
   </div>
   </div>
   </div>
@@ -101,6 +101,9 @@ export default {
   computed: {
     video(){
       return this.page.data.slices[0].primary.video
+    },
+    settings() {
+      return this.$store.state.prismic.settings
     }
   },
   methods: { 
@@ -115,8 +118,15 @@ export default {
       removeDuplicates(data){
       return [...new Set(data)]
     },
+    playSoundEffect(){
+      const sound = this.settings.data.add_to_cart_sound
+      if (sound.link_type == "Media"){
+       new Audio(sound.url).play()
+      }
+    },
     addToCart (event) {
       event.preventDefault();
+      this.playSoundEffect()
       const form = new FormData(event.target);
       var orderList = []
       if(localStorage.orders){

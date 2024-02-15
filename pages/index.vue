@@ -1,11 +1,12 @@
 <template>
+  <div class="pb-5">
   <div class="pb-32">
     <div v-if="page.results[0].data.slices[0]">
     <div class="relative md:w-[56vw] m-auto">
       <NuxtLink :to="'/'+page.results[0].uid">
     <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000" :speed="1500" :autoplay="true">
     <div v-for="(item, i) in page.results[0].data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
-        <PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[43.5rem] object-cover md:object-scale-down w-full"/>
+        <PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[75vh] object-cover md:object-scale-down w-full"/>
     </div>
   </VueSlickCarousel>
 </NuxtLink>
@@ -28,6 +29,8 @@
     </NuxtLink>
   </div>
 </div>
+</div>
+<div v-if="settings.data.faqpdf.link_type == 'Media'" class="m-auto text-center"><a :href="settings.data.faqpdf.url" target="_blank" class="font-garamond text-2xl italic">FAQ</a></div>
 </div>
 </template>
 
@@ -53,6 +56,11 @@ export default {
   data () {
     return { components, }
     
+  },
+  computed: {
+    settings() {
+      return this.$store.state.prismic.settings
+    }
   },
   methods: {
       showNext() {
