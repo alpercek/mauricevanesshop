@@ -6,7 +6,7 @@
       <NuxtLink :to="'/'+page.results[0].uid">
     <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000" :speed="1500" :autoplay="true">
     <div v-for="(item, i) in page.results[0].data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
-        <PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[75vh] object-cover md:object-scale-down w-full"/>
+      <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[75vh] object-cover md:object-scale-down w-full"/><div v-if="page.results[0].data.status != 'ORDER'" :class="page.results[0].data.status == 'email'?'':'preorder'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.results[0].data.status == 'email'" class="opacity-60">「out of stock」</div><div v-if="page.results[0].data.status == 'PRE-ORDER'" class="opacity-60">「coming soon!」</div></div></div>
     </div>
   </VueSlickCarousel>
 </NuxtLink>
@@ -14,18 +14,18 @@
 </div>
 <div class="md:pb-36">
   <NuxtLink :to="'/'+page.results[0].uid">
-  <div :style="{'color':page.results[0].data.color}" class="flex justify-center pt-2.5 md:pt-5 font-cooperbt text-xl"><span v-if="page.results[0].data.number == 0" class="text-2xl pr-1">⓿</span><span v-else class="text-2xl pr-1">{{ String.fromCharCode(	0x2775 + Number(page.results[0].data.number)) }}</span><prismic-rich-text :field="page.results[0].data.title" class="" /></div>
+  <div :style="{'color':page.results[0].data.color}" class="flex justify-center pt-2.5 md:pt-5 font-cooperbt text-xl items-center gap-0.5"><div :style="{'background-color':page.results[0].data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center">{{ page.results[0].data.number }}</div><prismic-rich-text :field="page.results[0].data.title" class="" /></div>
   <div class="text-center font-garamond hidden md:block w-[33rem] m-auto" ><prismic-rich-text v-if="page.results[0].data.description.text" :field="page.results[0].data.description" class="pt-8" />
   <prismic-rich-text v-if="page.results[0].data.extra_line.text" :field="page.results[0].data.extra_line" class="italic pt-5" />
   <div class="italic pt-5">€{{ page.results[0].data.price }},–</div></div>
   </NuxtLink>
 </div>
 </div>
-  <div class="md:grid grid-cols-3 md:px-[7vw] gap-x-4 gap-y-12">
+  <div class="md:grid grid-cols-3 md:px-[7vw] gap-x-8 gap-y-12 max-w-[2000px]">
     <div v-for="(item, i) in page.results" :key="`slice-item-${i}`" class="pt-9 md:pt-0" v-if="i != 0">
     <NuxtLink :to="'/'+item.uid">
-    <PrismicImage :field="item.data.image" class="h-[62vh] md:h-[38.5vw] w-full md:border object-cover"/>
-    <div :style="{'color':item.data.color}" class="flex justify-center pt-4 md:pt-5 font-cooperbt text-xl"><span class=""><span v-if="item.data.number == 0" class="text-sm pr-1 translate-y-1">⓿</span><span v-else class="text-2xl pr-1">{{ String.fromCharCode(	0x2775 + Number(item.data.number)) }}</span></span><prismic-rich-text :field="item.data.title" class="" /></div>
+    <div class="relative"><PrismicImage :field="item.data.image" class="h-[62vh] md:h-[38.5vw] w-full md:border object-cover"/><div v-if="item.data.status != 'ORDER'" :class="item.data.status == 'email'?'':'preorder'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="item.data.status == 'email'" class="opacity-60">「out of stock」</div><div v-if="item.data.status == 'PRE-ORDER'" class="opacity-60">「coming soon!」</div></div></div>
+    <div :style="{'color':item.data.color}" class="flex justify-center pt-4 md:pt-5 font-cooperbt text-xl items-center gap-0.5"><span><div :style="{'background-color':item.data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center">{{ item.data.number }}</div></span><prismic-rich-text :field="item.data.title"/></div>
     </NuxtLink>
   </div>
 </div>
@@ -99,5 +99,15 @@ export default {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
 }
-
+.preorder{
+animation: pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
 </style>

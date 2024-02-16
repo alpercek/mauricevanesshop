@@ -12,6 +12,19 @@
           "placeholder": ""
         }
       },
+      "status": {
+        "type": "Select",
+        "config": {
+          "label": "status",
+          "placeholder": "",
+          "options": [
+            "ORDER",
+            "PRE-ORDER",
+            "email"
+          ],
+          "default_value": "ORDER"
+        }
+      },
       "number": {
         "type": "Number",
         "config": {

@@ -1,41 +1,45 @@
 <template>
     <div>
-      <div class="md:px-12 px-9">
-        <div class="pt-3.5 flex gap-2.5 justify-between text-lg font-garamond border-b border-black"><p class="w-40 text-center">Item</p> <p class="w-20 text-center">Quantity</p> <p class="w-20 text-center">Price</p></div>
-        <div class="pt-5 space-y-4 pb-6">
-        <div v-for="(item, i) in filtered" :key="`slice-item-${i}`" class="flex gap-2.5 font-garamond justify-between">
-    <div class="w-40 md:w-auto text-center font-cooperbt text-sm tracking-[-0.02em] flex justify-center">
-      <PrismicImage :field="item.data.image" class=" h-[100px] w-[100px] border object-cover hidden md:block"/>
-      <div><div :style="{'background-color':item.data.color}" class="rounded-full w-5 h-5 text-white m-auto">{{ item.data.number }}</div><prismic-rich-text :style="{'color':item.data.color}" :field="item.data.title" /></div>
+      <div class="md:pl-12 md:pr-0 px-9 lg:w-[60rem] md:w-[40rem]">
+        <div class="pt-3.5 md:pt-1.5 flex gap-2.5 md:gap-4 justify-between md:justify-start text-lg font-garamond border-b border-black"><p class="w-40 md:w-64 text-center lg:ml-56 md:ml-30">Item</p> <p class="w-20 md:w-32 text-center">Quantity</p> <p class="w-20 md:w-32 text-center">Price</p></div>
+        <div class="pt-5 md:py-2.5 space-y-4 md:space-y-2.5 pb-6">
+        <div v-for="(item, i) in filtered" :key="`slice-item-${i}`" class="flex gap-2.5 font-garamond justify-between md:justify-start md:gap-11 md:items-center">
+    <div class="w-40 md:w-auto text-center font-cooperbt text-sm tracking-[-0.02em] flex justify-center md:gap-4 md:items-center">
+      <PrismicImage :field="item.data.image" class="ml-[5.6rem] h-[10.5rem] w-[7.6rem] border object-cover hidden lg:block"/>
+      <div class="md:w-64 lg:flex lg:gap-1 lg:justify-center"><div :style="{'background-color':item.data.color}" class="rounded-full w-5 h-5 text-white m-auto lg:m-0">{{ item.data.number }}</div><prismic-rich-text :style="{'color':item.data.color}" :field="item.data.title" /></div>
     </div>
         <div class="w-20 text-center">
           <input
             type="number"
-            class="quantity"
+            class="quantity w-4"
             value="1"
             min="1"
             max="10"
           />
+          <span class="text-[#BCBCBC]">
+            <button class="scale-y-90 tracking-[-0.2em]" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepDown()">▼</button>
+            <button class="scale-y-90 tracking-[-0.2em]" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepUp()">▲</button>
+          </span>
         </div>
-        <p class="w-20 text-center">{{item.data.price}}</p> 
-        <div class="absolute right-0 mr-5">
+        <p class="w-20 md:w-30 md:pl-6 text-center">{{item.data.price}}</p> 
+        <div class="absolute right-0 mr-5 md:mr-0 md:static">
           <form @submit="remove($event)">
           <input type="hidden" name="id" :value="item.id" />
-          <button class="font-metrik text-xs" type="submit">╳</button>
+          <button class="font-metrik text-xs lg:w-32" type="submit">╳</button>
           </form>
         </div>
   </div>
 </div>
 
-<div class="border-y border-black pt-4 pb-5 text-right font-garamond text-lg pr-3.5">Total<span class="pl-9 underline">{{ sum }}</span></div>
+<div class="border-y border-black pt-4 pb-5 text-right font-garamond text-lg pr-3.5 font-semibold lg:pr-44">Total<span class="pl-9 lg:pl-24 underline">{{ sum }}</span></div>
 
-        <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post" class="pt-8">
+        <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post" class="pt-8 md:text-right md:pr-32">
           <label for="shipping" class="font-garamond text-lg">Shipping destination:</label>
-          <select id="shipping" name="shipping" class="font-garamond text-lg w-[calc(100vw-14rem)] truncate">
+          <select id="shipping" name="shipping" class="font-garamond text-lg w-[calc(100vw-14rem)] md:w-28 truncate">
             <option v-if="cntry = countries.find(a=>a.code==item.code)" v-for="(item, i) in shipping.data.list" :key="`slice-item-${i}`" :value="item.code">{{ cntry.name }}</option>
           </select>
           <input type="hidden" name="sku" value="DEMO002" />
-          <button id="asdf" class="font-metrik text-base border border-black rounded-full py-1 px-2 hover:bg-sky-200 hidden mt-12 mx-auto" type="submit">CHECKOUT</button>
+          <button id="asdf" class="font-metrik text-base border border-black rounded-full py-1 px-2 hover:bg-sky-200 hidden mt-12 mx-auto md:mr-0" type="submit">CHECKOUT</button>
         </form>
         <div id="sdf" class="font-metrik text-xs">There are no items in the cart. Hit the <NuxtLink to="/" class="border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 hover:bg-sky-200">ORDER</NuxtLink> button in product pages to add items to the cart.</div>
       </div>

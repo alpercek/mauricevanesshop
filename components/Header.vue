@@ -7,7 +7,7 @@
       </NuxtLink>
       <nav>
         <div class="flex md:hidden gap-x-3">
-          <NuxtLink to="/checkout" class="relative"><img src="../static/cart.svg" class="w-7 h-7"/><span class="counter text-[12px] absolute top-1/2 -translate-y-3/4 left-1/2">0</span></NuxtLink>
+          <NuxtLink to="/checkout" class="relative"><img src="../static/cart.svg" class="w-7 h-7"/><span class="counter text-[9px] absolute top-1/2 -translate-y-3/4 left-1/2 pb-0.5">0</span></NuxtLink>
         <div @click="sshowMobileMenu = !sshowMobileMenu" class="space-y-1 pt-1">
           <div class="w-6 h-[3px] bg-black rounded-full"></div>
           <div class="w-6 h-[3px] bg-black rounded-full"></div>

@@ -5,12 +5,12 @@
   <div class="relative md:w-[56vw] m-auto">
    <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed" :speed="1500" :autoplay="true" >
     <template #customPaging="page">
-      <div class="custom-dot !font-normal text-lg asd">
+      <div class="custom-dot !font-normal text-lg">
         {{ String.fromCharCode(	0x2160 + page) }}
       </div>
     </template>
       <div v-for="(item, i) in page.data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
-          <PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/>
+        <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/><div v-if="page.data.status != 'ORDER'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.data.status == 'email'" class="opacity-60">「out of stock」</div><div v-if="page.data.status == 'PRE-ORDER'" class="opacity-60">「coming soon!」</div></div></div>
         </div>
         <div v-if="video.url" class="m-auto pt-1.5 relative">
         <video onclick="this.play(); this.nextElementSibling.remove()" type="video/mp4" playsinline id="vd" :src="video.url" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full cursor-pointer"></video>
@@ -62,10 +62,25 @@
     <div class="font-cooperbt text-base tracking-[-0.01em] font-bold md:pb-5 pl-5 md:pl-0">€{{ page.data.price }},–</div>
     <form @submit="addToCart($event)" class="pl-5 md:pl-0 mt-1 md:mt-0">
     <input type="hidden" name="uid" :value="page.id" />
-    <button class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">ORDER</button>
+    <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status != 'email'" :disabled="page.data.status != 'ORDER'" :style= "[page.data.status != 'ORDER' ? {'opacity': '0.3'} : {'opacity': '1'}]" class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">ORDER</button>
+    <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status == 'PRE-ORDER'" class="ml-1 font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">PRE-ORDER</button>
+    <span class="ml-1 italic font-garamond text-[#BCBCBC] text-lg transition-opacity opacity-0">Item has been added to cart</span>
     </form>
+
+    <!--newsletter-->
+    <form v-if="page.data.status == 'email'" class="email-form pl-5 md:pl-0 mt-1 md:mt-0 text-sm" name="newsletter" method="POST" netlify netlify-honeypot="bot-field" action="/.netlify/functions/subscribeToMailjet">
+  <label for="email" class="sr-only"> Email </label>
+  <div>
+    <input required type="email" name="email" id="email" placeholder="…Receive e-mail when in stock" class="py-1 px-2 border w-max rounded-full" />
+    <button type="submit" class="font-metrik border w-max border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">Send</button>
+  </div>
+  <div class="hidden">
+    <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+  </div>
+</form>
+
     <div class="absolute md:static top-[62vh] pl-3 md:pl-0 pt-11 md:pt-0 pointer-events-none">
-    <div :style="{'color':page.data.color}" class="md:absolute md:top-[calc(50vh+3.5rem)] right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0"><span v-if="page.data.number == 0" class="text-2xl pr-1">⓿</span><span v-else class="text-2xl pr-1">{{ String.fromCharCode(	0x2775 + Number(page.data.number)) }}</span><prismic-rich-text :field="page.data.title" class="translate-y-0.5"/></div>
+    <div :style="{'color':page.data.color}" class="md:absolute md:top-[calc(50vh+3.5rem)] right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5"><div :style="{'background-color':page.data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center">{{ page.data.number }}</div><prismic-rich-text :field="page.data.title" class="translate-y-0.5"/></div>
   </div>
   </div>
   </div>
@@ -164,11 +179,5 @@ mounted(){
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
 }
-
-@media not all and (max-width: 768px) { 
-  .asd {
-    display: none;
-  }
- }
 
 </style>
