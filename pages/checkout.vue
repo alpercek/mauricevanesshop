@@ -15,10 +15,11 @@
             value="1"
             min="1"
             max="10"
+            @change="total()"
           />
           <span class="text-[#BCBCBC]">
-            <button class="scale-y-90 tracking-[-0.2em]" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepDown()">▼</button>
-            <button class="scale-y-90 tracking-[-0.2em]" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepUp()">▲</button>
+            <button class="scale-y-90 tracking-[-0.2em]" @click="total()" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepDown()">▼</button>
+            <button class="scale-y-90 tracking-[-0.2em]" @click="total()" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepUp()">▲</button>
           </span>
         </div>
         <p class="w-20 md:w-30 md:pl-6 text-center">{{item.data.price}}</p> 
@@ -66,7 +67,8 @@
         filtered: [],
         ids: [],
         countries,
-        sum: 0
+        sum: 0,
+        alper: []
       }
       
     },
@@ -145,9 +147,11 @@
       },
       total() {
         this.sum = 0
+        this.alper.length = 0
+        setTimeout(() => {document.getElementsByClassName('quantity').forEach((element) => this.alper.push(element.value))
         for (let i = 0; i < this.filtered.length; i++ ) {
-          this.sum += this.filtered[i].data.price
-        }
+          this.sum += this.filtered[i].data.price * this.alper[i]
+        }}, 10);
       },
       load() {
     this.ids.length = 0
