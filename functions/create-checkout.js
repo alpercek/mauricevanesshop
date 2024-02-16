@@ -112,7 +112,7 @@ exports.handler = async (event) => {
         name: 'Shipping Cost',
       },
     },
-    quantity: 1,
+    quantity: quantity.reduce((a, b) => a + b, 0),
   }
     )
 
