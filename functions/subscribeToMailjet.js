@@ -48,13 +48,25 @@ exports.handler = async (event) => {
     );
 
     return {
-      statusCode: 200,
+      statusCode: 302,
+      headers: {
+        Location: 'https://scannedfootballphotos.com',
+      },
+      body: JSON.stringify({
+        message: "Contact added to Mailjet successfully",
+      }),
     };
   } catch (error) {
     console.error("Error adding contact to Mailjet:", error);
 
     return {
-      statusCode: 200,
+      statusCode: 302,
+      headers: {
+        Location: 'https://scannedfootballphotos.com',
+      },
+      body: JSON.stringify({
+        message: "Contact added to Mailjet successfully",
+      }),
     };
   }
 };
