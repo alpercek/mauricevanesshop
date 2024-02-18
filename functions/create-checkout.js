@@ -56,11 +56,26 @@ exports.handler = async (event) => {
   const pages = await client.getByIDs(orders)
   const shippingstuff = await client.getSingle('shipping')
   const numquantity = []
-  const shippingcost = shippingstuff.data.list.filter((word) => word.code == ship)[0].cost
-  const converted = shippingcost*100
-  const fixed = Math.round(converted * 1e2) / 1e2
+  let shippingcost
   
   quantity.forEach( ele => numquantity.push(+ele))
+  const sumquatity = numquantity.reduce((a, b) => a + b, 0)
+
+  if (sumquatity < 2) {
+    shippingcost = shippingstuff.data.list.filter((word) => word.code == ship)[0].cost
+  } else
+  if (sumquatity < 4) {
+    shippingcost = shippingstuff.data.list.filter((word) => word.code == ship)[0].cost3
+  } else
+  if (sumquatity < 7) {
+    shippingcost = shippingstuff.data.list.filter((word) => word.code == ship)[0].cost6
+  } else
+  if (sumquatity < 14) {
+    shippingcost = shippingstuff.data.list.filter((word) => word.code == ship)[0].cost13
+  } else { shippingcost = 999}
+
+  const converted = shippingcost*100
+  const fixed = Math.round(converted * 1e2) / 1e2
 
   for (let i = 0; i < pages.results.length; i++) {
     if(pages.results[i].data.description[0]){
@@ -114,7 +129,7 @@ exports.handler = async (event) => {
         name: 'Shipping Cost',
       },
     },
-    quantity: numquantity.reduce((a, b) => a + b, 0),
+    quantity: 1,
   }
     )
 

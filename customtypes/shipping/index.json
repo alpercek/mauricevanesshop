@@ -23,6 +23,27 @@
                 "label": "cost",
                 "placeholder": ""
               }
+            },
+            "cost3": {
+              "type": "Number",
+              "config": {
+                "label": "cost3",
+                "placeholder": ""
+              }
+            },
+            "cost6": {
+              "type": "Number",
+              "config": {
+                "label": "cost6",
+                "placeholder": ""
+              }
+            },
+            "cost13": {
+              "type": "Number",
+              "config": {
+                "label": "cost13",
+                "placeholder": ""
+              }
             }
           }
         }

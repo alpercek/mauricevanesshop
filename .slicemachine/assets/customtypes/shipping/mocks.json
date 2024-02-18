@@ -9,7 +9,7 @@
             "code",
             {
               "__TYPE__": "FieldContent",
-              "value": "steep",
+              "value": "total",
               "type": "Text"
             }
           ],
@@ -17,7 +17,31 @@
             "cost",
             {
               "__TYPE__": "FieldContent",
-              "value": "61",
+              "value": "98",
+              "type": "Number"
+            }
+          ],
+          [
+            "cost3",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "5",
+              "type": "Number"
+            }
+          ],
+          [
+            "cost6",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "51",
+              "type": "Number"
+            }
+          ],
+          [
+            "cost13",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "59",
               "type": "Number"
             }
           ]
