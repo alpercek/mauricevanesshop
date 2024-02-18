@@ -18,7 +18,7 @@
         <th>Paper:</th>
         <th><prismic-rich-text :field="slice.primary.paper" /></th>
       </tr>
-      <tr>
+      <tr v-if="slice.primary.copyright">
         <th>Copyright:</th>
         <th><prismic-rich-text :field="slice.primary.copyright" /></th>
       </tr>

@@ -120,7 +120,7 @@ exports.handler = async (event) => {
 console.log(test)
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
-    payment_method_types: ['card', 'ideal'],
+    payment_method_types: ['card', 'ideal', 'paypal', 'bancontact', 'giropay'],
     billing_address_collection: 'auto',
     shipping_address_collection: {
       allowed_countries: [ship],

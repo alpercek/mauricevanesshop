@@ -4,13 +4,8 @@
     <div v-if="page.data.slices[0]" class="pb-5">
   <div class="relative md:w-[56vw] m-auto">
    <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed" :speed="1500" :autoplay="true" >
-    <template #customPaging="page">
-      <div class="custom-dot !font-normal text-lg">
-        {{ String.fromCharCode(	0x2160 + page) }}
-      </div>
-    </template>
       <div v-for="(item, i) in page.data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
-        <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/><div v-if="page.data.status != 'ORDER'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.data.status == 'email'" class="opacity-60">「out of stock」</div><div v-if="page.data.status == 'PRE-ORDER'" class="opacity-60">「coming soon!」</div></div></div>
+        <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/><div v-if="page.data.status != 'ORDER'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.data.status == 'email'" class="opacity-60">「out of stock」</div><div v-if="page.data.status == 'PRE-ORDER'" class="opacity-60">「{{ page.data.purple_text[0].text }}」</div></div></div>
         </div>
         <div v-if="video.url" class="m-auto pt-1.5 relative">
         <video onclick="this.play(); this.nextElementSibling.remove()" type="video/mp4" playsinline id="vd" :src="video.url" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full cursor-pointer"></video>
@@ -27,32 +22,32 @@
 <!-- bookinfo-->
 <table v-if="page.data.slices[1]" class="font-cooperbt text-left tracking-[-0.01em] text-base ml-7 md:ml-0 mt-9 md:mt-7">
       <tbody>
-      <tr>
+      <tr v-if="page.data.slices[1].primary.year.length > 0">
         <th class="w-[8.6rem]">Year:</th>
         <th><prismic-rich-text :field="page.data.slices[1].primary.year" /></th>
       </tr>
-      <tr>
-        <th>Edition:</th>
+      <tr v-if="page.data.slices[1].primary.edition.length > 0">
+        <th class="w-[8.6rem]">Edition:</th>
         <th><prismic-rich-text :field="page.data.slices[1].primary.edition" /></th>
       </tr>
-      <tr>
-        <th>Pages:</th>
+      <tr v-if="page.data.slices[1].primary.pages.length > 0">
+        <th class="w-[8.6rem]">Pages:</th>
         <th><prismic-rich-text :field="page.data.slices[1].primary.pages" /></th>
       </tr>
-      <tr>
-        <th>Dimensions:</th>
+      <tr v-if="page.data.slices[1].primary.dimensions.length > 0">
+        <th class="w-[8.6rem]">Dimensions:</th>
         <th><prismic-rich-text :field="page.data.slices[1].primary.dimensions" /></th>
       </tr>
-      <tr>
-        <th>Paper:</th>
+      <tr v-if="page.data.slices[1].primary.paper.length > 0">
+        <th class="w-[8.6rem]">Paper:</th>
         <th><prismic-rich-text :field="page.data.slices[1].primary.paper" /></th>
       </tr>
-      <tr>
-        <th>Copyright:</th>
+      <tr v-if="page.data.slices[1].primary.copyright.length > 0">
+        <th class="w-[8.6rem]">Copyright:</th>
         <th><prismic-rich-text :field="page.data.slices[1].primary.copyright" /></th>
       </tr>
-      <tr>
-        <th>ISBN:</th>
+      <tr v-if="page.data.slices[1].primary.isbn.length > 0">
+        <th class="w-[8.6rem]">ISBN:</th>
         <th><prismic-rich-text :field="page.data.slices[1].primary.isbn" /></th>
       </tr>
     </tbody>
@@ -62,8 +57,8 @@
     <div class="font-cooperbt text-base tracking-[-0.01em] font-bold md:pb-5 pl-5 md:pl-0">€{{ page.data.price }},–</div>
     <form @submit="addToCart($event)" class="pl-5 md:pl-0 mt-1 md:mt-0">
     <input type="hidden" name="uid" :value="page.id" />
-    <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status != 'email'" :disabled="page.data.status != 'ORDER'" :style= "[page.data.status != 'ORDER' ? {'opacity': '0.3'} : {'opacity': '1'}]" class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">ORDER</button>
-    <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status == 'PRE-ORDER'" class="ml-1 font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">PRE-ORDER</button>
+    <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status == 'ORDER'" class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">ORDER</button>
+    <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status == 'PRE-ORDER'" class="font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">PRE-ORDER</button>
     <span class="ml-1 italic font-garamond text-[#BCBCBC] text-lg transition-opacity opacity-0">Item has been added to cart</span>
     </form>
 
@@ -179,5 +174,8 @@ mounted(){
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
 }
-
+.slick-dots{
+  max-height: 36px;
+  overflow: hidden;
+}
 </style>
