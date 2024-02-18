@@ -60,7 +60,7 @@ exports.handler = async (event) => {
   const converted = shippingcost*100
   const fixed = Math.round(converted * 1e2) / 1e2
   
-  quantity.forEach( ele => numquantit.push(+ele))
+  quantity.forEach( ele => numquantity.push(+ele))
 
   for (let i = 0; i < pages.results.length; i++) {
     if(pages.results[i].data.description[0]){
