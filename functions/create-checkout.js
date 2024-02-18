@@ -55,11 +55,15 @@ exports.handler = async (event) => {
   const meta_itemss = []
   const pages = await client.getByIDs(orders)
   const shippingstuff = await client.getSingle('shipping')
-  console.log(shippingstuff)
+  let totalquantity
   const shippingcost = shippingstuff.data.list.filter((word) => word.code == ship)[0].cost
   const converted = shippingcost*100
   const fixed = Math.round(converted * 1e2) / 1e2
-  console.log(fixed)
+  
+  for (let i = 0; i < quantity.length; i++) {
+    totalquantity += Number(quantity[i])
+  }
+
   for (let i = 0; i < pages.results.length; i++) {
     if(pages.results[i].data.description[0]){
     line_itemss.push(
@@ -112,7 +116,7 @@ exports.handler = async (event) => {
         name: 'Shipping Cost',
       },
     },
-    quantity: quantity.reduce((a, b) => a + b, 0),
+    quantity: totalquantity,
   }
     )
 
