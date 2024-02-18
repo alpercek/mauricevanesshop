@@ -59,9 +59,9 @@ exports.handler = async (event) => {
   const shippingcost = shippingstuff.data.list.filter((word) => word.code == ship)[0].cost
   const converted = shippingcost*100
   const fixed = Math.round(converted * 1e2) / 1e2
-  
+  console.log(quantity)
   for (let i = 0; i < quantity.length; i++) {
-    totalquantity += Number(quantity[i])
+    totalquantity += quantity[i]
   }
 
   for (let i = 0; i < pages.results.length; i++) {
