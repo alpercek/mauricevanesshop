@@ -84,7 +84,36 @@
     "items": [
       {
         "__TYPE__": "GroupItemContent",
-        "value": []
+        "value": [
+          [
+            "title",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Consequat esse laboris deserunt id voluptate esse duis irure veniam nostrud eu dolore consequat. Commodo nulla dolore amet amet cupidatat quis tempor occaecat mollit aliquip nostrud labore duis Lorem et."
+                  }
+                }
+              ]
+            }
+          ],
+          [
+            "content",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Nostrud elit velit deserunt Lorem tempor irure culpa voluptate veniam. Nostrud duis minim fugiat dolor veniam."
+                  }
+                }
+              ]
+            }
+          ]
+        ]
       }
     ]
   }

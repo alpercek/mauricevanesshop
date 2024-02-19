@@ -51,6 +51,12 @@
         <th><prismic-rich-text :field="page.data.slices[1].primary.isbn" /></th>
       </tr>
     </tbody>
+    <tbody v-for="(item, i) in page.data.slices[1].items" :key="`slice-item-${i}`">
+      <tr>
+        <th class="w-[8.6rem]"><prismic-rich-text :field="item.title"/></th>
+        <th><prismic-rich-text :field="item.content" /></th>
+      </tr>
+    </tbody>
     </table>
 
     <prismic-rich-text :field="page.data.extra_line" class="font-cooperbt text-base tracking-[-0.01em] pt-7 md:pt-5 pl-5 md:pl-0"/>
