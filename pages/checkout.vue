@@ -37,7 +37,7 @@
         <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post" class="pt-8 md:text-right md:pr-32">
           <label for="shipping" class="font-garamond text-lg">Shipping destination:</label>
           <select id="shipping" name="shipping" class="font-garamond text-lg w-[calc(100vw-14rem)] md:w-28 truncate">
-            <option v-if="cntry = countries.find(a=>a.code==item.code)" v-for="(item, i) in shipping.data.list" :key="`slice-item-${i}`" :value="item.code">{{ cntry.name }}</option>
+            <option v-if="cntry = countries.find(a=>a.code==item.code)" v-for="(item, i) in shipping.data.list" :key="`slice-item-${i}`" :value="item.code">{{ cntry.name }} {{ item.cost }}€</option>
           </select>
           <input type="hidden" name="sku" value="DEMO002" />
           <button id="asdf" class="font-metrik text-base border border-black rounded-full py-1 px-2 hover:bg-sky-200 hidden mt-12 mx-auto md:mr-0" type="submit">CHECKOUT</button>
