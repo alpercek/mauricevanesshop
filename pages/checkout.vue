@@ -32,12 +32,12 @@
   </div>
 </div>
 
-<div class="border-y border-black pt-4 pb-5 text-right font-garamond text-lg pr-3.5 font-semibold lg:pr-44">Total<span class="pl-9 lg:pl-24 underline">{{ sum }}</span></div>
+<div class="border-y border-black pt-4 pb-5 text-right font-garamond text-lg pr-3.5 font-semibold lg:pr-44">Total<span class="ml-9 lg:ml-24 relative">{{ sum }}<div class="absolute inset-0 border-b-2 border-black -translate-y-0.5"></div></span></div>
 
         <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post" class="pt-8 md:text-right md:pr-32">
           <label for="shipping" class="font-garamond text-lg">Shipping destination:</label>
           <select id="shipping" name="shipping" class="font-garamond text-lg w-[calc(100vw-14rem)] md:w-28 truncate">
-            <option v-if="cntry = countries.find(a=>a.code==item.code)" v-for="(item, i) in shipping.data.list" :key="`slice-item-${i}`" :value="item.code">{{ cntry.name }} {{ item.cost }}€</option>
+            <option v-if="cntry = countries.find(a=>a.code==item.code)" v-for="(item, i) in shipping.data.list" :key="`slice-item-${i}`" :value="item.code">{{ cntry.name }}</option>
           </select>
           <input type="hidden" name="sku" value="DEMO002" />
           <button id="asdf" class="font-metrik text-base border border-black rounded-full py-1 px-2 hover:bg-sky-200 hidden mt-12 mx-auto md:mr-0" type="submit">CHECKOUT</button>
