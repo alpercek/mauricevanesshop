@@ -50,7 +50,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 302,
       headers: {
-        Location: 'https://scannedfootballphotos.com',
+        Location: 'https://scannedfootballphotos.com/emailsuccess',
       },
       body: JSON.stringify({
         message: "Contact added to Mailjet successfully",
@@ -62,7 +62,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 302,
       headers: {
-        Location: 'https://scannedfootballphotos.com',
+        Location: 'https://scannedfootballphotos.com/emailsuccess',
       },
       body: JSON.stringify({
         message: "Contact added to Mailjet successfully",
