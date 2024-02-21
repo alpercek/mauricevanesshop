@@ -72,7 +72,7 @@
     <form v-if="page.data.status == 'email'" class="email-form pl-5 md:pl-0 mt-1 md:mt-0 text-sm" name="newsletter" method="POST" netlify netlify-honeypot="bot-field" action="/.netlify/functions/subscribeToMailjet">
   <label for="email" class="sr-only"> Email </label>
   <div>
-    <input required type="email" name="email" id="email" placeholder="…Receive e-mail when in stock" class="py-1 px-2 border w-max rounded-full" />
+    <input required type="email" name="email" id="email" placeholder="Receive e-mail when in stock" class="py-1 px-2 border w-max rounded-full" />
     <button type="submit" class="font-metrik border w-max border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">Send</button>
   </div>
   <div class="hidden">
