@@ -19,6 +19,9 @@ export default {
       return this.$store.state.prismic.settings
     }
   },
+  mounted(){
+    sessionStorage.setItem("key", true)
+  }
 }
 </script>
 
