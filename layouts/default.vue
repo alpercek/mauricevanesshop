@@ -1,6 +1,5 @@
 <template>
   <div class="text-slate-800">
-    {{ this.$route.name }}
     <Header
       v-if="navigation.data && settings.data"
       :navigation="navigation"
