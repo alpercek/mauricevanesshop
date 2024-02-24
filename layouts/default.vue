@@ -30,7 +30,7 @@
 <script>
 export default {
   data () {
-    return {}
+    return {mounted: false}
   },
   computed: {
     navigation() {
@@ -40,11 +40,11 @@ export default {
       return this.$store.state.prismic.settings
     },
     splash() {
-      if (this.$route.name != 'emailsuccess') {
-        return true
+      if (this.$route.name == 'emailsuccess' || this.$route.name == 'success' || this.mounted) {
+        return false
       }
       else {
-        return false
+        return true
       }
     }
   },
@@ -55,7 +55,7 @@ export default {
     setTimeout(() => {
       alper.style.display = 'none'
       document.getElementById('marquee-slider-text').style.display = 'block'
-      
+      this.mounted = true
     }, 4000)
     }
   }
