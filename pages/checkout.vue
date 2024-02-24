@@ -150,12 +150,14 @@
       total() {
         this.sum = 0
         this.alper.length = 0
+        this.be.length = 0
         setTimeout(() => {document.getElementsByClassName('quantity').forEach((element) => this.alper.push(element.value))
         for (let i = 0; i < this.filtered.length; i++ ) {
           this.sum += this.filtered[i].data.price * this.alper[i]
         }
         this.alper.forEach( ele => this.be.push(+ele))
-        this.sumquantity = this.be.reduce((a, b) => a + b, 0)}, 10);
+        this.sumquantity = this.be.reduce((a, b) => a + b, 0)
+      console.log(this.sumquantity)}, 10);
       },
       load() {
     this.ids.length = 0
