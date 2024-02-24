@@ -38,6 +38,14 @@ export default {
     },
     settings() {
       return this.$store.state.prismic.settings
+    },
+    splash() {
+      if (this.$route.name != 'emailsuccess') {
+        return true
+      }
+      else {
+        return false
+      }
     }
   },
   mounted() {
@@ -47,10 +55,9 @@ export default {
     setTimeout(() => {
       alper.style.display = 'none'
       document.getElementById('marquee-slider-text').style.display = 'block'
-      this.splash = false
+      
     }, 4000)
-
-  }
+    }
   }
 }
 </script>
