@@ -30,7 +30,7 @@
 <script>
 export default {
   data () {
-    return { splash: true,}
+    return {}
   },
   computed: {
     navigation() {
