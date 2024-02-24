@@ -1,5 +1,6 @@
 <template>
   <div class="text-slate-800">
+    {{ this.$route.name }}
     <Header
       v-if="navigation.data && settings.data"
       :navigation="navigation"
@@ -40,11 +41,11 @@ export default {
       return this.$store.state.prismic.settings
     },
     splash() {
-      if (this.$route.name == 'emailsuccess' || this.$route.name == 'success' || this.mounted) {
-        return false
+      if (this.$route.name == 'index') {
+        return true
       }
       else {
-        return true
+        return false
       }
     }
   },
