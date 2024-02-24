@@ -69,6 +69,7 @@
         countries,
         sum: 0,
         alper: [],
+        be: [],
         sumquantity: 0,
       }
       
@@ -153,7 +154,8 @@
         for (let i = 0; i < this.filtered.length; i++ ) {
           this.sum += this.filtered[i].data.price * this.alper[i]
         }
-        this.sumquantity = this.alper.reduce((a, b) => a + b, 0)}, 10);
+        this.alper.forEach( ele => this.be.push(+ele))
+        this.sumquantity = this.be.reduce((a, b) => a + b, 0)}, 10);
       },
       load() {
     this.ids.length = 0
