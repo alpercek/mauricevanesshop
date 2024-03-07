@@ -15,13 +15,28 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width:device-width, initial-scale:1' },
       {
         hid: 'description',
         name: 'description',
         content: 'For the past four years, I have been collecting photography from 90s football magazines. The photographs I found capture a candidness and spontaneity that is rarely seen today.'
       },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone:no' },
+      { property:"og:site_name", content:"Scannedfootballphotos" },
+      {property:"og:url", content:"https://scannedfootballphotos.com/"},
+      { property:"og:type", content:"website" },
+      {name:"title", property:"og:title", content:"Scannedfootballphotos" },
+      {name:"image", property:"og:image", content:"/cart.png"},
+      {property:"og:image:type", content:"image/png"},
+      { property:"og:image:width",content:"1024"},
+      { property:"og:image:height",content:"1024"},
+      { name:"description",property:"og:description", content:"For the past four years, I have been collecting photography from 90s football magazines. The photographs I found capture a candidness and spontaneity that is rarely seen today."},
+      { name:"twitter:card",content:"For the past four years, I have been collecting photography from 90s football magazines. The photographs I found capture a candidness and spontaneity that is rarely seen today."},
+      { name:"twitter:site",description:"@scannedfootballphotos"},
+      { name:"twitter:title",content:"Scannedfootballphotos"},
+      { name:"twitter:description",content:"For the past four years, I have been collecting photography from 90s football magazines. The photographs I found capture a candidness and spontaneity that is rarely seen today."},
+      { name:"twitter:image:src",content:"/cart.png"},
+      { name:"twitter:domain",content:"https://scannedfootballphotos.com/"},
     ],
     link: [{ rel:"apple-touch-icon", sizes:"180x180", href:"/apple-touch-icon.png" }, {rel:"icon", type:"image/png", sizes:"32x32", href:"/favicon-32x32.png"}, {rel:"icon", type:"image/png", sizes:"16x16", href:"/favicon-16x16.png"}, {rel:"manifest", href:"/site.webmanifest"}, {rel:"mask-icon", href:"/safari-pinned-tab.svg", color:"#5bbad5"},]
   },
