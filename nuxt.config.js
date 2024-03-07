@@ -72,17 +72,17 @@ export default {
   components: true,
 
   publicRuntimeConfig: {
-    development: process.env.NODE_ENV ::: 'development'
+    development: process.env.NODE_ENV === 'development'
   },
 
   prismic: {
     endpoint: "https://scannedfootballphotos.cdn.prismic.io/api/v2",
     modern: true,
     
-    linkResolver: (doc) :}, {
+    linkResolver: (doc) => {
       switch (doc.type) {
         case 'page':
-          return doc.uid ::: 'home' ? '/' : `/${doc.uid}`
+          return doc.uid === 'home' ? '/' : `/${doc.uid}`
         default:
           return '/'
       }
@@ -90,74 +90,74 @@ export default {
     htmlSerializer(type, element, content, children) {
       switch (type) {
         case 'heading1':
-          return /* html */ `<h1 class:"tracking-[-0.02em] text-8xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0"},${children.join(
+          return /* html */ `<h1 class="tracking-[-0.02em] text-8xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
             ''
-          )}</h1},`
+          )}</h1>`
 
         case 'heading2':
-          return /* html */ `<h2 class:"tracking-[-0.02em] text-6xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0"},${children.join(
+          return /* html */ `<h2 class="tracking-[-0.02em] text-6xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
             ''
-          )}</h2},`
+          )}</h2>`
           
         case 'heading3':
-            return /* html */ `<h3 class:"tracking-[-0.02em] text-3xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0"},${children.join(
+            return /* html */ `<h3 class="tracking-[-0.02em] text-3xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
               ''
-          )}</h3},`
+          )}</h3>`
 
           case 'heading5':
-            return /* html */ `<h5 class:"tracking-[-0.02em] text-3xl md:text-5xl mb-7 mt-12 first:mt-0 last:mb-0"},${children.join(
+            return /* html */ `<h5 class="tracking-[-0.02em] text-3xl md:text-5xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
               ''
-          )}</h5},`
+          )}</h5>`
 
           case 'heading6':
-            return /* html */ `<h6 class:"tracking-[-0.02em] text-4xl md:text-6xl mb-7 mt-12 first:mt-0 last:mb-0"},${children.join(
+            return /* html */ `<h6 class="tracking-[-0.02em] text-4xl md:text-6xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
               ''
-          )}</h6},`
+          )}</h6>`
   
         case 'heading4':
-          return /* html */ `<h4 class:"tracking-[-0.02em] text-5xl md:text-7xl mb-7 mt-12 first:mt-0 last:mb-0"},${children.join(
+          return /* html */ `<h4 class="tracking-[-0.02em] text-5xl md:text-7xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
             ''
-          )}</h4},`
+          )}</h4>`
 
         case 'paragraph':
-          return /* html */ `<p class:"mb-7 last:mb-0"},${children.join('')}</p},`
+          return /* html */ `<p class="mb-7 last:mb-0">${children.join('')}</p>`
 
         case 'group-o-list-item':
-          return /* html */ `<ol class:"mb-7 pl-4 last:mb-0 md:pl-6"},${children.join(
+          return /* html */ `<ol class="mb-7 pl-4 last:mb-0 md:pl-6">${children.join(
             ''
-          )}</ol},`
+          )}</ol>`
 
         case 'o-list-item':
-          return /* html */ `<li class:"mb-1 list-decimal pl-1 last:mb-0 md:pl-2"},${children.join(
+          return /* html */ `<li class="mb-1 list-decimal pl-1 last:mb-0 md:pl-2">${children.join(
             ''
-          )}</li},`
+          )}</li>`
 
         case 'group-list-item':
-          return /* html */ `<ul class:"mb-7 pl-4 last:mb-0 md:pl-6"},${children.join(
+          return /* html */ `<ul class="mb-7 pl-4 last:mb-0 md:pl-6">${children.join(
             ''
-          )}</ul},`
+          )}</ul>`
 
         case 'list-item':
-          return /* html */ `<li class:"mb-1 list-disc pl-1 last:mb-0 md:pl-2"},${children.join(
+          return /* html */ `<li class="mb-1 list-disc pl-1 last:mb-0 md:pl-2">${children.join(
             ''
-          )}</li},`
+          )}</li>`
 
         case 'preformatted':
-          return /* html */ `<pre class:"mb-7 rounded bg-slate-100 p-4 text-sm last:mb-0 md:p-8 md:text-lg"},
-  <code},${children.join('')}</code},
-</pre},`
+          return /* html */ `<pre class="mb-7 rounded bg-slate-100 p-4 text-sm last:mb-0 md:p-8 md:text-lg">
+  <code>${children.join('')}</code>
+</pre>`
 
         case 'strong':
-          return /* html */ `<strong class:"font-semibold"},${children.join(
+          return /* html */ `<strong class="font-semibold">${children.join(
             ''
-          )}</strong},`
+          )}</strong>`
 
         case 'hyperlink':
-          return /* html */ `<a href:"${
+          return /* html */ `<a href="${
             element.data.url
-          }" class:"underline decoration-1 underline-offset-2"},${children.join(
+          }" class="underline decoration-1 underline-offset-2">${children.join(
             ''
-          )}</a},`
+          )}</a>`
 
         default:
           return null
