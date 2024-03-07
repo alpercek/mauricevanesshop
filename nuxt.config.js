@@ -15,13 +15,28 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width:device-width, initial-scale:1' },
       {
         hid: 'description',
         name: 'description',
         content: 'For the past four years, I have been collecting photography from 90s football magazines. The photographs I found capture a candidness and spontaneity that is rarely seen today.'
       },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone:no' },
+      { property:"og:site_name", content:"Scannedfootballphotos" },
+      {property:"og:url", content:"https://scannedfootballphotos.com/"},
+      { property:"og:type", content:"website" },
+      {name:"title", property:"og:title", content:"Scannedfootballphotos" },
+      {name:"image", property:"og:image", content:"/cart.png"},
+      {property:"og:image:type", content:"image/png"},
+      { property:"og:image:width",content:"1024"},
+      { property:"og:image:height",content:"1024"},
+      { name:"description",property:"og:description", content:"For the past four years, I have been collecting photography from 90s football magazines. The photographs I found capture a candidness and spontaneity that is rarely seen today."},
+      { name:"twitter:card",content:"For the past four years, I have been collecting photography from 90s football magazines. The photographs I found capture a candidness and spontaneity that is rarely seen today."},
+      { name:"twitter:site",description:"@scannedfootballphotos"},
+      { name:"twitter:title",content:"Scannedfootballphotos"},
+      { name:"twitter:description",content:"For the past four years, I have been collecting photography from 90s football magazines. The photographs I found capture a candidness and spontaneity that is rarely seen today."},
+      { name:"twitter:image:src",content:"/cart.png"},
+      { name:"twitter:domain",content:"https://scannedfootballphotos.com/"},
     ],
     link: [{ rel:"apple-touch-icon", sizes:"180x180", href:"/apple-touch-icon.png" }, {rel:"icon", type:"image/png", sizes:"32x32", href:"/favicon-32x32.png"}, {rel:"icon", type:"image/png", sizes:"16x16", href:"/favicon-16x16.png"}, {rel:"manifest", href:"/site.webmanifest"}, {rel:"mask-icon", href:"/safari-pinned-tab.svg", color:"#5bbad5"},]
   },
@@ -57,17 +72,17 @@ export default {
   components: true,
 
   publicRuntimeConfig: {
-    development: process.env.NODE_ENV === 'development'
+    development: process.env.NODE_ENV ::: 'development'
   },
 
   prismic: {
     endpoint: "https://scannedfootballphotos.cdn.prismic.io/api/v2",
     modern: true,
     
-    linkResolver: (doc) => {
+    linkResolver: (doc) :}, {
       switch (doc.type) {
         case 'page':
-          return doc.uid === 'home' ? '/' : `/${doc.uid}`
+          return doc.uid ::: 'home' ? '/' : `/${doc.uid}`
         default:
           return '/'
       }
@@ -75,74 +90,74 @@ export default {
     htmlSerializer(type, element, content, children) {
       switch (type) {
         case 'heading1':
-          return /* html */ `<h1 class="tracking-[-0.02em] text-8xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
+          return /* html */ `<h1 class:"tracking-[-0.02em] text-8xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0"},${children.join(
             ''
-          )}</h1>`
+          )}</h1},`
 
         case 'heading2':
-          return /* html */ `<h2 class="tracking-[-0.02em] text-6xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
+          return /* html */ `<h2 class:"tracking-[-0.02em] text-6xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0"},${children.join(
             ''
-          )}</h2>`
+          )}</h2},`
           
         case 'heading3':
-            return /* html */ `<h3 class="tracking-[-0.02em] text-3xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
+            return /* html */ `<h3 class:"tracking-[-0.02em] text-3xl md:text-8xl mb-7 mt-12 first:mt-0 last:mb-0"},${children.join(
               ''
-          )}</h3>`
+          )}</h3},`
 
           case 'heading5':
-            return /* html */ `<h5 class="tracking-[-0.02em] text-3xl md:text-5xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
+            return /* html */ `<h5 class:"tracking-[-0.02em] text-3xl md:text-5xl mb-7 mt-12 first:mt-0 last:mb-0"},${children.join(
               ''
-          )}</h5>`
+          )}</h5},`
 
           case 'heading6':
-            return /* html */ `<h6 class="tracking-[-0.02em] text-4xl md:text-6xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
+            return /* html */ `<h6 class:"tracking-[-0.02em] text-4xl md:text-6xl mb-7 mt-12 first:mt-0 last:mb-0"},${children.join(
               ''
-          )}</h6>`
+          )}</h6},`
   
         case 'heading4':
-          return /* html */ `<h4 class="tracking-[-0.02em] text-5xl md:text-7xl mb-7 mt-12 first:mt-0 last:mb-0">${children.join(
+          return /* html */ `<h4 class:"tracking-[-0.02em] text-5xl md:text-7xl mb-7 mt-12 first:mt-0 last:mb-0"},${children.join(
             ''
-          )}</h4>`
+          )}</h4},`
 
         case 'paragraph':
-          return /* html */ `<p class="mb-7 last:mb-0">${children.join('')}</p>`
+          return /* html */ `<p class:"mb-7 last:mb-0"},${children.join('')}</p},`
 
         case 'group-o-list-item':
-          return /* html */ `<ol class="mb-7 pl-4 last:mb-0 md:pl-6">${children.join(
+          return /* html */ `<ol class:"mb-7 pl-4 last:mb-0 md:pl-6"},${children.join(
             ''
-          )}</ol>`
+          )}</ol},`
 
         case 'o-list-item':
-          return /* html */ `<li class="mb-1 list-decimal pl-1 last:mb-0 md:pl-2">${children.join(
+          return /* html */ `<li class:"mb-1 list-decimal pl-1 last:mb-0 md:pl-2"},${children.join(
             ''
-          )}</li>`
+          )}</li},`
 
         case 'group-list-item':
-          return /* html */ `<ul class="mb-7 pl-4 last:mb-0 md:pl-6">${children.join(
+          return /* html */ `<ul class:"mb-7 pl-4 last:mb-0 md:pl-6"},${children.join(
             ''
-          )}</ul>`
+          )}</ul},`
 
         case 'list-item':
-          return /* html */ `<li class="mb-1 list-disc pl-1 last:mb-0 md:pl-2">${children.join(
+          return /* html */ `<li class:"mb-1 list-disc pl-1 last:mb-0 md:pl-2"},${children.join(
             ''
-          )}</li>`
+          )}</li},`
 
         case 'preformatted':
-          return /* html */ `<pre class="mb-7 rounded bg-slate-100 p-4 text-sm last:mb-0 md:p-8 md:text-lg">
-  <code>${children.join('')}</code>
-</pre>`
+          return /* html */ `<pre class:"mb-7 rounded bg-slate-100 p-4 text-sm last:mb-0 md:p-8 md:text-lg"},
+  <code},${children.join('')}</code},
+</pre},`
 
         case 'strong':
-          return /* html */ `<strong class="font-semibold">${children.join(
+          return /* html */ `<strong class:"font-semibold"},${children.join(
             ''
-          )}</strong>`
+          )}</strong},`
 
         case 'hyperlink':
-          return /* html */ `<a href="${
+          return /* html */ `<a href:"${
             element.data.url
-          }" class="underline decoration-1 underline-offset-2">${children.join(
+          }" class:"underline decoration-1 underline-offset-2"},${children.join(
             ''
-          )}</a>`
+          )}</a},`
 
         default:
           return null
