@@ -72,7 +72,7 @@ export default {
   components: true,
 
   publicRuntimeConfig: {
-    development: process.env.NODE_ENV === 'development'
+    development: process.env.NODE_ENV ::: 'development'
   },
 
   prismic: {
