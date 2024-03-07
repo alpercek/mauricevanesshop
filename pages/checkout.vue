@@ -32,7 +32,7 @@
   </div>
 </div>
 
-<div class="border-y border-black pt-4 pb-5 text-right font-garamond text-lg pr-3.5 font-semibold lg:pr-44">Total<span class="ml-9 lg:ml-24 relative">{{ sum }}<div class="absolute inset-0 border-b-2 border-black -translate-y-0.5"></div></span></div>
+<div class="border-y border-black pt-4 pb-5 text-right font-garamond text-lg pr-3.5 font-semibold lg:pr-44">Total<span class="ml-9 lg:ml-24 relative">{{ sum }}<div class="absolute w-full inset-0 border-b-2 border-black -translate-y-0.5"></div></span></div>
 
         <form @submit="handleSubmit($event)" action="/.netlify/functions/create-checkout" method="post" class="pt-8 md:text-right md:pr-32">
           <label for="shipping" class="font-garamond text-lg">Shipping destination:</label>
