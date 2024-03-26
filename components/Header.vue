@@ -43,14 +43,6 @@
           </li>
         </ul>
       </div>
-        <vue-marquee-slider
-        v-if="settings.data.marquee"
-      class="lg:w-[17rem] w-screen text-[#FF0000] text-base font-cooperbt lg:absolute top-[1.25rem] left-1/2 lg:-translate-x-1/2 hidden"
-      id="marquee-slider-text"
-      :speed="settings.data.marquee[0].text.length*220" 
-      :width="settings.data.marquee[0].text.length*10">
-        <div>{{ settings.data.marquee[0].text }}</div>
-      </vue-marquee-slider>
       </div>
 </template>
 
