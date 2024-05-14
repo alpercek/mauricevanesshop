@@ -4,6 +4,8 @@ import AboutImage from './AboutImage';
 import AboutText from './AboutText';
 import BookInfo from './BookInfo';
 import ContactInfo from './ContactInfo';
+import MobileAboutImage from './MobileAboutImage';
+import MobileSlider from './MobileSlider';
 import Slider from './Slider';
 
 export {
@@ -11,6 +13,8 @@ export {
 	AboutText,
 	BookInfo,
 	ContactInfo,
+	MobileAboutImage,
+	MobileSlider,
 	Slider,
 };
 
@@ -19,5 +23,7 @@ export const components = {
 	about_text: AboutText,
 	book_info: BookInfo,
 	about_info: ContactInfo,
+	mobile_about_image: MobileAboutImage,
+	mobile_slider: MobileSlider,
 	slider: Slider,
 };

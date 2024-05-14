@@ -2,16 +2,33 @@
   <div class="pb-5">
   <div class="pb-32">
     <div v-if="page.results[0].data.slices[0]">
+      <!--mobile slider-->
+      <template v-if="isMobile && page.results[0].data.slices[2]">
     <div class="relative md:w-[56vw] m-auto">
       <NuxtLink :to="'/'+page.results[0].uid">
     <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000" :speed="1500" :autoplay="true">
-    <div v-for="(item, i) in page.results[0].data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
+    <div v-for="(item, i) in page.results[0].data.slices[2].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
       <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[75vh] object-cover md:object-scale-down w-full"/><div v-if="page.results[0].data.status != 'ORDER'" :class="page.results[0].data.status == 'email'?'':'preorder'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.results[0].data.status == 'email'" class="opacity-60">「out of stock」</div><div v-if="page.results[0].data.status == 'PRE-ORDER'" class="opacity-60">「{{ page.results[0].data.purple_text[0].text }}」</div></div></div>
     </div>
   </VueSlickCarousel>
 </NuxtLink>
   <div v-if="page.results[0].data.slices[0].items.length > 1" class="hidden md:flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2"> <button @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext" class="hidden md:block"><i class="arrow right"></i></button></div>
 </div>
+</template>
+<!-- slider-->
+<template v-else >
+<div class="relative md:w-[56vw] m-auto">
+  <NuxtLink :to="'/'+page.results[0].uid">
+<VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000" :speed="1500" :autoplay="true">
+<div v-for="(item, i) in page.results[0].data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
+  <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[75vh] object-cover md:object-scale-down w-full"/><div v-if="page.results[0].data.status != 'ORDER'" :class="page.results[0].data.status == 'email'?'':'preorder'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.results[0].data.status == 'email'" class="opacity-60">「out of stock」</div><div v-if="page.results[0].data.status == 'PRE-ORDER'" class="opacity-60">「{{ page.results[0].data.purple_text[0].text }}」</div></div></div>
+</div>
+</VueSlickCarousel>
+</NuxtLink>
+<div v-if="page.results[0].data.slices[0].items.length > 1" class="hidden md:flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2"> <button @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext" class="hidden md:block"><i class="arrow right"></i></button></div>
+</div>
+</template>
+<!--end-->
 <div class="md:pb-36">
   <NuxtLink :to="'/'+page.results[0].uid">
   <div :style="{'color':page.results[0].data.color}" class="flex justify-center pt-2.5 md:pt-5 font-cooperbt text-xl items-center gap-0.5"><div :style="{'background-color':page.results[0].data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center">{{ page.results[0].data.number }}</div><prismic-rich-text :field="page.results[0].data.title" class="" /></div>
@@ -54,7 +71,13 @@ export default {
     }
   },
   data () {
-    return { components, }
+    return { components, 
+      window: {
+            width: 0,
+            height: 0
+            },
+      isMobile: false,
+    }
     
   },
   computed: {
@@ -62,6 +85,13 @@ export default {
       return this.$store.state.prismic.settings
     }
   },
+  mounted(){
+  window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+},
+beforeDestroy() {
+        window.removeEventListener('resize', this.handleResize);
+    },
   methods: {
       showNext() {
         this.$refs.carousel.next()
@@ -71,6 +101,13 @@ export default {
         
         this.$refs.carousel.prev()
       },
+      handleResize() {
+            this.window.width = window.innerWidth;
+            this.window.height = window.innerHeight;
+            if (window.innerWidth < 640 || window.innerHeight < 640 ) {
+                this.isMobile = true
+            } else { this.isMobile = false }
+        }
     },
   head () {
     return {

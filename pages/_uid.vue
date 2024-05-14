@@ -1,7 +1,25 @@
 <template>
   <div class="relative pb-32">
-    <!-- slider -->
-    <div v-if="page.data.slices[0]" class="pb-5">
+    <!-- mobile slider -->
+    <template v-if="isMobile && page.data.slices[2]">
+    <div v-if="page.data.slices[2]" class="pb-5">
+  <div class="relative md:w-[56vw] m-auto">
+   <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed" :speed="1500" :autoplay="true" >
+      <div v-for="(item, i) in page.data.slices[2].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
+        <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/><div v-if="page.data.status != 'ORDER'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.data.status == 'email'" class="opacity-60">「out of stock」</div><div v-if="page.data.status == 'PRE-ORDER'" class="opacity-60">「{{ page.data.purple_text[0].text }}」</div></div></div>
+        </div>
+        <div v-if="mobileVideo.url" class="m-auto pt-1.5 relative">
+        <video onclick="this.play(); this.nextElementSibling.remove()" type="video/mp4" playsinline id="vd" :src="video.url" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full cursor-pointer"></video>
+        <div class="pointer-events-none absolute top-3/4 left-1/2 -translate-x-1/2 text-2xl bg-white px-1.5 rounded-full font-metrik">click to play &#x23F5;</div>
+      </div>
+    </VueSlickCarousel>
+    <div v-if="page.data.slices[0].items.length > 1" class="md:flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2 hidden"> <button @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext" class="hidden md:block"><i class="arrow right"></i></button></div>
+  </div>
+</div>
+</template>
+<!-- slider-->
+<template v-else>
+<div v-if="page.data.slices[0]" class="pb-5">
   <div class="relative md:w-[56vw] m-auto">
    <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed" :speed="1500" :autoplay="true" >
       <div v-for="(item, i) in page.data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
@@ -13,8 +31,9 @@
       </div>
     </VueSlickCarousel>
     <div v-if="page.data.slices[0].items.length > 1" class="md:flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2 hidden"> <button @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext" class="hidden md:block"><i class="arrow right"></i></button></div>
-  </div>
 </div>
+</div>
+</template>
 <!-- rest -->
     <div>
       <div class="md:ml-[43vw] mt-14 md:mt-0">
@@ -106,6 +125,11 @@ export default {
   },
   data () {
     return { components,
+      window: {
+            width: 0,
+            height: 0
+            },
+      isMobile: false,
       sshowMobileMenu: false,
     speed: 5000 }
   },
@@ -117,6 +141,9 @@ export default {
   computed: {
     video(){
       return this.page.data.slices[0].primary.video
+    },
+    mobileVideo(){
+      return this.page.data.slices[2].primary.video
     },
     settings() {
       return this.$store.state.prismic.settings
@@ -153,13 +180,25 @@ export default {
       localStorage.orders = JSON.stringify(nodupe)
       document.getElementsByClassName('counter')[0].innerText = nodupe.length
       document.getElementsByClassName('counter')[1].innerText = nodupe.length
-    }
+    },
+    handleResize() {
+            this.window.width = window.innerWidth;
+            this.window.height = window.innerHeight;
+            if (window.innerWidth < 640 || window.innerHeight < 640 ) {
+                this.isMobile = true
+            } else { this.isMobile = false }
+        }
 },
 name: 'MyComponent',
     components: { VueSlickCarousel },
     props: getSliceComponentProps(['slice', 'index', 'slices', 'context']),
 mounted(){
-}
+  window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+},
+beforeDestroy() {
+        window.removeEventListener('resize', this.handleResize);
+    }
 }
 </script>
 <style>

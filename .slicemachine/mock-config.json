@@ -49,6 +49,16 @@
       "default": {
         "primary": {}
       }
+    },
+    "MobileSlider": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "MobileAboutImage": {
+      "default": {
+        "primary": {}
+      }
     }
   },
   "_cts": {

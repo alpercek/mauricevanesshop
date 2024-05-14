@@ -44,6 +44,9 @@
             },
             "about_info": {
               "type": "SharedSlice"
+            },
+            "mobile_about_image": {
+              "type": "SharedSlice"
             }
           }
         }

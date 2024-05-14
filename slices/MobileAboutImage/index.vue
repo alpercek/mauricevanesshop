@@ -1,4 +1,4 @@
-<template><div v-if="!isMobile" class="bg-white w-screen md:pb-11 md:pl-36">
+<template><div v-if="isMobile" class="bg-white w-screen md:pb-11 md:pl-36">
   <div class="relative md:w-1/2">
    
       
