@@ -20,9 +20,29 @@
           "options": [
             "ORDER",
             "PRE-ORDER",
-            "email"
+            "email",
+            "customize"
           ],
           "default_value": "ORDER"
+        }
+      },
+      "blurring": {
+        "type": "Select",
+        "config": {
+          "label": "blurring",
+          "placeholder": "Blurring of slides",
+          "options": [
+            "all slides",
+            "only first slide"
+          ],
+          "default_value": "all slides"
+        }
+      },
+      "customized_text": {
+        "type": "Text",
+        "config": {
+          "label": "customized text",
+          "placeholder": "Only for customized status"
         }
       },
       "purple_text": {
