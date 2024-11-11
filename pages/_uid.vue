@@ -89,7 +89,7 @@
     </form>
 
     <!--newsletter-->
-    <form v-if="page.data.status == 'email' || page.data.status == 'customize' && page.data.price == null" class="email-form pl-5 md:pl-0 mt-1 md:mt-0 text-sm" name="newsletter" method="POST" netlify netlify-honeypot="bot-field" action="/.netlify/functions/subscribeToMailjet">
+    <form v-if="page.data.status == 'email' || page.data.status == 'customize' && page.data.price == null && page.data.customized_text != null" class="email-form pl-5 md:pl-0 mt-1 md:mt-0 text-sm" name="newsletter" method="POST" netlify netlify-honeypot="bot-field" action="/.netlify/functions/subscribeToMailjet">
   <label for="email" class="sr-only"> Email </label>
   <div>
     <input required type="email" name="email" id="email" :placeholder="page.data.status == 'customize'? page.data.customized_text :'Receive e-mail when in stock'" class="py-1 px-2 border w-max rounded-full" />
