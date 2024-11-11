@@ -21,7 +21,7 @@
   <NuxtLink :to="'/'+page.results[0].uid">
 <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000" :speed="1500" :autoplay="true">
 <div v-for="(item, i) in page.results[0].data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
-  <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[75vh] object-cover md:object-scale-down w-full"/><div v-if="page.results[0].data.status != 'ORDER'" :class="page.results[0].data.status == 'email'?'':'preorder'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.results[0].data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="page.results[0].data.status == 'PRE-ORDER'|| item.data.status == 'customize'" class="opacity-60">「{{ page.results[0].data.purple_text[0].text }}」</div></div></div>
+  <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[75vh] object-cover md:object-scale-down w-full"/><div v-if="page.results[0].data.status != 'ORDER'" :class="page.results[0].data.status == 'email'?'':'preorder'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.results[0].data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="page.results[0].data.status == 'PRE-ORDER'|| page.results[0].data.status == 'customize'" class="opacity-60">「{{ page.results[0].data.purple_text[0].text }}」</div></div></div>
 </div>
 </VueSlickCarousel>
 </NuxtLink>
