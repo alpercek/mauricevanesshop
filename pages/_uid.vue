@@ -42,37 +42,37 @@
 <table v-if="page.data.slices[1]" class="font-cooperbt text-left tracking-[-0.01em] text-base ml-7 md:ml-0 mt-9 md:mt-7">
       <tbody>
       <tr v-if="page.data.slices[1].primary.year.length > 0">
-        <th class="w-[8.6rem] font-normal">Year:</th>
+        <th class="w-[8.6rem] align-top font-normal">Year:</th>
         <th class="font-normal"><prismic-rich-text :field="page.data.slices[1].primary.year" /></th>
       </tr>
       <tr v-if="page.data.slices[1].primary.edition.length > 0">
-        <th class="w-[8.6rem] font-normal">Edition:</th>
+        <th class="w-[8.6rem] align-top font-normal">Edition:</th>
         <th class="font-normal"><prismic-rich-text :field="page.data.slices[1].primary.edition" /></th>
       </tr>
       <tr v-if="page.data.slices[1].primary.pages.length > 0">
-        <th class="w-[8.6rem] font-normal">Pages:</th>
+        <th class="w-[8.6rem] align-top font-normal">Pages:</th>
         <th class="font-normal"><prismic-rich-text :field="page.data.slices[1].primary.pages" /></th>
       </tr>
       <tr v-if="page.data.slices[1].primary.dimensions.length > 0">
-        <th class="w-[8.6rem] font-normal">Dimensions:</th>
+        <th class="w-[8.6rem] align-top font-normal">Dimensions:</th>
         <th class="font-normal"><prismic-rich-text :field="page.data.slices[1].primary.dimensions" /></th>
       </tr>
       <tr v-if="page.data.slices[1].primary.paper.length > 0">
-        <th class="w-[8.6rem] font-normal">Paper:</th>
+        <th class="w-[8.6rem] align-top font-normal">Paper:</th>
         <th class="font-normal"><prismic-rich-text :field="page.data.slices[1].primary.paper" /></th>
       </tr>
       <tr v-if="page.data.slices[1].primary.copyright.length > 0">
-        <th class="w-[8.6rem] font-normal">Copyright:</th>
+        <th class="w-[8.6rem] align-top font-normal">Copyright:</th>
         <th class="font-normal"><prismic-rich-text :field="page.data.slices[1].primary.copyright" /></th>
       </tr>
       <tr v-if="page.data.slices[1].primary.isbn.length > 0">
-        <th class="w-[8.6rem] font-normal">ISBN:</th>
+        <th class="w-[8.6rem] align-top font-normal">ISBN:</th>
         <th class="font-normal"><prismic-rich-text :field="page.data.slices[1].primary.isbn" /></th>
       </tr>
     </tbody>
     <tbody v-for="(item, i) in page.data.slices[1].items" :key="`slice-item-${i}`">
       <tr>
-        <th class="w-[8.6rem] font-normal"><prismic-rich-text :field="item.title"/></th>
+        <th class="w-[8.6rem] align-top font-normal"><prismic-rich-text :field="item.title"/></th>
         <th class="font-normal"><prismic-rich-text :field="item.content" /></th>
       </tr>
     </tbody>
