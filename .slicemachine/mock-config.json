@@ -76,6 +76,9 @@
         "content": "ORDER"
       }
     },
-    "shipping": {}
+    "shipping": {},
+    "index_page": {
+      "products": {}
+    }
   }
 }

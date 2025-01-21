@@ -1,0 +1,28 @@
+{
+  "id": "index_page",
+  "label": "Index Page",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "products": {
+        "type": "Group",
+        "config": {
+          "label": "products",
+          "fields": {
+            "product": {
+              "type": "Link",
+              "config": {
+                "label": "product",
+                "select": "document",
+                "customtypes": [
+                  "product"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

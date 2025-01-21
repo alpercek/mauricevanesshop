@@ -1,45 +1,45 @@
 <template>
   <div class="pb-5">
   <div class="pb-32">
-    <div v-if="page.results[0].data.slices[0]">
+    <div v-if="page[0].data.slices[0]">
       <!--mobile slider-->
-      <template v-if="isMobile && page.results[0].data.slices[2]">
+      <template v-if="isMobile && page[0].data.slices[2]">
     <div class="relative md:w-[56vw] m-auto">
-      <NuxtLink :to="'/'+page.results[0].uid">
+      <NuxtLink :to="'/'+page[0].uid">
     <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000" :speed="1500" :autoplay="true">
-    <div v-for="(item, i) in page.results[0].data.slices[2].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
-      <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[75vh] object-cover md:object-scale-down w-full"/><div v-if="page.results[0].data.status != 'ORDER' && page.results[0].data.blurring == 'all slides' || page.results[0].data.status != 'ORDER' && page.results[0].data.blurring == 'only first slide' && i == 0" :class="page.results[0].data.status == 'email'?'':'preorder'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.results[0].data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="page.results[0].data.status == 'PRE-ORDER' || item.data.status == 'customize'" class="opacity-60">「{{ page.results[0].data.purple_text[0].text }}」</div></div></div>
+    <div v-for="(item, i) in page[0].data.slices[2].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
+      <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[75vh] object-cover md:object-scale-down w-full"/><div v-if="page[0].data.status != 'ORDER' && page[0].data.blurring == 'all slides' || page[0].data.status != 'ORDER' && page[0].data.blurring == 'only first slide' && i == 0" :class="page[0].data.status == 'email'?'':'preorder'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page[0].data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="page[0].data.status == 'PRE-ORDER' || item.data.status == 'customize'" class="opacity-60">「{{ page[0].data.purple_text[0].text }}」</div></div></div>
     </div>
   </VueSlickCarousel>
 </NuxtLink>
-  <div v-if="page.results[0].data.slices[0].items.length > 1" class="hidden md:flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2"> <button @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext" class="hidden md:block"><i class="arrow right"></i></button></div>
+  <div v-if="page[0].data.slices[0].items.length > 1" class="hidden md:flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2"> <button @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext" class="hidden md:block"><i class="arrow right"></i></button></div>
 </div>
 </template>
 <!-- slider-->
 <template v-else >
 <div class="relative md:w-[56vw] m-auto">
-  <NuxtLink :to="'/'+page.results[0].uid">
+  <NuxtLink :to="'/'+page[0].uid">
 <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000" :speed="1500" :autoplay="true">
-<div v-for="(item, i) in page.results[0].data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
-  <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[75vh] object-cover md:object-scale-down w-full"/><div v-if="page.results[0].data.status != 'ORDER' && page.results[0].data.blurring == 'all slides' || page.results[0].data.status != 'ORDER' && page.results[0].data.blurring == 'only first slide' && i == 0" :class="page.results[0].data.status == 'email'?'':'preorder'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.results[0].data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="page.results[0].data.status == 'PRE-ORDER'|| page.results[0].data.status == 'customize'" class="opacity-60">「{{ page.results[0].data.purple_text[0].text }}」</div></div></div>
+<div v-for="(item, i) in page[0].data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
+  <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[75vh] object-cover md:object-scale-down w-full"/><div v-if="page[0].data.status != 'ORDER' && page[0].data.blurring == 'all slides' || page[0].data.status != 'ORDER' && page[0].data.blurring == 'only first slide' && i == 0" :class="page[0].data.status == 'email'?'':'preorder'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page[0].data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="page[0].data.status == 'PRE-ORDER'|| page[0].data.status == 'customize'" class="opacity-60">「{{ page[0].data.purple_text[0].text }}」</div></div></div>
 </div>
 </VueSlickCarousel>
 </NuxtLink>
-<div v-if="page.results[0].data.slices[0].items.length > 1" class="hidden md:flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2"> <button @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext" class="hidden md:block"><i class="arrow right"></i></button></div>
+<div v-if="page[0].data.slices[0].items.length > 1" class="hidden md:flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2"> <button @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext" class="hidden md:block"><i class="arrow right"></i></button></div>
 </div>
 </template>
 <!--end-->
 <div class="md:pb-36">
-  <NuxtLink :to="'/'+page.results[0].uid">
-  <div :style="{'color':page.results[0].data.color}" class="flex justify-center pt-2.5 md:pt-5 font-cooperbt text-xl items-center gap-0.5"><div :style="{'background-color':page.results[0].data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center">{{ page.results[0].data.number }}</div><prismic-rich-text :field="page.results[0].data.title" class="" /></div>
-  <div class="text-center font-garamond hidden md:block w-[33rem] m-auto" ><prismic-rich-text v-if="page.results[0].data.description.text" :field="page.results[0].data.description" class="pt-8" />
-  <prismic-rich-text v-if="page.results[0].data.extra_line.text" :field="page.results[0].data.extra_line" class="italic pt-5" />
-  <div v-if="page.results[0].data.price > 0" class="italic pt-5">€{{ page.results[0].data.price }},–</div></div>
+  <NuxtLink :to="'/'+page[0].uid">
+  <div :style="{'color':page[0].data.color}" class="flex justify-center pt-2.5 md:pt-5 font-cooperbt text-xl items-center gap-0.5"><div :style="{'background-color':page[0].data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center">{{ page[0].data.number }}</div><prismic-rich-text :field="page[0].data.title" class="" /></div>
+  <div class="text-center font-garamond hidden md:block w-[33rem] m-auto" ><prismic-rich-text v-if="page[0].data.description.text" :field="page[0].data.description" class="pt-8" />
+  <prismic-rich-text v-if="page[0].data.extra_line.text" :field="page[0].data.extra_line" class="italic pt-5" />
+  <div v-if="page[0].data.price > 0" class="italic pt-5">€{{ page[0].data.price }},–</div></div>
   </NuxtLink>
 </div>
 </div>
   <div class="md:grid grid-cols-3 md:px-[7vw] gap-x-8 gap-y-12 max-w-[2000px]">
-    <div v-for="(item, i) in page.results" :key="`slice-item-${i}`" class="pt-9 md:pt-0" v-if="i != 0">
+    <div v-for="(item, i) in page" :key="`slice-item-${i}`" class="pt-9 md:pt-0" v-if="i != 0">
     <NuxtLink :to="'/'+item.uid">
     <div class="relative"><PrismicImage :field="item.data.image" class="h-[62vh] md:h-[38.5vw] w-full md:border object-cover"/><div v-if="item.data.status != 'ORDER'" :class="item.data.status == 'email'?'':'preorder'" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="item.data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="item.data.status == 'PRE-ORDER' || item.data.status == 'customize' " class="opacity-60">「{{ item.data.purple_text[0].text }}」</div></div></div>
     <div :style="{'color':item.data.color}" class="flex justify-center pt-4 md:pt-5 font-cooperbt text-xl items-center gap-0.5"><span><div :style="{'background-color':item.data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center">{{ item.data.number }}</div></span><prismic-rich-text :field="item.data.title"/></div>
@@ -60,16 +60,17 @@ import VueSlickCarousel from 'vue-slick-carousel'
 
 export default {
   async asyncData ({ $prismic, store }) {
-    const page = await $prismic.api.query(
-      $prismic.predicates.at('document.type','product'),{
-        orderings: '[my.product.uid, document.first_publication_date]'
+      const items = await $prismic.api.getSingle('index_page')
+      const page = []
+      for (let i = 0; i < items.data.products.length; i++) {
+        page.push(await $prismic.api.getByUID('product', items.data.products[i].product.uid))
       }
-    )
-    await store.dispatch('prismic/load')
-    return {
-      page
-    }
-  },
+      await store.dispatch('prismic/load')
+      return {
+        items,
+        page
+      }
+    },
   data () {
     return { components, 
       window: {
