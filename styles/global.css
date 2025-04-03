@@ -8,6 +8,10 @@
   src: url("../styles/CooperBT-Light.otf");
 }
 @font-face {
+  font-family: "COOPERBTBOLD";
+  src: url("../styles/CooperBT-Bold.otf");
+}
+@font-face {
   font-family: "GARAMOND";
   src: url("../styles/GaramondPremrPro.otf");
 }
@@ -18,6 +22,18 @@
 @font-face {
   font-family: "METRIKMID";
   src: url("../styles/MetrikMedium.otf");
+}
+@font-face {
+  font-family: "VENUS";
+  src: url("../styles/venus.ttf");
+}
+@font-face {
+  font-family: "MARU";
+  src: url("../styles/manu.otf");
+}
+@font-face {
+  font-family: "MARUDEMI";
+  src: url("../styles/manudemi.otf");
 }
 
 
