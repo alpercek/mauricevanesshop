@@ -31,7 +31,7 @@
 		</div>
   </div>
 
-<div class="absolute left-0 top-[50vh] md:bottom-[136px] w-screen text-left md:text-center pointer-events-none pl-[28px] pl-0">
+<div class="absolute left-0 top-[50vh] md:top-auto md:bottom-[136px] w-screen text-left md:text-center pointer-events-none pl-[28px] pl-0">
   <div class="text-[42px] md:text-[72px] font-venus text-[#FFEB00] leading-[39px]"  style="text-stroke: 1px #FF0000; -webkit-text-stroke: 1px #FF0000;">Pre-Sale Open – Book Launch in</div>
   <div ref="counter" class="text-[11vw] md:text-[72px] font-maru text-white"  style="text-shadow: black 2px 2px;"></div>
 </div>
