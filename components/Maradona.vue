@@ -4,39 +4,44 @@
       <button @click="$emit('goToSite')" class="cursor-pointer text-[2.5rem] text-white font-cooperbtbold absolute left-1/2 -translate-x-1/2 bottom-0 pb-[1.75rem]" 
         style="text-shadow: black 2px 2px; text-stroke: 1px black; -webkit-text-stroke: 1px black;">go to site</button>
 
-      <div class="absolute bottom-0 left-0 -translate-x-[32%] -translate-y-[75%]">
+      <div class="scale-[0.6] md:scale-100 absolute bottom-0 left-0 origin-bottom-left">
+        <div class="-translate-x-[32%] -translate-y-[75%]">
         <div class="font-platform bg-[#FF0000] border border-black border-[2px] h-[5.313rem] w-[36.875rem] flex justify-center items-center rotate-45">
           <h1 class="neon-text">PRE-ORDER</h1>
         </div>
       </div>
+    </div>
     
-  <div class="absolute left-[164px] bottom-[145px] scale-90">
+  <div class="absolute left-[13vw] bottom-[13vh] md:left-[164px] md:bottom-[145px] scale-90">
     <div id="Awesome" class="anim750">
       <div class="reveal circle_wrapper">
-		    <div class="circle text-5xl text-white">€65</div>
+		    <div class="circle text-5xl text-white font-marudemi">€65</div>
 	    </div>
 			<div class="sticky anim750">
-		    <div class="front circle_wrapper anim750">
+		    <div id="front" class="front circle_wrapper anim750">
 			    <div class="circle anim750"></div>
 	      </div>
 	    </div>
-      <h4 id="cost85" class="text-white text-5xl reveal circle">€85</h4>
+      <h4 id="cost85" class="text-white text-5xl reveal circle font-marudemi">€85</h4>
 			<div class="sticky anim750">
-		    <div class="back circle_wrapper anim750">
+		    <div id="back" class="back circle_wrapper anim750">
 			    <div class="circle anim750"></div>
 		    </div>
 	    </div>
 		</div>
   </div>
 
-  <div class="absolute left-0 bottom-[217px] w-screen text-center text-[72px] font-venus text-[#FFEB00] pointer-events-none"  style="text-stroke: 1px #FF0000; -webkit-text-stroke: 1px #FF0000;">Pre-Sale Open – Book Launch in</div>
-  <div ref="counter" class="absolute left-0 bottom-[136px] w-screen text-center text-[72px] font-maru text-white pointer-events-none"  style="text-shadow: black 2px 2px;"></div>
+<div class="absolute left-0 top-[50vh] md:bottom-[136px] w-screen text-left md:text-center pointer-events-none pl-[28px] pl-0">
+  <div class="text-[42px] md:text-[72px] font-venus text-[#FFEB00] leading-[39px]"  style="text-stroke: 1px #FF0000; -webkit-text-stroke: 1px #FF0000;">Pre-Sale Open – Book Launch in</div>
+  <div ref="counter" class="text-[11vw] md:text-[72px] font-maru text-white"  style="text-shadow: black 2px 2px;"></div>
+</div>
 
-  <div class="absolute bottom-[76px] left-[265px] text-white text-[18px] font-marudemi">
+  <div class="absolute bottom-[13vh] md:bottom-[76px] w-[150px] md:w-auto right-[82px] md:left-[265px] text-white text-[16px] md:text-[18px] font-marudemi">
     <h2 id="doron">pre-sale discount first 200 books*</h2>
   </div>
 
       <img src="@/static/Image2.png" class="h-screen w-screen object-cover hidden md:block" />
+      <img src="@/static/Image2mobile.png" class="h-screen w-screen object-cover md:hidden" />
         <!--<PrismicImage :field="settings.data.splashimage" class="h-screen w-screen object-cover hidden md:block"/>
         <PrismicImage :field="settings.data.splashimagephone" class="h-screen w-screen object-cover md:hidden"/>-->
       </div>
@@ -68,7 +73,11 @@ export default {
         elements[i].classList.add('peel')
       }
 	  document.getElementById('cost85').style.opacity = '0'
-    }, 4000)
+    setTimeout(() => {
+      document.getElementById('front').remove()
+      document.getElementById('back').remove()
+    }, 750)
+      }, 4000)
     },
 	timeToGo() {
     const second = 1000,
@@ -214,8 +223,6 @@ export default {
 }
 
 #Awesome h4{
-  font-family: 'helvetica neue', arial;
-  font-weight: 200;
   text-align: center;
 	position: absolute;
 	width: 180px;
