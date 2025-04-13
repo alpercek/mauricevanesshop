@@ -1,7 +1,7 @@
 {
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "himself"
+    "value": "edge"
   },
   "status": {
     "__TYPE__": "FieldContent",
@@ -15,8 +15,13 @@
   },
   "customized_text": {
     "__TYPE__": "FieldContent",
-    "value": "compass",
+    "value": "machinery",
     "type": "Text"
+  },
+  "preorderlaunchdate": {
+    "__TYPE__": "FieldContent",
+    "type": "Date",
+    "value": "2013-04-10"
   },
   "purple_text": {
     "__TYPE__": "StructuredTextContent",
@@ -24,14 +29,14 @@
       {
         "type": "paragraph",
         "content": {
-          "text": "Elit consectetur et velit non non aliquip ut adipisicing mollit ipsum."
+          "text": "Dolore ea minim minim aute commodo cillum cupidatat eu laborum cillum."
         }
       }
     ]
   },
   "number": {
     "__TYPE__": "FieldContent",
-    "value": "27",
+    "value": "31",
     "type": "Number"
   },
   "title": {
@@ -40,7 +45,7 @@
       {
         "type": "paragraph",
         "content": {
-          "text": "Duis occaecat do pariatur consectetur anim cupidatat sunt proident esse ex mollit. Duis Lorem enim ipsum ut nulla ex enim sit consectetur nisi. Laborum consequat aliquip reprehenderit sunt adipisicing."
+          "text": "Aliqua amet nulla enim voluptate enim enim laboris velit eiusmod laborum nostrud ea. Duis ad id commodo laborum ut elit."
         }
       }
     ]
@@ -51,7 +56,7 @@
       {
         "type": "paragraph",
         "content": {
-          "text": "Laborum non nostrud culpa."
+          "text": "Officia minim non do velit."
         }
       }
     ]
@@ -60,13 +65,13 @@
     "__TYPE__": "ImageContent",
     "origin": {
       "id": "main",
-      "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
-      "width": 3560,
-      "height": 5340
+      "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+      "width": 5243,
+      "height": 3495
     },
-    "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
-    "width": 3560,
-    "height": 5340,
+    "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+    "width": 5243,
+    "height": 3495,
     "edit": {
       "zoom": 1,
       "crop": {
@@ -83,26 +88,26 @@
       {
         "type": "paragraph",
         "content": {
-          "text": "Culpa proident irure anim sunt amet ea non voluptate aute ad culpa ex officia eiusmod. Cillum nulla occaecat fugiat proident fugiat occaecat magna irure et in dolor esse aute sint excepteur. In reprehenderit tempor proident."
+          "text": "Non culpa non nulla est adipisicing proident dolore. Mollit voluptate amet qui velit enim ea aute consequat id. Deserunt est enim aliqua laboris ex occaecat duis irure proident eiusmod voluptate nostrud ea."
         }
       }
     ]
   },
   "price": {
     "__TYPE__": "FieldContent",
-    "value": "49",
+    "value": "36",
     "type": "Number"
   },
   "color": {
     "__TYPE__": "FieldContent",
-    "value": "#a39704",
+    "value": "#e9cdbe",
     "type": "Color"
   },
   "slices": {
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "slider$fdb69a4f-68b5-4b56-8b5b-9046c9130623",
+        "key": "slider$db86a5c6-049d-4ef2-bcb1-d6ca6ef990b3",
         "name": "slider",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -130,13 +135,13 @@
                     "__TYPE__": "ImageContent",
                     "origin": {
                       "id": "main",
-                      "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
-                      "width": 3560,
-                      "height": 5340
+                      "url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea",
+                      "width": 3500,
+                      "height": 2338
                     },
-                    "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
-                    "width": 3560,
-                    "height": 5340,
+                    "url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea",
+                    "width": 3500,
+                    "height": 2338,
                     "edit": {
                       "zoom": 1,
                       "crop": {
@@ -154,7 +159,7 @@
         }
       },
       {
-        "key": "book_info$2bb8cd8f-e5e4-43e4-af04-77ded6948e64",
+        "key": "book_info$69ab636a-d89d-4d03-9c50-d9481127802c",
         "name": "book_info",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -166,7 +171,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Ipsum velit excepteur ea."
+                    "text": "Minim est dolore qui elit nisi non ea excepteur magna magna officia do laborum esse officia. Aliqua esse nostrud minim magna dolor incididunt ipsum ex magna esse occaecat eu cupidatat id velit. Reprehenderit esse Lorem et magna est proident aliqua tempor ex non dolore laboris fugiat ipsum."
                   }
                 }
               ]
@@ -177,7 +182,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Aliqua aute officia reprehenderit deserunt elit et tempor amet cillum culpa aliqua consequat. Consequat commodo consequat in proident ullamco mollit velit eiusmod deserunt consectetur culpa magna consectetur sit duis. Id duis ipsum elit ex excepteur enim et incididunt."
+                    "text": "Eu dolor sit eu quis adipisicing non aliqua adipisicing dolore. Deserunt irure sunt proident in consectetur est. Tempor est consequat incididunt non."
                   }
                 }
               ]
@@ -188,7 +193,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Excepteur minim ut non amet laboris aute tempor nisi aute adipisicing ipsum aliqua sunt duis officia."
+                    "text": "Reprehenderit labore deserunt est sint eiusmod adipisicing consectetur. Proident consequat occaecat mollit amet id. Minim veniam aliquip voluptate quis mollit occaecat ipsum."
                   }
                 }
               ]
@@ -199,7 +204,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Velit occaecat sunt ipsum sunt consequat mollit ad. Anim nostrud eu velit sint adipisicing tempor excepteur non elit. Esse dolor consectetur elit duis velit."
+                    "text": "Minim ullamco aute sint culpa veniam qui occaecat elit proident tempor aliqua dolor labore esse."
                   }
                 }
               ]
@@ -210,7 +215,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Pariatur est aute non ut exercitation. Elit aute id qui aliqua elit esse tempor esse nulla ex."
+                    "text": "Sint velit commodo officia magna. Consequat Lorem laboris sint adipisicing commodo pariatur enim nulla voluptate."
                   }
                 }
               ]
@@ -221,7 +226,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Consequat culpa id esse dolor pariatur duis laboris commodo et eu dolore laborum ex enim do."
+                    "text": "Aute exercitation nostrud nostrud enim labore culpa id ea consequat non enim labore eu commodo."
                   }
                 }
               ]
@@ -232,7 +237,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Magna eu quis est velit Lorem enim magna velit. Id pariatur sit officia duis. Amet adipisicing dolore reprehenderit irure adipisicing ullamco pariatur exercitation non laboris excepteur pariatur consectetur est duis."
+                    "text": "Occaecat exercitation aliqua sint nisi adipisicing do ad consectetur non occaecat. Do eiusmod ad ad tempor mollit exercitation esse. Duis qui sint adipisicing sunt."
                   }
                 }
               ]
@@ -250,7 +255,7 @@
                       {
                         "type": "paragraph",
                         "content": {
-                          "text": "Fugiat ullamco quis anim in veniam dolor."
+                          "text": "Tempor ea enim minim sit consequat consectetur do qui ex."
                         }
                       }
                     ]
@@ -264,7 +269,7 @@
                       {
                         "type": "paragraph",
                         "content": {
-                          "text": "Anim incididunt reprehenderit aute pariatur commodo tempor veniam non eiusmod ut aute cupidatat fugiat."
+                          "text": "Excepteur ea id eiusmod tempor incididunt id sint enim quis."
                         }
                       }
                     ]
@@ -276,7 +281,7 @@
         }
       },
       {
-        "key": "mobile_slider$d86c8516-5d73-44e0-8c8a-cadf12814ed7",
+        "key": "mobile_slider$549fd614-a961-43e9-95e9-03c74ac1e436",
         "name": "mobile_slider",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -304,13 +309,13 @@
                     "__TYPE__": "ImageContent",
                     "origin": {
                       "id": "main",
-                      "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
-                      "width": 4000,
-                      "height": 6000
+                      "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
+                      "width": 2747,
+                      "height": 4120
                     },
-                    "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
-                    "width": 4000,
-                    "height": 6000,
+                    "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
+                    "width": 2747,
+                    "height": 4120,
                     "edit": {
                       "zoom": 1,
                       "crop": {

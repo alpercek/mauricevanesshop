@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div :style="{'color':settings.data.splashcolor}" class="relative z-20 inset-0 h-screen">
-      <button @click="$emit('goToSite')" class="cursor-pointer text-[2.5rem] text-white font-cooperbtbold absolute left-1/2 -translate-x-1/2 bottom-0 pb-[1.75rem]" 
+    <div @click="$emit('goToSite')" :style="{'color':settings.data.splashcolor}" class="relative z-20 inset-0 h-screen">
+      <button class="cursor-pointer hidden md:block text-[2.5rem] text-white font-cooperbtbold absolute left-1/2 -translate-x-1/2 bottom-0 pb-[1.75rem]" 
         style="text-shadow: black 2px 2px; text-stroke: 1px black; -webkit-text-stroke: 1px black;">go to site</button>
 
       <div class="scale-[0.6] md:scale-100 absolute bottom-0 left-0 origin-bottom-left">
@@ -15,7 +15,7 @@
   <div class="absolute left-[13vw] bottom-[13vh] md:left-[164px] md:bottom-[145px] scale-90">
     <div id="Awesome" class="anim750">
       <div class="reveal circle_wrapper">
-		    <div class="circle text-5xl text-white font-marudemi">€65</div>
+		    <div class="circle text-5xl text-white font-marudemi">€69</div>
 	    </div>
 			<div class="sticky anim750">
 		    <div id="front" class="front circle_wrapper anim750">
@@ -33,7 +33,7 @@
 
 <div class="absolute left-0 top-[50vh] md:top-auto md:bottom-[136px] w-screen text-left md:text-center pointer-events-none pl-[28px] pl-0">
   <div class="text-[42px] md:text-[72px] font-venus text-[#FFEB00] leading-[39px]"  style="text-stroke: 1px #FF0000; -webkit-text-stroke: 1px #FF0000;">Pre-Sale Open – Book Launch in</div>
-  <div ref="counter" class="text-[11vw] md:text-[72px] font-maru text-white"  style="text-shadow: black 2px 2px;"></div>
+  <div ref="counter" class="text-[11vw] md:text-[72px] font-maru text-white space-x-4"  style="text-shadow: black 2px 2px;"><span></span><span></span><span></span></div>
 </div>
 
   <div class="absolute bottom-[13vh] md:bottom-[76px] w-[150px] md:w-auto right-[82px] md:left-[265px] text-white text-[16px] md:text-[18px] font-marudemi">
@@ -52,6 +52,7 @@
 export default {
   data(){
     return{
+      interval: null
   }
   },
   props: {
@@ -63,7 +64,10 @@ export default {
   mounted(){
     this.peel()
     this.timeToGo()
-    setInterval(this.timeToGo, 1000)
+    this.interval = setInterval(this.timeToGo, 1000)
+  },
+  beforeDestroy() {
+    clearInterval(this.interval);
   },
   methods:{
     peel(){
@@ -100,7 +104,9 @@ export default {
     diff = Math.abs(diff);
 
     // Return formatted string
-    this.$refs.counter.innerText = sign + 'D:' + z(Math.floor(diff / (day))) + ' H:' + z(Math.floor((diff % (day)) / (hour))) + ' S:' + z(Math.floor((diff % (minute)) / second));
+    this.$refs.counter.children[0].innerText = sign + 'D:' + z(Math.floor(diff / (day)));
+    this.$refs.counter.children[1].innerText = 'H:' + z(Math.floor((diff % (day)) / (hour)));
+    this.$refs.counter.children[2].innerText ='S:' + z(Math.floor((diff % (minute)) / second));
 	}
   }
 }
@@ -111,17 +117,21 @@ export default {
     color: #FCEE21;
     text-stroke: 1px #0000FF; 
     -webkit-text-stroke: 1px #0000FF;
-    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 80px #ffffff;
+    text-shadow: 0 0 5px #ffffff, 0 0 1px #ffffff, 0 0 2px #ffffff, 0 0 4px #ffffff, 0 0 8px #ffffff;
     animation: glow 2.5s infinite alternate;
 }
 
 @keyframes glow {
     0% {
-        text-shadow: 0 0 5px #f7f6d3bb, 0 0 10px #f7f6d3bb, 0 0 20px #f7f6d3bb, 0 0 40px #f7f6d3bb, 0 0 80px #f7f6d3bb;
+        text-shadow: 0 0 1px #f7f6d3, 0 0 1px #f7f6d3, 0 0 2px #f7f6d3, 0 0 4px #f7f6d3, 0 0 8px #f7f6d3;
+    }
+    50% {
+        text-shadow: 0 0 2px #ffee00, 0 0 2px #ffee00, 0 0 4px #ffee00, 0 0 8px #ffee00, 0 0 16px #ffee00;
     }
     100% {
-        text-shadow: 0 0 10px #ffee0091, 0 0 20px #ffee0091, 0 0 40px #ffee0091, 0 0 80px #ffee0091, 0 0 160px #ffee0091;
+        text-shadow: 0 0 1px #f7f6d3, 0 0 1px #f7f6d3, 0 0 2px #f7f6d3, 0 0 4px #f7f6d3, 0 0 8px #f7f6d3;
     }
+    
 }
 .anim750{
   transition: all 750ms ease-in-out;

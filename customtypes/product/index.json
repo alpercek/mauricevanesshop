@@ -45,6 +45,13 @@
           "placeholder": "Only for customized status"
         }
       },
+      "preorderlaunchdate": {
+        "type": "Date",
+        "config": {
+          "label": "PreOrderLaunchDate",
+          "placeholder": ""
+        }
+      },
       "purple_text": {
         "type": "StructuredText",
         "config": {

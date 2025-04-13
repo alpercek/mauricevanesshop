@@ -6,7 +6,7 @@
   <div class="relative md:w-[56vw] m-auto">
    <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed" :speed="1500" :autoplay="true" >
       <div v-for="(item, i) in page.data.slices[2].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
-        <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/><div v-if="page.data.status != 'ORDER' && page.data.blurring == 'all slides' || page.data.status != 'ORDER' && page.data.blurring == 'only first slide' && i == 0" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="page.data.status == 'PRE-ORDER' || page.data.status == 'customize'" class="opacity-60">「{{ page.data.purple_text[0].text }}」</div></div></div>
+        <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/><div v-if="page.data.status != 'ORDER' && page.data.blurring == 'all slides' || page.data.status != 'ORDER' && page.data.blurring == 'only first slide' && i == 0" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="page.data.status == 'PRE-ORDER' || page.data.status == 'customize'" class="opacity-60 flex flex-col text-center gap-[30px]">「{{ page.data.purple_text[0].text }}」<div class="text-lg alpercounter"></div></div></div></div>
         </div>
         <div v-if="mobileVideo.url" class="m-auto pt-1.5 relative">
         <video onclick="this.play(); this.nextElementSibling.remove()" type="video/mp4" playsinline id="vd" :src="video.url" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full cursor-pointer"></video>
@@ -23,8 +23,16 @@
   <div class="relative md:w-[56vw] m-auto">
    <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed" :speed="1500" :autoplay="true" >
       <div v-for="(item, i) in page.data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">
-        <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/><div v-if="page.data.status != 'ORDER' && page.data.blurring == 'all slides' || page.data.status != 'ORDER' && page.data.blurring == 'only first slide' && i == 0" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="page.data.status == 'PRE-ORDER'|| page.data.status == 'customize'" class="opacity-60">「{{ page.data.purple_text[0].text }}」</div></div></div>
+        
+        <div class="relative">
+        <PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/>
+          <div v-if="page.data.status != 'ORDER' && page.data.blurring == 'all slides' || page.data.status != 'ORDER' && page.data.blurring == 'only first slide' && i == 0" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]">
+            <div v-if="page.data.status == 'email'" class="opacity-60">「out of stock」</div>
+            <div v-else-if="page.data.status == 'PRE-ORDER'|| page.data.status == 'customize'" class="opacity-60 flex flex-col text-center gap-[30px]">「{{ page.data.purple_text[0].text }}」<div class="text-lg alpercounter"></div></div>
+          </div>
         </div>
+
+      </div>
         <div v-if="video.url" class="m-auto pt-1.5 relative">
         <video onclick="this.play(); this.nextElementSibling.remove()" type="video/mp4" playsinline id="vd" :src="video.url" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full cursor-pointer"></video>
         <div class="pointer-events-none absolute top-3/4 left-1/2 -translate-x-1/2 text-2xl bg-white px-1.5 rounded-full font-metrik">click to play &#x23F5;</div>
@@ -126,6 +134,7 @@ export default {
   },
   data () {
     return { components,
+      intervall: null,
       window: {
             width: 0,
             height: 0
@@ -151,6 +160,32 @@ export default {
     }
   },
   methods: { 
+      ttimeToGo() {
+        const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+
+	var b = this.page.data.preorderlaunchdate.split(/[-TZ:]/i)
+	var d = new Date(Date.UTC(b[0], --b[1], b[2]))
+    // Utility to add leading zero
+    function z(n) {
+      return (n < 10? '0' : '') + n;
+    }
+
+    // Convert string to date object
+    var diff = d - new Date();
+
+    // Allow for previous times
+    var sign = diff < 0? '-' : '';
+    diff = Math.abs(diff);
+
+    // Return formatted string
+    const all = document.getElementsByClassName('alpercounter')
+    for (let i = 0; i < all.length; i++) {
+      all[i].innerText = sign + z(Math.floor(diff / (day))) + ' days ' + z(Math.floor((diff % (day)) / (hour))) + ' hours ' + z(Math.floor((diff % (minute)) / second)) + ' seconds till launch';
+    }
+	    },
       showNext() {
         this.$refs.carousel.next()
         
@@ -195,10 +230,15 @@ name: 'MyComponent',
     props: getSliceComponentProps(['slice', 'index', 'slices', 'context']),
 mounted(){
   window.addEventListener('resize', this.handleResize);
-        this.handleResize();
+  this.handleResize();
+  if(this.page.data.preorderlaunchdate){
+    this.ttimeToGo();
+    this.intervall = setInterval(this.ttimeToGo, 1000)
+  }
 },
 beforeDestroy() {
         window.removeEventListener('resize', this.handleResize);
+        clearInterval(this.intervall);
     }
 }
 </script>
