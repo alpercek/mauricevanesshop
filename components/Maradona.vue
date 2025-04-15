@@ -12,24 +12,11 @@
       </div>
     </div>
     
-  <div class="absolute left-[13vw] bottom-[13vh] md:left-[164px] md:bottom-[145px] scale-90">
-    <div id="Awesome" class="anim750">
-      <div class="reveal circle_wrapper">
-		    <div class="circle text-5xl text-white font-marudemi">€69</div>
-	    </div>
-			<div class="sticky anim750">
-		    <div id="front" class="front circle_wrapper anim750">
-			    <div class="circle anim750"></div>
-	      </div>
-	    </div>
-      <h4 id="cost85" class="text-white text-5xl reveal circle font-marudemi">€85</h4>
-			<div class="sticky anim750">
-		    <div id="back" class="back circle_wrapper anim750">
-			    <div class="circle anim750"></div>
-		    </div>
-	    </div>
-		</div>
-  </div>
+    <div class="absolute left-[13vw] bottom-[13vh] md:left-[164px] md:bottom-[60px]
+    grid items-center justify-items-center animscale">
+      <div style="grid-column: 1; grid-row: 1;" class="text-[12.5rem] text-[#FF0000] z-10 spin">✸</div>
+      <div ref="stickerprice" style="grid-column: 1; grid-row: 1; text-shadow: #000 0 0 7px" class="text-5xl text-white font-marudemi z-20">€85</div>
+    </div>
 
 <div class="absolute left-0 top-[50vh] md:top-auto md:bottom-[136px] w-screen text-left md:text-center pointer-events-none pl-[28px] pl-0">
   <div class="text-[42px] md:text-[72px] font-venus text-[#FFEB00] leading-[39px]"  style="text-stroke: 1px #FF0000; -webkit-text-stroke: 1px #FF0000;">Pre-Sale Open – Book Launch in</div>
@@ -85,16 +72,8 @@ export default {
   methods:{
   peel(){
     setTimeout(() => {
-      const elements = document.getElementsByClassName('anim750')
-      for (let i = 0; i < elements.length; i++) {
-        elements[i].classList.add('peel')
-      }
-	  document.getElementById('cost85').style.opacity = '0'
-    setTimeout(() => {
-      document.getElementById('front').remove()
-      document.getElementById('back').remove()
-    }, 750)
-      }, 4000)
+      this.$refs.stickerprice.innerText = "€69"
+      }, 4250)
   },
 	timeToGo(){
     const second = 1000,
@@ -125,6 +104,28 @@ export default {
 }
 </script>
 <style scoped>
+.animscale{
+  animation: scale 1s linear 3.9s 1 normal both;
+}
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.spin{
+  animation: spin 8s linear 4s infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .neon-text {
     font-size: 4rem;
     color: #FCEE21;
@@ -145,168 +146,5 @@ export default {
         text-shadow: 0 0 1px #f7f6d3, 0 0 1px #f7f6d3, 0 0 2px #f7f6d3, 0 0 4px #f7f6d3, 0 0 8px #f7f6d3;
     }
     
-}
-.anim750{
-  transition: all 750ms ease-in-out;
-}
-
-#Awesome{
-	position: relative;
-	width: 180px;
-	height: 180px;
-	margin: 0 auto;
-  
-  backface-visibility: hidden;
-}
-
-#Awesome .sticky{
-	transform: rotate(45deg);
-}
-
-#Awesome:hover .sticky{
-	transform: rotate(10deg);
-}
-
-#Awesome .sticky{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width:180px;
-	height: 180px;
-}
-
-#Awesome .reveal .circle{
-
-  line-height: 140px;
-  text-align: center;
-  text-shadow: black 0px 0px 7px;
-  cursor: pointer;
-}
-
-#Awesome .circle_wrapper{
-	position: absolute;
-	width: 180px;
-	height: 180px;
-	left: 0px;
-	top: 0px;
-	overflow: hidden;
-}
-
-#Awesome .circle{
-	position: absolute;
-	width: 140px;
-	height:  140px;
-	margin: 20px;
-	
-	border-radius: 999px;
-}
-
-#Awesome .back{
-	height: 10px;
-	top: 30px;
-}
-
-#Awesome:hover .back{
-	height: 90px;
-	top: 110px;
-}
-
-#Awesome .back .circle{
-	margin-top: -130px;
-	background-color: #f1c8c8;
-
-	background-image: -webkit-linear-gradient(bottom, rgba(251,236,63,.0), rgba(255,255,255,.8));
-}
-
-#Awesome:hover .back .circle{
-	margin-top: -50px;
-}
-
-#Awesome .front{
-	height: 150px;
-	bottom: 0;
-	top: auto;
-	box-shadow: 0 -140px 20px -140px rgba(0,0,0,.3);
-	-webkit-box-shadow: 0 -140px 20px -140px rgba(0,0,0,.3);
-}
-
-#Awesome:hover .front{
-	height: 70px;
-	box-shadow: 0 -60px 10px -60px rgba(0,0,0,.1);
-	-webkit-box-shadow: 0 -60px 10px -60px rgba(0,0,0,.1);
-}
-
-#Awesome .front .circle{
-	margin-top: -10px;
-	background: #FF0000;
-
-	background-image: -webkit-linear-gradient(bottom, rgba(251,236,63,.0) 75%, #f7bb37 95%);
-  background-image: -moz-linear-gradient(bottom, rgba(251,236,63,.0) 75%, #f7bb37 95%);
-  background-image: linear-gradient(bottom, rgba(251,236,63,.0) 75%, #f7bb37 95%);
-}
-
-#Awesome h4{
-  text-align: center;
-	position: absolute;
-	width: 180px;
-	height: 140px;
-  line-height: 140px;
-	
-	transition: opacity 50ms linear 400ms;
-}
-
-#Awesome:hover h4{
-	opacity: 0;
-	transition: opacity 50ms linear 300ms;
-}
-
-#Awesome:hover .front .circle{
-	margin-top: -90px;
-	background-color: #FF0000;
-	background-position: 0 100px;
-}
-
-
-
-#Awesome .peel .sticky{
-	transform: rotate(10deg);
-}
-#Awesome .peel h4{
-	opacity: 0;
-	transition: opacity 50ms linear 300ms;
-}
-
-#Awesome .peel .front .circle{
-	margin-top: -90px;
-	background-color: #FF0000;
-	background-position: 0 100px;
-}
-#Awesome .peel .back{
-	height: 90px;
-	top: 110px;
-}
-
-#Awesome .peel .back .circle{
-	margin-top: -50px;
-}
-
-#Awesome .peel .front{
-	height: 70px;
-	box-shadow: 0 -60px 10px -60px rgba(0,0,0,.1);
-	-webkit-box-shadow: 0 -60px 10px -60px rgba(0,0,0,.1);
-}
-
-#doron{
-  color: white;
-  -webkit-animation: h2 0.35s infinite; 
-  animation: h2 1s infinite;
-}
-@-webkit-keyframes h2 {
-    0%   {text-shadow: 0 0 6px #FFF;}
-    100%  {text-shadow: 0 0 0px #000;}
-}
-@keyframes h2 {
-    0%   {text-shadow: 0 0 6px #FFF;}
-    100%  {text-shadow: 0 0 0px #000;}
 }
 </style>
