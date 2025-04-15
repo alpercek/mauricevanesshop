@@ -40,10 +40,9 @@
     <h2 id="doron">pre-sale discount first 200 books*</h2>
   </div>
 
-      <img src="@/static/Image2.png" class="h-screen w-screen object-cover hidden md:block" />
-      <img src="@/static/Image2mobile.png" class="h-screen w-screen object-cover md:hidden" />
-        <!--<PrismicImage :field="settings.data.splashimage" class="h-screen w-screen object-cover hidden md:block"/>
-        <PrismicImage :field="settings.data.splashimagephone" class="h-screen w-screen object-cover md:hidden"/>-->
+      <img :src="src" class="h-screen w-screen object-cover hidden md:block" />
+      <img :src="msrc" class="h-screen w-screen object-cover md:hidden" />
+
       </div>
   </div>
 </template>
@@ -61,6 +60,20 @@ export default {
       required: true
     }
   },
+  computed:{
+    src(){
+      const images = [require('@/static/maradona/0.png'),
+      require('@/static/maradona/1.jpg'),
+      require('@/static/maradona/2.jpg'),
+      require('@/static/maradona/3.jpg'),
+      require('@/static/maradona/4.jpg')]
+     return images[Math.floor(Math.random() * images.length)]
+    },
+    msrc(){
+      const images = [require('@/static/maradona/mobile0.png')]
+     return images[Math.floor(Math.random() * images.length)]
+    }
+  },
   mounted(){
     this.peel()
     this.timeToGo()
@@ -70,7 +83,7 @@ export default {
     clearInterval(this.interval);
   },
   methods:{
-    peel(){
+  peel(){
     setTimeout(() => {
       const elements = document.getElementsByClassName('anim750')
       for (let i = 0; i < elements.length; i++) {
@@ -82,8 +95,8 @@ export default {
       document.getElementById('back').remove()
     }, 750)
       }, 4000)
-    },
-	timeToGo() {
+  },
+	timeToGo(){
     const second = 1000,
         minute = second * 60,
         hour = minute * 60,
