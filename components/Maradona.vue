@@ -12,7 +12,7 @@
       <img class="absolute h-[39px] md:top-[38px] md:left-[1618px] w-[106px] z-30 right-[48px] top-[57px]" src="@/static/maradona/SVG/nue.svg"/>
       <img class="absolute h-[66px] top-[126px] left-[332px] w-[129px] hidden md:block" src="@/static/maradona/SVG/new.svg"/>
 
-      <img class="absolute h-[511px] top-[144px] left-[27px] w-[1982px] object-cover object-left hidden md:block" src="@/static/maradona/SVG/maradona.svg"/>
+      <img class="absolute top-[144px] left-[27px] w-[calc(100vw+20px)] object-cover object-left hidden md:block" src="@/static/maradona/SVG/maradona.svg"/>
       <img class=" absolute w-[calc(100vw+23px)] h-[45vh] left-[0px] top-[0px] -translate-y-[17px] object-cover object-bottom z-20 md:hidden" src="@/static/maradona/SVG/maramob.svg"/>
 
       <button class="cursor-pointer hidden md:block text-[2.5rem] text-white font-cooperbtbold absolute left-1/2 -translate-x-1/2 bottom-0 pb-[1.75rem]" 
@@ -32,8 +32,8 @@
       <div ref="stickerprice" style="grid-column: 1; grid-row: 1; text-shadow: #000 0 0 7px" class="text-5xl text-white font-marudemi z-20">€85</div>
     </div>
 
-<div class="absolute left-0 top-[50vh] md:top-auto md:bottom-[136px] w-screen text-left md:text-center pointer-events-none pl-[28px] pl-0">
-  <div class="text-[42px] md:text-[72px] font-venus text-[#FFEB00] leading-[39px]"  style="text-stroke: 1px #FF0000; -webkit-text-stroke: 1px #FF0000;">Pre-Sale Open – Book Launch in</div>
+<div class="absolute left-0 top-[50vh] md:top-auto md:bottom-[30vh] lg:bottom-[136px] w-screen text-left md:text-center pl-[28px] pl-0">
+  <div class="text-[42px] md:text-[72px] font-venus text-[#FFEB00] leading-[39px] md:leading-[70px]"  style="text-stroke: 1px #FF0000; -webkit-text-stroke: 1px #FF0000;">Pre-Sale Open – Book Launch in</div>
   <div ref="counter" class="text-[11vw] md:text-[72px] font-maru text-white space-x-4"  style="text-shadow: black 2px 2px;"><span></span><span></span><span></span></div>
 </div>
 
