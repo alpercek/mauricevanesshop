@@ -3,7 +3,7 @@
     <div @click="$emit('goToSite')" :style="{'color':settings.data.splashcolor}" class="relative z-20 inset-0 h-screen">
 
 
-      <img class="absolute md:h-[19px] md:top-[848px] md:left-[1641px] w-[169px] right-[27px] top-[48vh]" src="@/static/maradona/SVG/r.svg"/>
+      <img class="absolute md:h-[19px] md:top-[848px] md:left-[1641px] w-[169px] right-[27px] top-[48vh] z-30" src="@/static/maradona/SVG/r.svg"/>
       <img class="absolute h-[32px] top-[82px] left-[329px] w-[287px] hidden md:block" src="@/static/maradona/SVG/rr.svg"/>
       <img class="absolute h-[47px] top-[35vh] left-[46px] w-[241px] z-30 md:hidden" src="@/static/maradona/SVG/rrr.svg"/>
 
@@ -13,7 +13,7 @@
       <img class="absolute h-[66px] top-[126px] left-[332px] w-[129px] hidden md:block" src="@/static/maradona/SVG/new.svg"/>
 
       <img class="absolute top-[144px] left-[27px] w-[calc(100vw+20px)] object-cover object-left hidden md:block" src="@/static/maradona/SVG/maradona.svg"/>
-      <img class=" absolute w-[calc(100vw+23px)] h-[45vh] left-[0px] top-[5vh] -translate-y-[17px] object-cover object-bottom z-20 md:hidden" src="@/static/maradona/SVG/maramob.svg"/>
+      <img class=" absolute w-[calc(100vw+23px)] left-[0px] top-[10vh] -translate-y-[17px] object-cover object-bottom z-20 md:hidden" src="@/static/maradona/SVG/maramob.svg"/>
 
       <button class="cursor-pointer hidden md:block text-[2.5rem] text-white font-cooperbtbold absolute left-1/2 -translate-x-1/2 bottom-0 pb-[1.75rem]" 
         style="text-shadow: black 2px 2px; text-stroke: 1px black; -webkit-text-stroke: 1px black;">go to site</button>
