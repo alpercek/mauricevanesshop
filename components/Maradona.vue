@@ -8,7 +8,7 @@
       <img class="absolute h-[47px] top-[30vh] left-[46px] w-[241px] z-30 md:hidden" src="@/static/maradona/SVG/rrr.svg"/>
 
 
-      <img class="absolute md:h-[158px] h-[98px] md:top-[60px] md:left-[27px] md:w-[186px] w-[116px] right-[21px] bottom-[18px]" src="@/static/maradona/SVG/num10.svg"/>
+      <img class="absolute md:h-[158px] h-[10vh] md:top-[60px] md:left-[27px] md:w-[186px] right-[21px] bottom-[18px]" src="@/static/maradona/SVG/num10.svg"/>
       <img class="absolute h-[39px] md:top-[38px] md:left-[1618px] w-[106px] z-30 right-[48px] top-[57px]" src="@/static/maradona/SVG/nue.svg"/>
       <img class="absolute h-[66px] top-[126px] left-[332px] w-[129px] hidden md:block" src="@/static/maradona/SVG/new.svg"/>
 
@@ -37,7 +37,7 @@
   <div ref="counter" class="text-[11vw] md:text-[72px] font-maru text-white space-x-4"  style="text-shadow: black 2px 2px;"><span></span><span></span><span></span></div>
 </div>
 
-  <div class="absolute bottom-[13vh] md:bottom-[76px] w-[150px] md:w-auto right-[42px] md:left-[265px] text-white text-[16px] md:text-[18px] font-marudemi">
+  <div class="absolute bottom-[16vh] md:bottom-[76px] w-[150px] md:w-auto right-[42px] md:left-[265px] text-white text-[16px] md:text-[18px] font-marudemi">
     <h2 id="doron">pre-sale discount first 200 books*</h2>
   </div>
 
@@ -142,7 +142,10 @@ export default {
   animation: spin 8s linear 4s infinite;
 }
 @keyframes spin {
-  to {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
     transform: rotate(360deg);
   }
 }
