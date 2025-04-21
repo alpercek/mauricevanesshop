@@ -48,7 +48,8 @@ export default {
       return this.$store.state.prismic.settings
     },
     splash() {
-      if (this.$route.name == 'index') {
+      if (this.$route.name == 'index' && this.mounted == false) {
+        this.mounted = true
         return true
       }
       else {
