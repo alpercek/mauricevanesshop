@@ -1,6 +1,20 @@
 <template>
   <div>
     <div @click="$emit('goToSite')" :style="{'color':settings.data.splashcolor}" class="relative z-20 inset-0 h-screen">
+
+
+      <img class="absolute h-[19px] md:top-[848px] md:left-[1641px] w-[169px] right-[27px] top-[43vh]" src="@/static/maradona/SVG/r.svg"/>
+      <img class="absolute h-[32px] top-[82px] left-[329px] w-[287px] hidden md:block" src="@/static/maradona/SVG/rr.svg"/>
+      <img class="absolute h-[47px] top-[30vh] left-[46px] w-[241px] z-30 md:hidden" src="@/static/maradona/SVG/rrr.svg"/>
+
+
+      <img class="absolute md:h-[158px] h-[98px] md:top-[60px] md:left-[27px] md:w-[186px] w-[116px] right-[21px] bottom-[18px]" src="@/static/maradona/SVG/num10.svg"/>
+      <img class="absolute h-[39px] md:top-[38px] md:left-[1618px] w-[106px] z-30 right-[48px] top-[57px]" src="@/static/maradona/SVG/nue.svg"/>
+      <img class="absolute h-[66px] top-[126px] left-[332px] w-[129px] hidden md:block" src="@/static/maradona/SVG/new.svg"/>
+
+      <img class="absolute h-[511px] top-[144px] left-[27px] w-[1982px] object-cover object-left hidden md:block" src="@/static/maradona/SVG/maradona.svg"/>
+      <img class=" absolute w-[calc(100vw+23px)] h-[45vh] left-[0px] top-[0px] -translate-y-[17px] object-cover z-20 md:hidden" src="@/static/maradona/SVG/maramob.svg"/>
+
       <button class="cursor-pointer hidden md:block text-[2.5rem] text-white font-cooperbtbold absolute left-1/2 -translate-x-1/2 bottom-0 pb-[1.75rem]" 
         style="text-shadow: black 2px 2px; text-stroke: 1px black; -webkit-text-stroke: 1px black;">go to site</button>
 
@@ -12,7 +26,7 @@
       </div>
     </div>
     
-    <div class="absolute left-[13vw] bottom-[13vh] md:left-[164px] md:bottom-[60px]
+    <div class="absolute left-[13vw] bottom-[10vh] md:left-[164px] md:bottom-[60px]
     grid items-center justify-items-center animscale">
       <div style="grid-column: 1; grid-row: 1;" class="text-[12.5rem] text-[#FF0000] z-10 spin">✸</div>
       <div ref="stickerprice" style="grid-column: 1; grid-row: 1; text-shadow: #000 0 0 7px" class="text-5xl text-white font-marudemi z-20">€85</div>
