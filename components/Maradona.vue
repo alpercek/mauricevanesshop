@@ -32,8 +32,8 @@
       <div style="grid-column: 1; grid-row: 1; text-shadow: #000 0 0 7px" class=" text-[38.4px] md:text-5xl text-white font-marudemi z-20 flex items-center"><div class="text-[25.6px] md:text-[32px] pb-[3px] ">€</div><div ref="stickerprice">85</div></div>
     </div>
 
-<div class="absolute left-0 top-[55vh] md:top-auto md:bottom-[30vh] lg:bottom-[136px] w-screen text-left md:text-center pl-[28px] pl-0">
-  <div class="text-[29.4px] md:text-[72px] font-venus text-[#FFEB00] leading-[27.3px] md:leading-[70px]"  style="text-stroke: 1px #FF0000; -webkit-text-stroke: 1px #FF0000;">Pre-Sale Open – Book Launch in</div>
+<div class="absolute left-0 top-[55vh] md:top-auto md:bottom-[30vh] lg:bottom-[136px] w-screen text-center">
+  <div class="text-[29.4px] md:text-[72px] font-venus text-[#FFEB00] leading-[27.3px] md:leading-[70px]"  style="text-stroke: 1px #FF0000; -webkit-text-stroke: 1px #FF0000; text-wrap: balance;">Pre-Sale Open – Book Launch in</div>
   <div ref="counter" class="text-[7.7vw] md:text-[72px] font-maru text-white space-x-4"  style="text-shadow: black 2px 2px;"><span></span><span></span><span></span></div>
 </div>
 
