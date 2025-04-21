@@ -26,10 +26,10 @@
       </div>
     </div>
     
-    <div class="absolute left-[13vw] bottom-[10vh] md:left-[164px] md:bottom-[100px]
+    <div class="absolute left-[13vw] bottom-[13vh] md:left-[164px] md:bottom-[100px]
     grid items-center justify-items-center animscale">
-      <div style="grid-column: 1; grid-row: 1;" class="z-10 spin"><img src="@/static/maradona/SVG/star.svg" /></div>
-      <div ref="stickerprice" style="grid-column: 1; grid-row: 1; text-shadow: #000 0 0 7px" class="text-5xl text-white font-marudemi z-20">€85</div>
+      <div style="grid-column: 1; grid-row: 1;" class="z-10 spin"><img ref="stickerbg" class="h-[120px] md:h-[150px]" src="@/static/maradona/SVG/circle.svg" /></div>
+      <div style="grid-column: 1; grid-row: 1; text-shadow: #000 0 0 7px" class=" text-[38.4px] md:text-5xl text-white font-marudemi z-20 flex items-center"><div class="text-[25.6px] md:text-[32px] pb-[3px] ">€</div><div ref="stickerprice">85</div></div>
     </div>
 
 <div class="absolute left-0 top-[50vh] md:top-auto md:bottom-[30vh] lg:bottom-[136px] w-screen text-left md:text-center pl-[28px] pl-0">
@@ -92,7 +92,8 @@ export default {
   methods:{
   peel(){
     setTimeout(() => {
-      this.$refs.stickerprice.innerText = "€69"
+      this.$refs.stickerprice.innerText = "69"
+      this.$refs.stickerbg.src= require('@/static/maradona/SVG/star.svg')
       }, 4250)
   },
 	timeToGo(){

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="148"
+   height="150"
+   viewBox="0 0 148 150"
+   version="1.1"
+   id="svg3"
+   sodipodi:docname="circle.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="3.8419468"
+     inkscape:cx="49.063667"
+     inkscape:cy="75.872991"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3" />
+  <defs
+     id="defs2">
+    <filter
+       id="Ellipse_2"
+       x="0"
+       y="0"
+       width="140"
+       height="140"
+       filterUnits="userSpaceOnUse">
+      <feOffset
+         dx="0"
+         dy="0"
+         input="SourceAlpha"
+         id="feOffset1" />
+      <feGaussianBlur
+         stdDeviation="3"
+         result="blur"
+         id="feGaussianBlur1" />
+      <feFlood
+         flood-opacity="0.161"
+         id="feFlood1" />
+      <feComposite
+         operator="in"
+         in2="blur"
+         id="feComposite1" />
+      <feComposite
+         in="SourceGraphic"
+         id="feComposite2" />
+    </filter>
+  </defs>
+  <g
+     transform="translate(4,5)"
+     filter="url(#Ellipse_2)"
+     id="g3">
+    <g
+       id="Ellipse_2-2"
+       data-name="Ellipse 2"
+       transform="translate(7,4)"
+       fill="#fc2222"
+       stroke="#ba0d0e"
+       stroke-width="2">
+      <ellipse
+         cx="65"
+         cy="66"
+         rx="65"
+         ry="66"
+         stroke="none"
+         id="ellipse2" />
+      <ellipse
+         cx="65"
+         cy="66"
+         rx="64"
+         ry="65"
+         fill="none"
+         id="ellipse3" />
+    </g>
+  </g>
+</svg>
