@@ -3,17 +3,17 @@
     <div @click="$emit('goToSite')" :style="{'color':settings.data.splashcolor}" class="relative z-20 inset-0 h-screen">
 
 
-      <img class="absolute h-[19px] md:top-[848px] md:left-[1641px] w-[169px] right-[27px] top-[43vh]" src="@/static/maradona/SVG/r.svg"/>
+      <img class="absolute md:h-[19px] md:top-[848px] md:left-[1641px] w-[169px] right-[27px] top-[48vh]" src="@/static/maradona/SVG/r.svg"/>
       <img class="absolute h-[32px] top-[82px] left-[329px] w-[287px] hidden md:block" src="@/static/maradona/SVG/rr.svg"/>
-      <img class="absolute h-[47px] top-[30vh] left-[46px] w-[241px] z-30 md:hidden" src="@/static/maradona/SVG/rrr.svg"/>
+      <img class="absolute h-[47px] top-[35vh] left-[46px] w-[241px] z-30 md:hidden" src="@/static/maradona/SVG/rrr.svg"/>
 
 
       <img class="absolute md:h-[158px] h-[10vh] md:top-[60px] md:left-[27px] md:w-[186px] right-[21px] bottom-[18px]" src="@/static/maradona/SVG/num10.svg"/>
-      <img class="absolute h-[39px] md:top-[38px] md:left-[1618px] w-[106px] z-30 right-[48px] top-[57px]" src="@/static/maradona/SVG/nue.svg"/>
+      <img class="absolute h-[39px] md:top-[38px] md:left-[1618px] w-[106px] z-30 right-[48px] top-[70px]" src="@/static/maradona/SVG/nue.svg"/>
       <img class="absolute h-[66px] top-[126px] left-[332px] w-[129px] hidden md:block" src="@/static/maradona/SVG/new.svg"/>
 
       <img class="absolute top-[144px] left-[27px] w-[calc(100vw+20px)] object-cover object-left hidden md:block" src="@/static/maradona/SVG/maradona.svg"/>
-      <img class=" absolute w-[calc(100vw+23px)] h-[45vh] left-[0px] top-[0px] -translate-y-[17px] object-cover object-bottom z-20 md:hidden" src="@/static/maradona/SVG/maramob.svg"/>
+      <img class=" absolute w-[calc(100vw+23px)] h-[45vh] left-[0px] top-[5vh] -translate-y-[17px] object-cover object-bottom z-20 md:hidden" src="@/static/maradona/SVG/maramob.svg"/>
 
       <button class="cursor-pointer hidden md:block text-[2.5rem] text-white font-cooperbtbold absolute left-1/2 -translate-x-1/2 bottom-0 pb-[1.75rem]" 
         style="text-shadow: black 2px 2px; text-stroke: 1px black; -webkit-text-stroke: 1px black;">go to site</button>
@@ -32,9 +32,9 @@
       <div style="grid-column: 1; grid-row: 1; text-shadow: #000 0 0 7px" class=" text-[38.4px] md:text-5xl text-white font-marudemi z-20 flex items-center"><div class="text-[25.6px] md:text-[32px] pb-[3px] ">€</div><div ref="stickerprice">85</div></div>
     </div>
 
-<div class="absolute left-0 top-[50vh] md:top-auto md:bottom-[30vh] lg:bottom-[136px] w-screen text-left md:text-center pl-[28px] pl-0">
-  <div class="text-[42px] md:text-[72px] font-venus text-[#FFEB00] leading-[39px] md:leading-[70px]"  style="text-stroke: 1px #FF0000; -webkit-text-stroke: 1px #FF0000;">Pre-Sale Open – Book Launch in</div>
-  <div ref="counter" class="text-[11vw] md:text-[72px] font-maru text-white space-x-4"  style="text-shadow: black 2px 2px;"><span></span><span></span><span></span></div>
+<div class="absolute left-0 top-[55vh] md:top-auto md:bottom-[30vh] lg:bottom-[136px] w-screen text-left md:text-center pl-[28px] pl-0">
+  <div class="text-[29.4px] md:text-[72px] font-venus text-[#FFEB00] leading-[27.3px] md:leading-[70px]"  style="text-stroke: 1px #FF0000; -webkit-text-stroke: 1px #FF0000;">Pre-Sale Open – Book Launch in</div>
+  <div ref="counter" class="text-[7.7vw] md:text-[72px] font-maru text-white space-x-4"  style="text-shadow: black 2px 2px;"><span></span><span></span><span></span></div>
 </div>
 
   <div class="absolute bottom-[16vh] md:bottom-[76px] w-[150px] md:w-auto right-[42px] md:left-[265px] text-white text-[16px] md:text-[18px] font-marudemi">
