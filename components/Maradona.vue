@@ -26,9 +26,9 @@
       </div>
     </div>
     
-    <div class="absolute left-[13vw] bottom-[1vh] md:left-[164px] md:bottom-[60px]
+    <div class="absolute left-[13vw] bottom-[10vh] md:left-[164px] md:bottom-[100px]
     grid items-center justify-items-center animscale">
-      <div style="grid-column: 1; grid-row: 1;" class="text-[12.5rem] text-[#FF0000] z-10 spin grid"><span style="grid-column: 1; grid-row: 1;">✸</span><span style="grid-column: 1; grid-row: 1; rotate: 22.5deg;">✸</span></div>
+      <div style="grid-column: 1; grid-row: 1;" class="text-[12.5rem] text-[#FF0000] z-10 spin grid"><img src="@/static/maradona/SVG/star.svg" /></div>
       <div ref="stickerprice" style="grid-column: 1; grid-row: 1; text-shadow: #000 0 0 7px" class="text-5xl text-white font-marudemi z-20">€85</div>
     </div>
 
