@@ -13,7 +13,7 @@
       <img class="absolute h-[66px] top-[126px] left-[332px] w-[129px] hidden md:block" src="@/static/maradona/SVG/new.svg"/>
 
       <img class="absolute h-[511px] top-[144px] left-[27px] w-[1982px] object-cover object-left hidden md:block" src="@/static/maradona/SVG/maradona.svg"/>
-      <img class=" absolute w-[calc(100vw+23px)] h-[45vh] left-[0px] top-[0px] -translate-y-[17px] object-cover z-20 md:hidden" src="@/static/maradona/SVG/maramob.svg"/>
+      <img class=" absolute w-[calc(100vw+23px)] h-[45vh] left-[0px] top-[0px] -translate-y-[17px] object-cover object-bottom z-20 md:hidden" src="@/static/maradona/SVG/maramob.svg"/>
 
       <button class="cursor-pointer hidden md:block text-[2.5rem] text-white font-cooperbtbold absolute left-1/2 -translate-x-1/2 bottom-0 pb-[1.75rem]" 
         style="text-shadow: black 2px 2px; text-stroke: 1px black; -webkit-text-stroke: 1px black;">go to site</button>
@@ -26,9 +26,9 @@
       </div>
     </div>
     
-    <div class="absolute left-[13vw] bottom-[10vh] md:left-[164px] md:bottom-[60px]
+    <div class="absolute left-[13vw] bottom-[1vh] md:left-[164px] md:bottom-[60px]
     grid items-center justify-items-center animscale">
-      <div style="grid-column: 1; grid-row: 1;" class="text-[12.5rem] text-[#FF0000] z-10 spin">✸</div>
+      <div style="grid-column: 1; grid-row: 1;" class="text-[12.5rem] text-[#FF0000] z-10 spin grid"><span style="grid-column: 1; grid-row: 1;">✸</span><span style="grid-column: 1; grid-row: 1; rotate: 22.5deg;">✸</span></div>
       <div ref="stickerprice" style="grid-column: 1; grid-row: 1; text-shadow: #000 0 0 7px" class="text-5xl text-white font-marudemi z-20">€85</div>
     </div>
 
@@ -37,7 +37,7 @@
   <div ref="counter" class="text-[11vw] md:text-[72px] font-maru text-white space-x-4"  style="text-shadow: black 2px 2px;"><span></span><span></span><span></span></div>
 </div>
 
-  <div class="absolute bottom-[13vh] md:bottom-[76px] w-[150px] md:w-auto right-[82px] md:left-[265px] text-white text-[16px] md:text-[18px] font-marudemi">
+  <div class="absolute bottom-[13vh] md:bottom-[76px] w-[150px] md:w-auto right-[42px] md:left-[265px] text-white text-[16px] md:text-[18px] font-marudemi">
     <h2 id="doron">pre-sale discount first 200 books*</h2>
   </div>
 
@@ -63,15 +63,21 @@ export default {
   },
   computed:{
     src(){
-      const images = [require('@/static/maradona/0.png'),
+      const images = [require('@/static/maradona/0.jpg'),
       require('@/static/maradona/1.jpg'),
       require('@/static/maradona/2.jpg'),
-      require('@/static/maradona/3.jpg'),
-      require('@/static/maradona/4.jpg')]
+      require('@/static/maradona/3.jpg')]
      return images[Math.floor(Math.random() * images.length)]
     },
     msrc(){
-      const images = [require('@/static/maradona/mobile0.png')]
+      const images = [require('@/static/maradona/mobile0.jpg'),
+      require('@/static/maradona/mobile1.jpg'),
+      require('@/static/maradona/mobile2.jpg'),
+      require('@/static/maradona/mobile3.jpg'),
+      require('@/static/maradona/mobile4.jpg'),
+      require('@/static/maradona/mobile5.jpg'),
+      require('@/static/maradona/mobile6.jpg')
+      ]
      return images[Math.floor(Math.random() * images.length)]
     }
   },
