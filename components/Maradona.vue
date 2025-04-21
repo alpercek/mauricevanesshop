@@ -139,6 +139,7 @@ export default {
   }
 }
 .spin{
+  transform-origin: center;
   animation: spin 8s linear 4s infinite;
 }
 @keyframes spin {
