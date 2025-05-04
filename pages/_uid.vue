@@ -6,7 +6,7 @@
   <div class="relative md:w-[56vw] m-auto">
    <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed" :speed="1500" :autoplay="true" >
       <div v-for="(item, i) in page.data.slices[2].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
-        <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/><div v-if="page.data.status != 'ORDER' && page.data.blurring == 'all slides' || page.data.status != 'ORDER' && page.data.blurring == 'only first slide' && i == 0" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="page.data.status == 'PRE-ORDER' || page.data.status == 'customize'" class="opacity-60 flex flex-col text-center gap-[23px]">「{{ page.data.purple_text[0].text }}」<div class="text-lg alpercounter pt-[7px]"></div><div class="text-lg font-garamond"><PrismicRichText :field="page.data.preordertext" /></div></div></div></div>
+        <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/><div v-if="page.data.status != 'ORDER' && page.data.blurring == 'all slides' || page.data.status != 'ORDER' && page.data.blurring == 'only first slide' && i == 0" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="page.data.status == 'PRE-ORDER' || page.data.status == 'customize'" class="opacity-60 flex flex-col text-center gap-[23px]">「{{ page.data.purple_text[0].text }}」<div class="text-lg alpercounter pt-[7px]"></div></div></div></div>
         </div>
         <div v-if="mobileVideo.url" class="m-auto pt-1.5 relative">
         <video onclick="this.play(); this.nextElementSibling.remove()" type="video/mp4" playsinline id="vd" :src="video.url" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full cursor-pointer"></video>
@@ -28,7 +28,7 @@
         <PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/>
           <div v-if="page.data.status != 'ORDER' && page.data.blurring == 'all slides' || page.data.status != 'ORDER' && page.data.blurring == 'only first slide' && i == 0" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]">
             <div v-if="page.data.status == 'email'" class="opacity-60">「out of stock」</div>
-            <div v-else-if="page.data.status == 'PRE-ORDER'|| page.data.status == 'customize'" class="opacity-60 flex flex-col text-center gap-[23px]">「{{ page.data.purple_text[0].text }}」<div class="text-lg alpercounter pt-[7px]"></div><div class="text-lg font-garamond"><PrismicRichText :field="page.data.preordertext" /></div></div>
+            <div v-else-if="page.data.status == 'PRE-ORDER'|| page.data.status == 'customize'" class="opacity-60 flex flex-col text-center gap-[23px]">「{{ page.data.purple_text[0].text }}」<div class="text-lg alpercounter pt-[7px]"></div></div>
           </div>
         </div>
 
@@ -87,11 +87,12 @@
     </table>
 
     <prismic-rich-text :field="page.data.extra_line" class="font-cooperbt text-base tracking-[-0.01em] pt-7 md:pt-5 pl-5 md:pl-0"/>
+    <div class="text-sm text-[#6200FF] font-garamond pt-7 md:pt-5 pl-5 md:pl-0"><PrismicRichText :field="page.data.preordertext" /></div>
     <div v-if="page.data.price != null" class="font-cooperbt text-base tracking-[-0.01em] font-bold md:pb-5 pl-5 md:pl-0">€{{ page.data.price }},–</div>
-    <form @submit="addToCart($event)" class="pl-5 md:pl-0 mt-1 md:mt-0">
+    <form @submit="addToCart($event)" class="pl-5 md:pl-0 mt-1 md:mt-0 flex">
     <input type="hidden" name="uid" :value="page.id" />
     <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status == 'ORDER'" class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">ORDER</button>
-    <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status == 'PRE-ORDER'" class="font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">PRE-ORDER</button>
+    <div v-if="page.data.status == 'PRE-ORDER'" class="flex gap-[8px]"><div class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 opacity-[0.2] pointer-events-none" >ORDER</div><button onclick="this.parentNode.parentNode.querySelector('span').style.opacity = 1" class="font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">PRE-ORDER</button></div>
     <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status == 'customize' && page.data.price != null" class="uppercase font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">{{page.data.customized_text}}</button>
     <span class="ml-1 italic font-garamond text-[#BCBCBC] text-lg transition-opacity opacity-0">Item has been added to cart</span>
     </form>

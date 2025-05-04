@@ -63,22 +63,12 @@ export default {
   },
   computed:{
     src(){
-      const images = [require('@/static/maradona/0.jpg'),
-      require('@/static/maradona/1.jpg'),
-      require('@/static/maradona/2.jpg'),
-      require('@/static/maradona/3.jpg')]
-     return images[Math.floor(Math.random() * images.length)]
+      const images = this.settings.data.eventsplashimage
+     return images[Math.floor(Math.random() * images.length)].image.url
     },
     msrc(){
-      const images = [require('@/static/maradona/mobile0.jpg'),
-      require('@/static/maradona/mobile1.jpg'),
-      require('@/static/maradona/mobile2.jpg'),
-      require('@/static/maradona/mobile3.jpg'),
-      require('@/static/maradona/mobile4.jpg'),
-      require('@/static/maradona/mobile5.jpg'),
-      require('@/static/maradona/mobile6.jpg')
-      ]
-     return images[Math.floor(Math.random() * images.length)]
+      const images = this.settings.data.eventsplashimagemobile
+     return images[Math.floor(Math.random() * images.length)].image.url
     }
   },
   mounted(){

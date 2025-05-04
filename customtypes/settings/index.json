@@ -98,6 +98,38 @@
           "placeholder_false": "false"
         }
       },
+      "eventsplashimage": {
+        "type": "Group",
+        "config": {
+          "label": "eventSplashImage",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "eventsplashimagemobile": {
+        "type": "Group",
+        "config": {
+          "label": "eventSplashImageMobile",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
       "eventlaunchtime": {
         "type": "Date",
         "config": {
