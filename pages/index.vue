@@ -174,10 +174,10 @@ animation: pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 @keyframes pulse {
   0%, 100% {
-    backdrop-filter: blur(8px);
+    opacity: 1;
   }
   50% {
-    backdrop-filter: blur(2px);
+    opacity: 0.5;
   }
 }
 </style>

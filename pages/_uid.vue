@@ -1,5 +1,5 @@
 <template>
-  <div class="relative pb-32">
+  <div class="relative pb-32 max-w-screen overflow-hidden">
     <!-- mobile slider -->
     <template v-if="isMobile && page.data.slices[2]">
     <div v-if="page.data.slices[2]" class="pb-5">
@@ -92,7 +92,7 @@
     <form @submit="addToCart($event)" class="pl-5 md:pl-0 mt-1 md:mt-0 flex">
     <input type="hidden" name="uid" :value="page.id" />
     <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status == 'ORDER'" class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">ORDER</button>
-    <div v-if="page.data.status == 'PRE-ORDER'" class="flex gap-[8px]"><div class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 opacity-[0.2] pointer-events-none" >ORDER</div><button onclick="this.parentNode.parentNode.querySelector('span').style.opacity = 1" class="font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">PRE-ORDER</button></div>
+    <div v-if="page.data.status == 'PRE-ORDER'" class="flex h-min text-center items-center gap-[8px]"><div class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 opacity-[0.2] pointer-events-none" >ORDER</div><button onclick="this.parentNode.parentNode.querySelector('span').style.opacity = 1" class="font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">PRE-ORDER</button></div>
     <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status == 'customize' && page.data.price != null" class="uppercase font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">{{page.data.customized_text}}</button>
     <span class="ml-1 italic font-garamond text-[#BCBCBC] text-lg transition-opacity opacity-0">Item has been added to cart</span>
     </form>
