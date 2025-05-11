@@ -108,7 +108,7 @@ export default {
 
     // Return formatted string
     this.$refs.counter.children[0].innerText = sign + 'D:' + z(Math.floor(diff / (day)));
-    this.$refs.counter.children[1].innerText = 'H:' + z(Math.floor((diff % (day)) / (hour)));
+    this.$refs.counter.children[1].innerText = 'H:' + z(Math.floor((diff % (day)) / (hour))-5);
     this.$refs.counter.children[2].innerText ='S:' + z(Math.floor((diff % (minute)) / second));
 	}
   }
