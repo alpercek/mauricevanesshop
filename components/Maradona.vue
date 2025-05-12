@@ -93,7 +93,7 @@ export default {
         day = hour * 24;
 
 	var b = this.settings.data.eventlaunchtime.split(/[-TZ:]/i)
-	var d = new Date(Date.UTC(b[0], --b[1], b[2]))
+	var d = new Date(Date.UTC(b[0], --b[1], b[2]-1, 19))
     // Utility to add leading zero
     function z(n) {
       return (n < 10? '0' : '') + n;
@@ -108,7 +108,7 @@ export default {
 
     // Return formatted string
     this.$refs.counter.children[0].innerText = sign + 'D:' + z(Math.floor(diff / (day)));
-    this.$refs.counter.children[1].innerText = 'H:' + z(Math.floor((diff % (day)) / (hour))-5);
+    this.$refs.counter.children[1].innerText = 'H:' + z(Math.floor((diff % (day)) / (hour)));
     this.$refs.counter.children[2].innerText ='S:' + z(Math.floor((diff % (minute)) / second));
 	}
   }
