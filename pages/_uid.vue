@@ -168,7 +168,7 @@ export default {
         day = hour * 24;
 
 	var b = this.page.data.preorderlaunchdate.split(/[-TZ:]/i)
-	var d = new Date(Date.UTC(b[0], --b[1], b[2]))
+	var d = new Date(Date.UTC(b[0], --b[1], b[2]-1, 19))
     // Utility to add leading zero
     function z(n) {
       return (n < 10? '0' : '') + n;
