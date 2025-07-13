@@ -45,7 +45,7 @@
 <!-- rest -->
     <div>
       <div class="md:ml-[43vw] mt-14 md:mt-0">
-    <prismic-rich-text :field="page.data.description" class="font-garamond text-base w-[25rem] pl-4 md:pl-0 mt-9 md:mt-7" />
+    <prismic-rich-text :field="page.data.description" class="font-garamond text-base md:w-[25rem] pl-4 pr-4 md:pr-0 md:pl-0 mt-9 md:mt-7" />
 <!-- bookinfo-->
 <table v-if="page.data.slices[1]" class="font-cooperbt text-left tracking-[-0.01em] text-base ml-7 md:ml-0 mt-9 md:mt-7">
       <tbody>
