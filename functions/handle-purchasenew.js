@@ -9,8 +9,12 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
   maxNetworkRetries: 2,
 });
 
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const brevo = require('@getbrevo/brevo');
+let defaultClient = brevo.ApiClient.instance;
+let apiKey = defaultClient.authentications['api-key'];
+apiKey.apiKey = process.env.BREVO_API_KEY;
+let apiInstance = new brevo.TransactionalEmailsApi();
+let sendSmtpEmail = new brevo.SendSmtpEmail();
 
 exports.handler = async ({ body, headers }) => {
   try {
@@ -28,14 +32,16 @@ exports.handler = async ({ body, headers }) => {
       // Here make an API call / send an email to your fulfillment provider.
       const purchase = { items, shippingDetails };
       console.log(`📦 Fulfill purchase:`, JSON.stringify(purchase, null, 2));
-      // Send and email to our fulfillment provider using Sendgrid.
-      const msg = {
-        to: process.env.FULFILLMENT_EMAIL_ADDRESS,
-        from: process.env.FROM_EMAIL_ADDRESS,
-        subject: `New purchase from ${shippingDetails.name}`,
-        text: JSON.stringify(purchase, null, 2),
-      };
-      await sgMail.send(msg);
+      // Send and email to our fulfillment provider using brevo.
+
+      sendSmtpEmail.subject = `New purchase from ${shippingDetails.name}`;
+      sendSmtpEmail.htmlContent = JSON.stringify(purchase, null, 2);
+      sendSmtpEmail.sender = { "name": "Robot", "email": process.env.FROM_EMAIL_ADDRESS };
+      sendSmtpEmail.to = [
+        { "email": process.env.FULFILLMENT_EMAIL_ADDRESS, "name": "Fullfillment" }
+      ];
+
+      apiInstance.sendTransacEmail(sendSmtpEmail);
     }
 
     return {
