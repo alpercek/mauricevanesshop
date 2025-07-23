@@ -1,16 +1,14 @@
 const FormData = require("form-data"); // form-data v4.0.1
 const Mailgun = require("mailgun.js"); // mailgun.js v11.1.0
-
-sendSimpleMessage();
-
-async function sendSimpleMessage() {
-  const mailgun = new Mailgun(FormData);
+const mailgun = new Mailgun(FormData);
   const mg = mailgun.client({
     username: "api",
     key: process.env.MAILGUN_API_KEY || "API_KEY",
     // When you have an EU-domain, you must specify the endpoint:
     url: "https://api.eu.mailgun.net"
   });
+
+exports.handler = async () => {
   try {
     const data = await mg.messages.create("sandbox7018145a16424b9db6c86d84f4b5b4d1.mailgun.org", {
       from: "Mailgun Sandbox <postmaster@sandbox7018145a16424b9db6c86d84f4b5b4d1.mailgun.org>",
