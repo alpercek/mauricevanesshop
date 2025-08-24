@@ -6,7 +6,7 @@
   <div class="relative md:w-[56vw] m-auto">
    <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed" :speed="1500" :autoplay="true" >
       <div v-for="(item, i) in page.data.slices[2].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
-        <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/><div v-if="page.data.status != 'ORDER' && page.data.blurring == 'all slides' || page.data.status != 'ORDER' && page.data.blurring == 'only first slide' && i == 0" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="page.data.status == 'PRE-ORDER' || page.data.status == 'customize'" class="opacity-60 flex flex-col text-center gap-[23px]">「{{ page.data.purple_text[0].text }}」<div class="text-lg alpercounter pt-[7px]"></div></div></div></div>
+        <div class="relative"><PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/><div v-if="page.data.status != 'ORDER' && page.data.blurring == 'all slides' || page.data.status != 'ORDER' && page.data.blurring == 'only first slide' && i == 0" class="absolute inset-0 backdrop-brightness-130 backdrop-blur-lg bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="page.data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="page.data.status == 'PRE-ORDER' || page.data.status == 'customize'" class="opacity-60 flex flex-col text-center gap-[23px]">「{{ page.data.purple_text[0].text }}」<div class="text-lg alpercounter pt-[7px]"></div></div></div></div>
         </div>
         <div v-if="mobileVideo.url" class="m-auto pt-1.5 relative">
         <video onclick="this.play(); this.nextElementSibling.remove()" type="video/mp4" playsinline id="vd" :src="video.url" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full cursor-pointer"></video>
@@ -26,7 +26,7 @@
         
         <div class="relative">
         <PrismicImage :field="item.image" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full"/>
-          <div v-if="page.data.status != 'ORDER' && page.data.blurring == 'all slides' || page.data.status != 'ORDER' && page.data.blurring == 'only first slide' && i == 0" class="absolute inset-0 backdrop-blur bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]">
+          <div v-if="page.data.status != 'ORDER' && page.data.blurring == 'all slides' || page.data.status != 'ORDER' && page.data.blurring == 'only first slide' && i == 0" class="absolute inset-0 backdrop-brightness-130 backdrop-blur-lg bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]">
             <div v-if="page.data.status == 'email'" class="opacity-60">「out of stock」</div>
             <div v-else-if="page.data.status == 'PRE-ORDER'|| page.data.status == 'customize'" class="opacity-60 flex flex-col text-center gap-[23px]">「{{ page.data.purple_text[0].text }}」<div class="text-lg alpercounter pt-[7px]"></div></div>
           </div>
@@ -110,7 +110,7 @@
 </form>
 
     <div class="absolute md:static top-[62vh] pl-3 md:pl-0 pt-11 md:pt-0 pointer-events-none">
-    <div :style="{'color':page.data.color}" class="md:absolute md:top-[calc(50vh+3.5rem)] right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5"><div :style="{'background-color':page.data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center">{{ page.data.number }}</div><prismic-rich-text :field="page.data.title" class="translate-y-0.5"/></div>
+    <div :style="{'color':page.data.color}" class="md:absolute md:top-[calc(50vh+3.5rem)] right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5"><div :style="{'background-color':page.data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.1em]"><p :style="centerNumber(page.data.number)">{{ page.data.number }}</p></div><prismic-rich-text :field="page.data.title" class="translate-y-0.5"/></div>
   </div>
   </div>
   </div>
@@ -161,6 +161,26 @@ export default {
     }
   },
   methods: { 
+    centerNumber(e) {
+      if(e>9){
+        return 'transform: translate(-1.5px);'
+      }
+      switch (e) {
+        case 4:
+        return 'transform: translate(-1px);'
+        case 9:
+        return 'transform: translate(-1px);'
+        case 2:
+        return 'transform: translate(-1px);'
+        case 6:
+        return 'transform: translate(-.5px);'
+        case 1:
+        return 'transform: translate(-.5px);'
+        case 8:
+        return 'transform: translate(-1px);'
+      default:
+}
+    },
       ttimeToGo() {
         const second = 1000,
         minute = second * 60,

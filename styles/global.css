@@ -8,12 +8,20 @@
   src: url("../styles/CooperBT-Light.otf");
 }
 @font-face {
+  font-family: "COOPERBTMID";
+  src: url("../styles/CooperBT-Medium.otf");
+}
+@font-face {
   font-family: "COOPERBTBOLD";
   src: url("../styles/CooperBT-Bold.otf");
 }
 @font-face {
   font-family: "GARAMOND";
   src: url("../styles/GaramondPremrPro.otf");
+}
+@font-face {
+  font-family: "GARAMONDIT";
+  src: url("../styles/GaramondPremrPro-ItSubh.otf");
 }
 @font-face {
   font-family: "PLATFORM";

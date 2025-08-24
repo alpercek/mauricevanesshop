@@ -11,7 +11,9 @@ module.exports = {
   theme: {
     fontFamily: {
       cooperbt: ["COOPERBT"],
+      cooperbtmid: ["COOPERBTMID"],
       garamond: ["GARAMOND"],
+      garamondit: ["GARAMONDIT"],
       platform: ["PLATFORM"],
       metrik: ["METRIKMID"],
       cooperbtbold: ["COOPERBTBOLD"],

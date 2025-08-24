@@ -6,7 +6,7 @@
         <div v-for="(item, i) in filtered" :key="`slice-item-${i}`" class="flex gap-2.5 font-garamond justify-between md:justify-start md:gap-11 md:items-center">
     <div class="w-40 md:w-auto text-center font-cooperbt text-sm tracking-[-0.02em] flex justify-center md:gap-4 md:items-center">
       <PrismicImage :field="item.data.image" class="ml-[5.6rem] h-[10.5rem] w-[7.6rem] border object-cover hidden lg:block"/>
-      <div class="md:w-64 lg:flex lg:gap-1 lg:justify-center"><div :style="{'background-color':item.data.color}" class="rounded-full w-5 h-5 text-white m-auto lg:m-0">{{ item.data.number }}</div><prismic-rich-text :style="{'color':item.data.color}" :field="item.data.title" /></div>
+      <div class="md:w-64 lg:flex lg:gap-1 lg:justify-center"><div :style="{'background-color':item.data.color}" class="rounded-full w-5 h-5 text-white m-auto lg:m-0 font-cooperbtmid tracking-[-0.1em]"><p :style="centerNumber(item.data.number)">{{ item.data.number }}</p></div><prismic-rich-text :style="{'color':item.data.color}" :field="item.data.title" /></div>
     </div>
         <div class="w-20 text-center">
           <input
@@ -85,6 +85,26 @@
     }
 },
     methods: {
+      centerNumber(e) {
+      if(e>9){
+        return 'transform: translate(-1.5px);'
+      }
+      switch (e) {
+        case 4:
+        return 'transform: translate(-1px);'
+        case 9:
+        return 'transform: translate(-1px);'
+        case 2:
+        return 'transform: translate(-1px);'
+        case 6:
+        return 'transform: translate(-.5px);'
+        case 1:
+        return 'transform: translate(-.5px);'
+        case 8:
+        return 'transform: translate(-1px);'
+      default:
+}
+    },
         remove(event){
           event.preventDefault();
           const form = new FormData(event.target)
