@@ -106,7 +106,7 @@ beforeDestroy() {
       }
       switch (e) {
         case 4:
-        return 'transform: translate(-1px);'
+        return 'transform: translate(-1.5px);'
         case 9:
         return 'transform: translate(-1px);'
         case 2:
@@ -114,11 +114,11 @@ beforeDestroy() {
         case 6:
         return 'transform: translate(-.5px);'
         case 1:
-        return 'transform: translate(-.5px);'
-        case 8:
+        return 'transform: translate(-1px);'
+        case 0:
         return 'transform: translate(-1px);'
       default:
-}
+      }
     },
     indexTimeToGo() {
         const second = 1000,

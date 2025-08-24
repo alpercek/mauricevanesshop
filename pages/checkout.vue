@@ -91,7 +91,7 @@
       }
       switch (e) {
         case 4:
-        return 'transform: translate(-1px);'
+        return 'transform: translate(-1.5px);'
         case 9:
         return 'transform: translate(-1px);'
         case 2:
@@ -99,11 +99,11 @@
         case 6:
         return 'transform: translate(-.5px);'
         case 1:
-        return 'transform: translate(-.5px);'
-        case 8:
+        return 'transform: translate(-1px);'
+        case 0:
         return 'transform: translate(-1px);'
       default:
-}
+      }
     },
         remove(event){
           event.preventDefault();
