@@ -3,7 +3,7 @@
   <div class="pb-32">
     <div v-if="page[0].data.slices[0]">
       <!--mobile slider-->
-      <template v-if="isMobile && page[0].data.slices[2]">
+      <template v-if="isMobile && page[0].data.slices[2] && page[0].data.slices[2].slice_type == 'mobile_slider'">
     <div class="relative md:w-[56vw] m-auto">
       <NuxtLink :to="'/'+page[0].uid">
     <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000" :speed="1500" :autoplay="true">
