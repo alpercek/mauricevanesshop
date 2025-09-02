@@ -18,6 +18,13 @@
             "placeholder": "",
             "select": "media"
           }
+        },
+        "vimeoid": {
+          "type": "Number",
+          "config": {
+            "label": "vimeoID",
+            "placeholder": ""
+          }
         }
       },
       "items": {

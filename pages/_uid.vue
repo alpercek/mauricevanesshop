@@ -1,8 +1,8 @@
 <template>
   <div class="relative pb-32 max-w-screen overflow-hidden">
     <!-- mobile slider -->
-    <template v-if="isMobile && page.data.slices[2]">
-    <div v-if="page.data.slices[2]" class="pb-5">
+    <template v-if="isMobile && page.data.slices[2] && page.data.slices[2].slice_type == 'mobile_slider'">
+    <div v-if="page.data.slices[2] " class="pb-5">
   <div class="relative md:w-[56vw] m-auto">
    <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed" :speed="1500" :autoplay="true" >
       <div v-for="(item, i) in page.data.slices[2].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">    
@@ -11,6 +11,17 @@
         <div v-if="mobileVideo.url" class="m-auto pt-1.5 relative">
         <video onclick="this.play(); this.nextElementSibling.remove()" type="video/mp4" playsinline id="vd" :src="video.url" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full cursor-pointer"></video>
         <div class="pointer-events-none absolute top-3/4 left-1/2 -translate-x-1/2 text-2xl bg-white px-1.5 rounded-full font-metrik">click to play &#x23F5;</div>
+      </div>
+      <div v-if="videoUrl">
+        <iframe
+      class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full cursor-pointer"
+      :src="videoUrl"
+      width="640"
+      height="360"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+    ></iframe>
       </div>
     </VueSlickCarousel>
     <div v-if="page.data.slices[0].items.length > 1" class="md:flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2 hidden"> <button @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext" class="hidden md:block"><i class="arrow right"></i></button></div>
@@ -37,15 +48,40 @@
         <video onclick="this.play(); this.nextElementSibling.remove()" type="video/mp4" playsinline id="vd" :src="video.url" class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full cursor-pointer"></video>
         <div class="pointer-events-none absolute top-3/4 left-1/2 -translate-x-1/2 text-2xl bg-white px-1.5 rounded-full font-metrik">click to play &#x23F5;</div>
       </div>
+      <div v-if="videoUrl">
+        <iframe
+      class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full cursor-pointer"
+      :src="videoUrl"
+      width="640"
+      height="360"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+      </div>
     </VueSlickCarousel>
     <div v-if="page.data.slices[0].items.length > 1" class="md:flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2 hidden"> <button @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext" class="hidden md:block"><i class="arrow right"></i></button></div>
 </div>
 </div>
 </template>
-<!-- rest -->
+<!-- description -->
     <div>
       <div class="md:ml-[43vw] mt-14 md:mt-0">
-    <prismic-rich-text :field="page.data.description" class="font-garamond text-base md:w-[25rem] pl-4 pr-4 md:pr-0 md:pl-0 mt-9 md:mt-7" />
+        <div @click="moretext = !moretext"
+        :style="{ 'cursor': page.data.more_description.length > 0 ? 'pointer' : 'default' }"
+        class="font-garamond text-base md:w-[25rem] pl-4 pr-4 md:pr-0 md:pl-0 group cursor-pointer">
+    <prismic-rich-text :field="page.data.description" 
+    :style="{ 'text-indent': page.data.description[0].direction != 'ltr' ? '20px' : '0px' }"
+    :class="{'no-after': moretext == true || !(page.data.more_description.length > 0)}"
+    class="mt-9 md:mt-7
+    [&>p]:after:content-['\20(...)'] md:[&>p]:after:content-['\20(...)\20read\20more'] [&>p]:after:text-[#BCBCBC] md:[&>p]:after:font-garamondit md:[&>p]:after:opacity-0 md:group-hover:[&>p]:after:opacity-100 md:[&>p]:after:transition-all" />
+    <prismic-rich-text v-if="page.data.more_description.length > 0" :field="page.data.more_description" 
+    :style="{
+  'text-indent': page.data.more_description[0].direction != 'ltr' ? '20px' : '0px',
+  'max-height': moretext ? '99rem' : '0rem'
+}"
+    class="[&>p]:min-h-[1rem] overflow-hidden transition-all" />
+      </div>
 <!-- bookinfo-->
 <table v-if="page.data.slices[1]" class="font-cooperbt text-left tracking-[-0.01em] text-base ml-7 md:ml-0 mt-9 md:mt-7">
       <tbody>
@@ -84,11 +120,50 @@
         <th class="font-normal"><prismic-rich-text :field="item.content" /></th>
       </tr>
     </tbody>
-    </table>
+</table>
+<table v-if="page.data.slices[2] && page.data.slices[2].slice_type == 'book_info'" class="font-cooperbt text-left tracking-[-0.01em] text-base ml-7 md:ml-0 mt-9 md:mt-7">
+      <tbody>
+      <tr v-if="page.data.slices[2].primary.year.length > 0">
+        <th class="w-[8.6rem] align-top font-normal">Year:</th>
+        <th class="font-normal"><prismic-rich-text :field="page.data.slices[2].primary.year" /></th>
+      </tr>
+      <tr v-if="page.data.slices[2].primary.edition.length > 0">
+        <th class="w-[8.6rem] align-top font-normal">Edition:</th>
+        <th class="font-normal"><prismic-rich-text :field="page.data.slices[2].primary.edition" /></th>
+      </tr>
+      <tr v-if="page.data.slices[2].primary.pages.length > 0">
+        <th class="w-[8.6rem] align-top font-normal">Pages:</th>
+        <th class="font-normal"><prismic-rich-text :field="page.data.slices[2].primary.pages" /></th>
+      </tr>
+      <tr v-if="page.data.slices[2].primary.dimensions.length > 0">
+        <th class="w-[8.6rem] align-top font-normal">Dimensions:</th>
+        <th class="font-normal"><prismic-rich-text :field="page.data.slices[2].primary.dimensions" /></th>
+      </tr>
+      <tr v-if="page.data.slices[2].primary.paper.length > 0">
+        <th class="w-[8.6rem] align-top font-normal">Paper:</th>
+        <th class="font-normal"><prismic-rich-text :field="page.data.slices[2].primary.paper" /></th>
+      </tr>
+      <tr v-if="page.data.slices[2].primary.copyright.length > 0">
+        <th class="w-[8.6rem] align-top font-normal">Copyright:</th>
+        <th class="font-normal"><prismic-rich-text :field="page.data.slices[2].primary.copyright" /></th>
+      </tr>
+      <tr v-if="page.data.slices[2].primary.isbn.length > 0">
+        <th class="w-[8.6rem] align-top font-normal">ISBN:</th>
+        <th class="font-normal"><prismic-rich-text :field="page.data.slices[2].primary.isbn" /></th>
+      </tr>
+    </tbody>
+    <tbody v-for="(item, i) in page.data.slices[2].items" :key="`slice-item-${i}`">
+      <tr>
+        <th class="w-[8.6rem] align-top font-normal"><prismic-rich-text :field="item.title"/></th>
+        <th class="font-normal"><prismic-rich-text :field="item.content" /></th>
+      </tr>
+    </tbody>
+</table>
 
+<!-- add to cart -->
     <prismic-rich-text :field="page.data.extra_line" class="font-cooperbt text-base tracking-[-0.01em] pt-7 md:pt-5 pl-5 md:pl-0"/>
     <div class="text-sm text-[#6200FF] font-garamond pt-7 md:pt-5 pl-5 md:pl-0"><PrismicRichText :field="page.data.preordertext" /></div>
-    <div v-if="page.data.price != null" class="font-cooperbt text-base tracking-[-0.01em] font-bold md:pb-5 pl-5 md:pl-0">€{{ page.data.price }},–</div>
+    <div v-if="page.data.price != null" class="font-cooperbt text-base tracking-[-0.01em] font-bold md:pb-5 pl-5 md:pl-0"><span v-if="page.data.old_price != null" class="text-[#FF0000] line-through decoration-2">€{{ page.data.old_price }}</span> €{{ page.data.price }},–</div>
     <form @submit="addToCart($event)" class="pl-5 md:pl-0 mt-1 md:mt-0 flex">
     <input type="hidden" name="uid" :value="page.id" />
     <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status == 'ORDER'" class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">ORDER</button>
@@ -109,8 +184,19 @@
   </div>
 </form>
 
-    <div class="absolute md:static top-[62vh] pl-3 md:pl-0 pt-11 md:pt-0 pointer-events-none">
-    <div :style="{'color':page.data.color}" class="md:absolute md:top-[calc(50vh+3.5rem)] right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5"><div :style="{'background-color':page.data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.1em]"><p :style="centerNumber(page.data.number)">{{ page.data.number }}</p></div><prismic-rich-text :field="page.data.title" class="translate-y-0.5"/></div>
+  <div class="absolute md:static top-[62vh] pl-3 md:pl-0 pt-11 md:pt-0 pointer-events-none">
+    <div :style="{'color':page.data.color}" class="md:absolute md:top-[calc(50vh+3.5rem)] right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5">
+      <div :style="{'background-color':page.data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.1em]">
+        <p :style="centerNumber(page.data.number)">{{ page.data.number }}</p>
+      </div><prismic-rich-text :field="page.data.title" class="translate-y-0.5"/>
+    </div>
+  </div>
+  <div class="absolute md:static top-[65vh] pl-3 md:pl-0 pt-11 md:pt-0 pointer-events-none">
+    <div :style="{'color':page.data.color_book_2}" class="md:absolute md:top-[calc(50vh+5rem)] right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5">
+      <div :style="{'background-color':page.data.color_book_2}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.1em]">
+        <p :style="centerNumber(page.data.number_book_2)">{{ page.data.number_book_2 }}</p>
+      </div><prismic-rich-text :field="page.data.title_book_2" class="translate-y-0.5"/>
+    </div>
   </div>
   </div>
   </div>
@@ -134,15 +220,18 @@ export default {
     }
   },
   data () {
-    return { components,
+    return { 
+      components,
       intervall: null,
       window: {
-            width: 0,
-            height: 0
-            },
+        width: 0,
+        height: 0
+        },
       isMobile: false,
       sshowMobileMenu: false,
-    speed: 5000 }
+      speed: 5000,
+      moretext: false
+   }
   },
   head () {
     return {
@@ -150,6 +239,14 @@ export default {
     }
   },
   computed: {
+    videoUrl() {
+      if (this.page.data.slices[0].primary.vimeoid != null){
+      return `https://player.vimeo.com/video/${this.page.data.slices[0].primary.vimeoid}`;
+      }
+      else {
+      return false 
+    }
+    },
     video(){
       return this.page.data.slices[0].primary.video
     },
@@ -247,8 +344,8 @@ export default {
         }
 },
 name: 'MyComponent',
-    components: { VueSlickCarousel },
-    props: getSliceComponentProps(['slice', 'index', 'slices', 'context']),
+    components: { VueSlickCarousel},
+
 mounted(){
   window.addEventListener('resize', this.handleResize);
   this.handleResize();
@@ -284,5 +381,8 @@ beforeDestroy() {
 .slick-dots{
   max-height: 36px;
   overflow: hidden;
+}
+.no-after p::after {
+  display: none;
 }
 </style>

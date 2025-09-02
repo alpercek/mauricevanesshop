@@ -13,6 +13,11 @@
           "size": "0",
           "__TYPE__": "FileLink"
         }
+      },
+      "vimeoid": {
+        "__TYPE__": "FieldContent",
+        "value": "42",
+        "type": "Number"
       }
     },
     "items": [

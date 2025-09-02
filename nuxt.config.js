@@ -122,6 +122,9 @@ export default {
         case 'paragraph':
           return /* html */ `<p class="mb-7 last:mb-0">${children.join('')}</p>`
 
+        case 'indent':
+          return /* html */ `<p class="mb-7 indent-4 last:mb-0">${children.join('')}</p>`
+
         case 'group-o-list-item':
           return /* html */ `<ol class="mb-7 pl-4 last:mb-0 md:pl-6">${children.join(
             ''

@@ -74,6 +74,18 @@
     "product": {
       "status": {
         "content": "ORDER"
+      },
+      "more_description": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      },
+      "description": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
       }
     },
     "shipping": {},

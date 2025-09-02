@@ -34,7 +34,7 @@
   <div :style="{'color':page[0].data.color}" class="flex justify-center pt-2.5 md:pt-5 font-cooperbt text-xl items-center gap-0.5"><div :style="{'background-color':page[0].data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.1em]"><p :style="centerNumber(page[0].data.number)">{{ page[0].data.number }}</p></div><prismic-rich-text :field="page[0].data.title" class="" /></div>
   <div class="text-center font-garamond hidden md:block w-[33rem] m-auto" ><prismic-rich-text :field="page[0].data.description" class="pt-8" />
   <prismic-rich-text v-if="page[0].data.extra_line.text" :field="page[0].data.extra_line" class="italic pt-5" />
-  <div v-if="page[0].data.price > 0" class="italic pt-5">€{{ page[0].data.price }},–</div></div>
+  <div v-if="page[0].data.price > 0" class="italic pt-5"><span v-if="page[0].data.old_price != null" class="text-[#FF0000] line-through decoration-2">€{{ page[0].data.old_price }}</span> €{{ page[0].data.price }},–</div></div>
   </NuxtLink>
 </div>
 </div>
