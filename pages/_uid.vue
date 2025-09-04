@@ -64,26 +64,10 @@
 </div>
 </div>
 </template>
-<!-- description -->
     <div>
-      <div class="md:ml-[43vw] mt-14 md:mt-0">
-        <div @click="moretext = !moretext"
-        :style="{ 'cursor': page.data.more_description.length > 0 ? 'pointer' : 'default' }"
-        class="font-garamond text-base md:w-[25rem] pl-4 pr-4 md:pr-0 md:pl-0 group cursor-pointer">
-    <prismic-rich-text :field="page.data.description" 
-    :style="{ 'text-indent': page.data.description[0].direction != 'ltr' ? '20px' : '0px' }"
-    :class="{'no-after': moretext == true || !(page.data.more_description.length > 0)}"
-    class="mt-9 md:mt-7
-    [&>p]:after:content-['\20(...)'] md:[&>p]:after:content-['\20(...)\20read\20more'] [&>p]:after:text-[#BCBCBC] md:[&>p]:after:font-garamondit md:[&>p]:after:opacity-0 md:group-hover:[&>p]:after:opacity-100 md:[&>p]:after:transition-all" />
-    <prismic-rich-text v-if="page.data.more_description.length > 0" :field="page.data.more_description" 
-    :style="{
-  'text-indent': page.data.more_description[0].direction != 'ltr' ? '20px' : '0px',
-  'max-height': moretext ? '99rem' : '0rem'
-}"
-    class="[&>p]:min-h-[1rem] overflow-hidden transition-all" />
-      </div>
+      <div class="md:ml-[43vw] mt-14 md:mt-0">   
 <!-- bookinfo-->
-<table v-if="page.data.slices[1]" class="font-cooperbt text-left tracking-[-0.01em] text-base ml-7 md:ml-0 mt-9 md:mt-7">
+<table v-if="page.data.slices[1]" ref="firsttable" class="font-cooperbt text-left tracking-[-0.01em] text-base ml-7 md:ml-0 mt-9 md:mt-7">
       <tbody>
       <tr v-if="page.data.slices[1].primary.year.length > 0">
         <th class="w-[8.6rem] align-top font-normal">Year:</th>
@@ -121,7 +105,14 @@
       </tr>
     </tbody>
 </table>
-<table v-if="page.data.slices[2] && page.data.slices[2].slice_type == 'book_info'" class="font-cooperbt text-left tracking-[-0.01em] text-base ml-7 md:ml-0 mt-9 md:mt-7">
+<div class="pl-3 md:pl-0 pt-11 md:pt-0">
+    <div :style="{'color':page.data.color_book_2, 'top': 'calc(50vh + 5.25rem + '+ computedHeight + 'px)' }" class="md:absolute right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5">
+      <div :style="{'background-color':page.data.color_book_2}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.1em]">
+        <p :style="centerNumber(page.data.number_book_2)">{{ page.data.number_book_2 }}</p>
+      </div><prismic-rich-text :field="page.data.title_book_2" class="translate-y-0.5"/>
+    </div>
+  </div>
+<table v-if="page.data.slices[2] && page.data.slices[2].slice_type == 'book_info'" class="font-cooperbt text-left tracking-[-0.01em] text-base ml-7 md:ml-0 mt-[1.313rem] md:mt-7">
       <tbody>
       <tr v-if="page.data.slices[2].primary.year.length > 0">
         <th class="w-[8.6rem] align-top font-normal">Year:</th>
@@ -159,6 +150,22 @@
       </tr>
     </tbody>
 </table>
+<!-- description -->
+        <div @click="moretext = !moretext"
+        :style="{ 'cursor': page.data.more_description.length > 0 ? 'pointer' : 'default' }"
+        class="font-garamond text-base md:w-[25rem] pl-4 pr-4 md:pr-0 md:pl-0 group cursor-pointer">
+    <prismic-rich-text :field="page.data.description" 
+    :style="{ 'text-indent': page.data.description[0].direction != 'ltr' ? '20px' : '0px' }"
+    :class="{'no-after': moretext == true || !(page.data.more_description.length > 0)}"
+    class="mt-9 md:mt-7
+    [&>p]:after:content-['\20(...)'] md:[&>p]:after:content-['\20(...)\20read\20more'] [&>p]:after:text-[#BCBCBC] md:[&>p]:after:font-garamondit md:[&>p]:after:opacity-0 md:group-hover:[&>p]:after:opacity-100 md:[&>p]:after:transition-all" />
+    <prismic-rich-text v-if="page.data.more_description.length > 0" :field="page.data.more_description" 
+    :style="{
+  'text-indent': page.data.more_description[0].direction != 'ltr' ? '20px' : '0px',
+  'max-height': moretext ? '99rem' : '0rem'
+}"
+    class="[&>p]:min-h-[1rem] overflow-hidden transition-all" />
+        </div>
 
 <!-- add to cart -->
     <prismic-rich-text :field="page.data.extra_line" class="font-cooperbt text-base tracking-[-0.01em] pt-7 md:pt-5 pl-5 md:pl-0"/>
@@ -184,18 +191,12 @@
   </div>
 </form>
 
-  <div class="absolute md:static top-[62vh] pl-3 md:pl-0 pt-11 md:pt-0 pointer-events-none">
+<!-- number and title -->
+  <div class="absolute md:static top-[62vh] pl-3 md:pl-0 pt-11 md:pt-0">
     <div :style="{'color':page.data.color}" class="md:absolute md:top-[calc(50vh+3.5rem)] right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5">
       <div :style="{'background-color':page.data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.1em]">
         <p :style="centerNumber(page.data.number)">{{ page.data.number }}</p>
       </div><prismic-rich-text :field="page.data.title" class="translate-y-0.5"/>
-    </div>
-  </div>
-  <div class="absolute md:static top-[65vh] pl-3 md:pl-0 pt-11 md:pt-0 pointer-events-none">
-    <div :style="{'color':page.data.color_book_2}" class="md:absolute md:top-[calc(50vh+5rem)] right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5">
-      <div :style="{'background-color':page.data.color_book_2}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.1em]">
-        <p :style="centerNumber(page.data.number_book_2)">{{ page.data.number_book_2 }}</p>
-      </div><prismic-rich-text :field="page.data.title_book_2" class="translate-y-0.5"/>
     </div>
   </div>
   </div>
@@ -221,6 +222,7 @@ export default {
   },
   data () {
     return { 
+      computedHeight: 0,
       components,
       intervall: null,
       window: {
@@ -257,7 +259,15 @@ export default {
       return this.$store.state.prismic.settings
     }
   },
-  methods: { 
+  methods: {
+    setHeight() {
+      this.$nextTick(() => {
+        const target = this.$refs.firsttable;
+        if (target) {
+          this.computedHeight = target.clientHeight;
+        }
+      });
+    },
     centerNumber(e) {
       if(e>9){
         return 'transform: translate(-1.5px);'
@@ -347,6 +357,7 @@ name: 'MyComponent',
     components: { VueSlickCarousel},
 
 mounted(){
+  this.setHeight();
   window.addEventListener('resize', this.handleResize);
   this.handleResize();
   if(this.page.data.preorderlaunchdate){
