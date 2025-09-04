@@ -107,7 +107,7 @@
 </table>
 <div class="pl-3 md:pl-0 pt-11 md:pt-0">
     <div :style="{'color':page.data.color_book_2, 'top': 'calc(50vh + 5.25rem + '+ computedHeight + 'px)' }" class="md:absolute right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5">
-      <div :style="{'background-color':page.data.color_book_2}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.1em]">
+      <div :style="{'background-color':page.data.color_book_2}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.08em]">
         <p :style="centerNumber(page.data.number_book_2)">{{ page.data.number_book_2 }}</p>
       </div><prismic-rich-text :field="page.data.title_book_2" class="translate-y-0.5"/>
     </div>
@@ -194,7 +194,7 @@
 <!-- number and title -->
   <div class="absolute md:static top-[62vh] pl-3 md:pl-0 pt-11 md:pt-0">
     <div :style="{'color':page.data.color}" class="md:absolute md:top-[calc(50vh+3.5rem)] right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5">
-      <div :style="{'background-color':page.data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.1em]">
+      <div :style="{'background-color':page.data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.08em]">
         <p :style="centerNumber(page.data.number)">{{ page.data.number }}</p>
       </div><prismic-rich-text :field="page.data.title" class="translate-y-0.5"/>
     </div>
@@ -273,6 +273,8 @@ export default {
         return 'transform: translate(-1.5px);'
       }
       switch (e) {
+        case 8:
+        return 'transform: translate(-1.25px);'
         case 4:
         return 'transform: translate(-1.5px);'
         case 9:

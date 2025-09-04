@@ -32,8 +32,8 @@
 <div class="md:pb-36">
   <NuxtLink :to="'/'+page[0].uid">
 <!-- title highlight-->
-  <div :style="{'color':page[0].data.color}" class="flex justify-center pt-2.5 md:pt-5 font-cooperbt text-xl items-center gap-0.5"><div :style="{'background-color':page[0].data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.1em]"><p :style="centerNumber(page[0].data.number)">{{ page[0].data.number }}</p></div><prismic-rich-text :field="page[0].data.title" class="" /></div>
-  <div v-if="page[0].data.title_book_2.length > 0" :style="{'color':page[0].data.color_book_2}" class="flex justify-center font-cooperbt text-xl items-center gap-0.5"><div :style="{'background-color':page[0].data.color_book_2}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.1em]"><p :style="centerNumber(page[0].data.number_book_2)">{{ page[0].data.number_book_2 }}</p></div><prismic-rich-text :field="page[0].data.title_book_2" class="" /></div>
+  <div :style="{'color':page[0].data.color}" class="flex justify-center pt-2.5 md:pt-5 font-cooperbt text-xl items-center gap-0.5"><div :style="{'background-color':page[0].data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.08em]"><p :style="centerNumber(page[0].data.number)">{{ page[0].data.number }}</p></div><prismic-rich-text :field="page[0].data.title" class="" /></div>
+  <div v-if="page[0].data.title_book_2.length > 0" :style="{'color':page[0].data.color_book_2}" class="flex justify-center font-cooperbt text-xl items-center gap-0.5"><div :style="{'background-color':page[0].data.color_book_2}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.08em]"><p :style="centerNumber(page[0].data.number_book_2)">{{ page[0].data.number_book_2 }}</p></div><prismic-rich-text :field="page[0].data.title_book_2" class="" /></div>
   <div class="text-center font-garamond hidden md:block w-[33rem] m-auto" ><prismic-rich-text :field="page[0].data.description" class="pt-8" />
   <prismic-rich-text v-if="page[0].data.extra_line.text" :field="page[0].data.extra_line" class="italic pt-5" />
   <div v-if="page[0].data.price > 0" class="italic pt-5"><span v-if="page[0].data.old_price != null" class="text-[#FF0000] line-through decoration-2">€{{ page[0].data.old_price }}</span> €{{ page[0].data.price }},–</div></div>
@@ -46,8 +46,8 @@
     <div class="relative"><PrismicImage :field="item.data.image" class="h-[62vh] md:h-[38.5vw] 2xl:h-[30.5vw] w-full md:border object-cover"/><div v-if="item.data.status != 'ORDER'" :class="item.data.status == 'email'?'':'preorder'" class="absolute inset-0 backdrop-brightness-130 backdrop-blur-lg bg-white/50 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]"><div v-if="item.data.status == 'email'" class="opacity-60">「out of stock」</div><div v-else-if="item.data.status == 'PRE-ORDER' || item.data.status == 'customize' " class="opacity-60">「{{ item.data.purple_text[0].text }}」</div></div></div>
 <!-- title usual-->
    <div>
-    <div :style="{'color':item.data.color}" class="flex justify-center pt-4 md:pt-5 font-cooperbt text-xl items-center gap-0.5"><span><div :style="{'background-color':item.data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.1em]"><p :style="centerNumber(item.data.number)">{{ item.data.number }}</p></div></span><prismic-rich-text :field="item.data.title"/></div>
-    <div :style="{'color':item.data.color_book_2}" class="flex justify-center font-cooperbt text-xl items-center gap-0.5"><span><div :style="{'background-color':item.data.color_book_2}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.1em]"><p :style="centerNumber(item.data.number_book_2)">{{ item.data.number_book_2 }}</p></div></span><prismic-rich-text :field="item.data.title_book_2"/></div>
+    <div :style="{'color':item.data.color}" class="flex justify-center pt-4 md:pt-5 font-cooperbt text-xl items-center gap-0.5"><span><div :style="{'background-color':item.data.color}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.08em]"><p :style="centerNumber(item.data.number)">{{ item.data.number }}</p></div></span><prismic-rich-text :field="item.data.title"/></div>
+    <div :style="{'color':item.data.color_book_2}" class="flex justify-center font-cooperbt text-xl items-center gap-0.5"><span><div :style="{'background-color':item.data.color_book_2}" class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.08em]"><p :style="centerNumber(item.data.number_book_2)">{{ item.data.number_book_2 }}</p></div></span><prismic-rich-text :field="item.data.title_book_2"/></div>
   </div>
   </NuxtLink>
   </div>
@@ -113,6 +113,8 @@ beforeDestroy() {
       switch (e) {
         case 4:
         return 'transform: translate(-1.5px);'
+        case 8:
+        return 'transform: translate(-1.25px);'
         case 9:
         return 'transform: translate(-1px);'
         case 2:
