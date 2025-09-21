@@ -10,6 +10,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
+      aotf: ["AOTF"],
       cooperbt: ["COOPERBT"],
       cooperbtmid: ["COOPERBTMID"],
       garamond: ["GARAMOND"],

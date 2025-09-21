@@ -26,6 +26,47 @@
           "default_value": "ORDER"
         }
       },
+      "sticker": {
+        "type": "Select",
+        "config": {
+          "label": "Sticker",
+          "placeholder": "Choose which sticker to apply.",
+          "options": [
+            "NoSticker",
+            "PreOrder",
+            "TwinPack",
+            "OnSale",
+            "PreSale",
+            "DuoBook",
+            "Custom",
+            "SoldOut"
+          ],
+          "default_value": "NoSticker"
+        }
+      },
+      "sticker_text_color": {
+        "type": "Color",
+        "config": {
+          "label": "Sticker Text Color",
+          "placeholder": ""
+        }
+      },
+      "sticker_background_color": {
+        "type": "Color",
+        "config": {
+          "label": "Sticker Background Color",
+          "placeholder": ""
+        }
+      },
+      "purple_text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "purple text",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
       "blurring": {
         "type": "Select",
         "config": {
@@ -56,15 +97,6 @@
         "type": "StructuredText",
         "config": {
           "label": "PreOrderText",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-        }
-      },
-      "purple_text": {
-        "type": "StructuredText",
-        "config": {
-          "label": "purple text",
           "placeholder": "",
           "allowTargetBlank": true,
           "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
@@ -124,6 +156,14 @@
         "type": "Image",
         "config": {
           "label": "image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "duo_book_image": {
+        "type": "Image",
+        "config": {
+          "label": "Duo Book Image",
           "constraint": {},
           "thumbnails": []
         }

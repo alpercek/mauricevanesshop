@@ -4,6 +4,10 @@
 
 
 @font-face {
+  font-family: "AOTF";
+  src: url("../styles/AOTFShinGoProRegular.otf");
+}
+@font-face {
   font-family: "COOPERBT";
   src: url("../styles/CooperBT-Light.otf");
 }
