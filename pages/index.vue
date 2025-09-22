@@ -105,7 +105,7 @@
             <div class="relative border border-[#707070] w-full h-[62vh] md:h-[38.5vw] 2xl:h-[30.5vw]"
               style="overflow: hidden;">
               <!-- Container for the two halves -->
-              <div class="absolute inset-0 w-full h-full" style="overflow: hidden;">
+              <div class="absolute group inset-0 w-full h-full" style="overflow: hidden;">
                 <!-- top Half -->
                 <div class="absolute top-0 left-0 w-full h-full" style="overflow: hidden;">
                   <PrismicImage :field="item.data.image" class="w-full h-full object-cover" />
@@ -117,42 +117,71 @@
                 </div>
               </div>
               <div :class="{ 'backdrop-brightness-130 backdrop-blur-sm bg-white/50': item.data.status != 'ORDER' }"
-                class="absolute inset-0 flex flex-col justify-center items-center text-[1.313rem] font-aotf overflow-hidden">
+                class="group absolute inset-0 flex flex-col justify-center items-center text-[1.313rem] font-aotf overflow-hidden"
+                @mouseenter="hoveredIndex = i"
+                @mouseleave="hoveredIndex = null"
+              >
                 <div v-if="item.data.sticker == 'OnSale'"
-                  class="bg-[#FCEE22] border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">ON
-                  SALE
+                  class="bg-[#FCEE22] border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
+                  <p class="shimmer">ON SALE</p>
                 </div>
                 <div v-else-if="item.data.sticker == 'PreOrder'"
-                  class="bg-white border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">PRE
-                  ORDER
+                  class="bg-white border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
+                  <p class="shimmer">PRE ORDER</p>
                 </div>
                 <div v-else-if="item.data.sticker == 'SoldOut'"
-                  class="bg-slate-300 border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">SOLD
-                  OUT
+                  class="bg-slate-300 border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
+                  <p class="shimmer">SOLD OUT</p>
                 </div>
                 <template v-else-if="item.data.sticker == 'TwinPack'">
                   <div
                     class="bg-[#00FF4E] border border-black text-black min-w-[150px] text-center mb-[0.938rem] tracking-[-0.025em]">
-                    TWIN PACK</div>
+                    <p class="shimmer">TWIN PACK</p>
+                  </div>
                   <div
                     class="bg-[#00FF4E] border border-black text-black min-w-[150px] text-center px-2 tracking-[-0.025em]">
-                    <PrismicRichText class="uppercase" :field="item.data.purple_text" />
+                    <p class="shimmer">
+                      <PrismicRichText class="uppercase" :field="item.data.purple_text" />
+                    </p>
                   </div>
                 </template>
                 <div v-else-if="item.data.sticker == 'PreSale'"
                   :style="{ backgroundColor: item.data.sticker_background_color, color: item.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
                   class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em]">
-                  PRE SALE</div>
+                  <p :style="hoveredIndex === i ? {
+                      background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
+                      backgroundClip: 'text',
+                      color: 'transparent',
+                      backgroundSize: '200% 100%',
+                      animation: 'shimmer 5s linear infinite'
+                    } : {}">PRE SALE</p>
+                </div>
                 <div v-else-if="item.data.sticker == 'Custom'"
                   :style="{ backgroundColor: item.data.sticker_background_color, color: item.data.sticker_text_color }"
                   class="border border-black min-w-[150px] text-center tracking-[-0.025em] px-2">
-                  <PrismicRichText class="uppercase" :field="item.data.purple_text" />
+                  <p
+                    :style="hoveredIndex === i ? {
+                      background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
+                      backgroundClip: 'text',
+                      color: 'transparent',
+                      backgroundSize: '200% 100%',
+                      animation: 'shimmer 5s linear infinite'
+                    } : {}"
+                  >
+                    <PrismicRichText class="uppercase" :field="item.data.purple_text" />
+                  </p>
                 </div>
                 <div v-else-if="item.data.sticker == 'DuoBook'"
                   :style="{ backgroundColor: item.data.sticker_background_color, color: item.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                  class="rotate-[-30deg] border border-black min-w-[680px] text-center tracking-[-0.025em] px-2">DUO
-                  BOOK DUO
-                  BOOK DUO BOOK DUO BOOK</div>
+                  class="rotate-[-30deg] border border-black min-w-[680px] text-center tracking-[-0.025em] px-2">
+                  <p :style="hoveredIndex === i ? {
+                      background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
+                      backgroundClip: 'text',
+                      color: 'transparent',
+                      backgroundSize: '200% 100%',
+                      animation: 'shimmer 5s linear infinite'
+                    } : {}">DUO BOOK DUO BOOK DUO BOOK DUO BOOK</p>
+                </div>
               </div>
             </div>
             <!-- title usual-->
@@ -203,6 +232,7 @@ export default {
   },
   data() {
     return {
+    hoveredIndex: null,
       components,
       iinterval: null,
       window: {
@@ -323,7 +353,23 @@ export default {
   -webkit-transform: rotate(135deg);
 }
 
-.preorder {}
+/* Shimmer effect class, only active on hover */
+.group:hover .shimmer {
+  background: linear-gradient(135deg, #000000, #ffffff, #000000);
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 100%;
+  animation: shimmer 5s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
 
 @keyframes pulse {
 
