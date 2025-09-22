@@ -2,41 +2,8 @@
   <div class="pb-5">
     <div class="pb-32">
       <div v-if="page[0].data.slices[0]">
-        <!--mobile slider-->
-        <template v-if="isMobile && page[0].data.slices[2] && page[0].data.slices[2].slice_type == 'mobile_slider'">
-          <div class="relative md:w-[56vw] m-auto">
-            <NuxtLink :to="'/' + page[0].uid">
-              <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000"
-                :speed="1500" :autoplay="true">
-                <div v-for="(item, i) in page[0].data.slices[2].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">
-                  <div class="relative">
-                    <PrismicImage :field="item.image"
-                      class="md:m-auto h-[62vh] md:h-[75vh] object-cover md:object-scale-down w-full" />
-                    <div
-                      v-if="page[0].data.status != 'ORDER' && page[0].data.blurring == 'all slides' || page[0].data.status != 'ORDER' && page[0].data.blurring == 'only first slide' && i == 0"
-                      :class="page[0].data.status == 'email' ? '' : 'preorder'"
-                      class="absolute inset-0 backdrop-brightness-130 backdrop-blur-lg bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]">
-                      <div v-if="page[0].data.status == 'email'" class="opacity-60">「out of stock」</div>
-                      <div v-else-if="page[0].data.status == 'PRE-ORDER' || item.data.status == 'customize'"
-                        class="opacity-60 flex flex-col text-center gap-[23px]">「{{ page[0].data.purple_text[0].text }}」
-                        <div class="text-lg indexcounter pt-[7px]"></div>
-                        <div class="text-lg font-garamond">
-                          <PrismicRichText :field="page[0].data.preordertext" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </VueSlickCarousel>
-            </NuxtLink>
-            <div v-if="page[0].data.slices[0].items.length > 1"
-              class="hidden md:flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2"> <button
-                @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext"
-                class="hidden md:block"><i class="arrow right"></i></button></div>
-          </div>
-        </template>
         <!-- slider-->
-        <template v-else>
+        <template>
           <div class="relative md:w-[56vw] m-auto">
             <NuxtLink :to="'/' + page[0].uid">
               <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :autoplaySpeed="5000"
@@ -45,19 +12,86 @@
                   <div class="relative">
                     <PrismicImage :field="item.image"
                       class="md:m-auto h-[62vh] md:h-[75vh] object-cover md:object-scale-down w-full" />
-                    <div
-                      v-if="page[0].data.status != 'ORDER' && page[0].data.blurring == 'all slides' || page[0].data.status != 'ORDER' && page[0].data.blurring == 'only first slide' && i == 0"
-                      :class="page[0].data.status == 'email' ? '' : 'preorder'"
-                      class="absolute inset-0 backdrop-brightness-130 backdrop-blur-lg bg-white/60 flex justify-center items-center text-2xl font-cooperbt text-[#6200FF]">
-                      <div v-if="page[0].data.status == 'email'" class="opacity-60">「out of stock」</div>
-                      <div v-else-if="page[0].data.status == 'PRE-ORDER' || page[0].data.status == 'customize'"
-                        class="opacity-60  flex flex-col text-center gap-[23px]">「{{ page[0].data.purple_text[0].text
-                        }}」<div class="text-lg indexcounter pt-[7px]"></div>
+
+                    <div :class="{
+                      'backdrop-brightness-130 backdrop-blur-sm bg-white/50':
+                        (page[0].data.status != 'ORDER') &&
+                        (
+                          page[0].data.blurring == 'all slides' ||
+                          (page[0].data.blurring == 'only first slide' && i == 0)
+                        )
+                    }" 
+                    @mouseenter="hoveredIndex = i" @mouseleave="hoveredIndex = null"
+                    :style="{ 'color': page[0].data.color }"
+                      class="group absolute inset-0 flex justify-center items-center text-[1.313rem] font-aotf flex flex-col gap-4 overflow-hidden">
+                      <div v-if="page[0].data.sticker == 'OnSale'"
+                  class="bg-[#FCEE22] border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
+                  <p class="shimmer">ON SALE</p>
+                </div>
+                <div v-else-if="page[0].data.sticker == 'PreOrder'"
+                  class="bg-white border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
+                  <p class="shimmer">PRE ORDER</p>
+                </div>
+                <div v-else-if="page[0].data.sticker == 'SoldOut'"
+                  class="bg-slate-300 border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
+                  <p class="shimmer">SOLD OUT</p>
+                </div>
+                <template v-else-if="page[0].data.sticker == 'TwinPack'">
+                  <div
+                    class="bg-[#00FF4E] border border-black text-black min-w-[150px] text-center mb-[0.938rem] tracking-[-0.025em]">
+                    <p class="shimmer">TWIN PACK</p>
+                  </div>
+                  <div
+                    class="bg-[#00FF4E] border border-black text-black min-w-[150px] text-center px-2 tracking-[-0.025em]">
+                    <p class="shimmer">
+                      <PrismicRichText class="uppercase" :field="page[0].data.purple_text" />
+                    </p>
+                  </div>
+                </template>
+                <div v-else-if="page[0].data.sticker == 'PreSale'"
+                  :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
+                  class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em]">
+                  <p :style="hoveredIndex === i ? {
+                    background: `linear-gradient(135deg, ${page[0].data.sticker_text_color}, #ffffff, ${page[0].data.sticker_text_color})`,
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    backgroundSize: '200% 100%',
+                    animation: 'shimmer 5s linear infinite'
+                  } : {}">PRE SALE</p>
+                </div>
+                <div v-else-if="page[0].data.sticker == 'Custom'"
+                  :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color }"
+                  class="border border-black min-w-[150px] text-center tracking-[-0.025em] px-2">
+                  <p :style="hoveredIndex === i ? {
+                    background: `linear-gradient(135deg, ${page[0].data.sticker_text_color}, #ffffff, ${page[0].data.sticker_text_color})`,
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    backgroundSize: '200% 100%',
+                    animation: 'shimmer 5s linear infinite'
+                  } : {}">
+                    <PrismicRichText class="uppercase" :field="page[0].data.purple_text" />
+                  </p>
+                </div>
+                <div v-else-if="page[0].data.sticker == 'DuoBook'"
+                  :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
+                  class="rotate-[-30deg] border border-black min-w-[680px] text-center tracking-[-0.025em] px-2">
+                  <p :style="hoveredIndex === i ? {
+                    background: `linear-gradient(135deg, ${page[0].data.sticker_text_color}, #ffffff, ${page[0].data.sticker_text_color})`,
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    backgroundSize: '200% 100%',
+                    animation: 'shimmer 5s linear infinite'
+                  } : {}">DUO BOOK DUO BOOK DUO BOOK DUO BOOK</p>
+                </div>
+                <div v-if="page[0].data.status == 'PRE-ORDER' || page[0].data.status == 'customize'"
+                        class="flex flex-col text-center gap-[23px]">
+                        <div class="text-lg indexcounter pt-[7px]"></div>
                         <div class="text-lg font-garamond">
                           <PrismicRichText :field="page[0].data.preordertext" />
                         </div>
                       </div>
                     </div>
+
                   </div>
                 </div>
               </VueSlickCarousel>
@@ -118,9 +152,7 @@
               </div>
               <div :class="{ 'backdrop-brightness-130 backdrop-blur-sm bg-white/50': item.data.status != 'ORDER' }"
                 class="group absolute inset-0 flex flex-col justify-center items-center text-[1.313rem] font-aotf overflow-hidden"
-                @mouseenter="hoveredIndex = i"
-                @mouseleave="hoveredIndex = null"
-              >
+                @mouseenter="hoveredIndex = i" @mouseleave="hoveredIndex = null">
                 <div v-if="item.data.sticker == 'OnSale'"
                   class="bg-[#FCEE22] border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
                   <p class="shimmer">ON SALE</p>
@@ -149,25 +181,23 @@
                   :style="{ backgroundColor: item.data.sticker_background_color, color: item.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
                   class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em]">
                   <p :style="hoveredIndex === i ? {
-                      background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
-                      backgroundClip: 'text',
-                      color: 'transparent',
-                      backgroundSize: '200% 100%',
-                      animation: 'shimmer 5s linear infinite'
-                    } : {}">PRE SALE</p>
+                    background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    backgroundSize: '200% 100%',
+                    animation: 'shimmer 5s linear infinite'
+                  } : {}">PRE SALE</p>
                 </div>
                 <div v-else-if="item.data.sticker == 'Custom'"
                   :style="{ backgroundColor: item.data.sticker_background_color, color: item.data.sticker_text_color }"
                   class="border border-black min-w-[150px] text-center tracking-[-0.025em] px-2">
-                  <p
-                    :style="hoveredIndex === i ? {
-                      background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
-                      backgroundClip: 'text',
-                      color: 'transparent',
-                      backgroundSize: '200% 100%',
-                      animation: 'shimmer 5s linear infinite'
-                    } : {}"
-                  >
+                  <p :style="hoveredIndex === i ? {
+                    background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    backgroundSize: '200% 100%',
+                    animation: 'shimmer 5s linear infinite'
+                  } : {}">
                     <PrismicRichText class="uppercase" :field="item.data.purple_text" />
                   </p>
                 </div>
@@ -175,12 +205,12 @@
                   :style="{ backgroundColor: item.data.sticker_background_color, color: item.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
                   class="rotate-[-30deg] border border-black min-w-[680px] text-center tracking-[-0.025em] px-2">
                   <p :style="hoveredIndex === i ? {
-                      background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
-                      backgroundClip: 'text',
-                      color: 'transparent',
-                      backgroundSize: '200% 100%',
-                      animation: 'shimmer 5s linear infinite'
-                    } : {}">DUO BOOK DUO BOOK DUO BOOK DUO BOOK</p>
+                    background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    backgroundSize: '200% 100%',
+                    animation: 'shimmer 5s linear infinite'
+                  } : {}">DUO BOOK DUO BOOK DUO BOOK DUO BOOK</p>
                 </div>
               </div>
             </div>
@@ -232,7 +262,7 @@ export default {
   },
   data() {
     return {
-    hoveredIndex: null,
+      hoveredIndex: null,
       components,
       iinterval: null,
       window: {
@@ -366,6 +396,7 @@ export default {
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }
