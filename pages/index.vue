@@ -20,73 +20,72 @@
                           page[0].data.blurring == 'all slides' ||
                           (page[0].data.blurring == 'only first slide' && i == 0)
                         )
-                    }" 
-                    @mouseenter="hoveredIndex = i" @mouseleave="hoveredIndex = null"
-                    :style="{ 'color': page[0].data.color }"
+                    }" @mouseenter="hoveredIndex = i" @mouseleave="hoveredIndex = null"
+                      :style="{ 'color': page[0].data.color }"
                       class="group absolute inset-0 flex justify-center items-center text-[1.313rem] font-aotf flex flex-col gap-4 overflow-hidden">
                       <div v-if="page[0].data.sticker == 'OnSale'"
-                  class="bg-[#FCEE22] border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
-                  <p class="shimmer">ON SALE</p>
-                </div>
-                <div v-else-if="page[0].data.sticker == 'PreOrder'"
-                  class="bg-white border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
-                  <p class="shimmer">PRE ORDER</p>
-                </div>
-                <div v-else-if="page[0].data.sticker == 'SoldOut'"
-                  class="bg-slate-300 border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
-                  <p class="shimmer">SOLD OUT</p>
-                </div>
-                <template v-else-if="page[0].data.sticker == 'TwinPack'">
-                  <div
-                    class="bg-[#00FF4E] border border-black text-black min-w-[150px] text-center mb-[0.938rem] tracking-[-0.025em]">
-                    <p class="shimmer">TWIN PACK</p>
-                  </div>
-                  <div
-                    class="bg-[#00FF4E] border border-black text-black min-w-[150px] text-center px-2 tracking-[-0.025em]">
-                    <p class="shimmer">
-                      <PrismicRichText class="uppercase" :field="page[0].data.purple_text" />
-                    </p>
-                  </div>
-                </template>
-                <div v-else-if="page[0].data.sticker == 'PreSale'"
-                  :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                  class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em]">
-                  <p :style="hoveredIndex === i ? {
-                    background: `linear-gradient(135deg, ${page[0].data.sticker_text_color}, #ffffff, ${page[0].data.sticker_text_color})`,
-                    backgroundClip: 'text',
-                    color: 'transparent',
-                    backgroundSize: '200% 100%',
-                    animation: 'shimmer 5s linear infinite'
-                  } : {}">PRE SALE</p>
-                </div>
-                <div v-else-if="page[0].data.sticker == 'Custom'"
-                  :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color }"
-                  class="border border-black min-w-[150px] text-center tracking-[-0.025em] px-2">
-                  <p :style="hoveredIndex === i ? {
-                    background: `linear-gradient(135deg, ${page[0].data.sticker_text_color}, #ffffff, ${page[0].data.sticker_text_color})`,
-                    backgroundClip: 'text',
-                    color: 'transparent',
-                    backgroundSize: '200% 100%',
-                    animation: 'shimmer 5s linear infinite'
-                  } : {}">
-                    <PrismicRichText class="uppercase" :field="page[0].data.purple_text" />
-                  </p>
-                </div>
-                <div v-else-if="page[0].data.sticker == 'DuoBook'"
-                  :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                  class="rotate-[-30deg] border border-black min-w-[680px] text-center tracking-[-0.025em] px-2">
-                  <p :style="hoveredIndex === i ? {
-                    background: `linear-gradient(135deg, ${page[0].data.sticker_text_color}, #ffffff, ${page[0].data.sticker_text_color})`,
-                    backgroundClip: 'text',
-                    color: 'transparent',
-                    backgroundSize: '200% 100%',
-                    animation: 'shimmer 5s linear infinite'
-                  } : {}">DUO BOOK DUO BOOK DUO BOOK DUO BOOK</p>
-                </div>
-                <div v-if="page[0].data.status == 'PRE-ORDER' || page[0].data.status == 'customize'"
+                        class="bg-[#FCEE22] border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
+                        <p class="shimmer">ON SALE</p>
+                      </div>
+                      <div v-else-if="page[0].data.sticker == 'PreOrder'"
+                        class="bg-white border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
+                        <p class="shimmer">PRE ORDER</p>
+                      </div>
+                      <div v-else-if="page[0].data.sticker == 'SoldOut'"
+                        class="bg-slate-300 border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
+                        <p class="shimmer">SOLD OUT</p>
+                      </div>
+                      <template v-else-if="page[0].data.sticker == 'TwinPack'">
+                        <div
+                          class="bg-[#00FF4E] border border-black text-black min-w-[150px] text-center mb-[0.938rem] tracking-[-0.025em]">
+                          <p class="shimmer">TWIN PACK</p>
+                        </div>
+                        <div
+                          class="bg-[#00FF4E] border border-black text-black min-w-[150px] text-center px-2 tracking-[-0.025em]">
+                          <p class="shimmer">
+                            <PrismicRichText class="uppercase" :field="page[0].data.purple_text" />
+                          </p>
+                        </div>
+                      </template>
+                      <div v-else-if="page[0].data.sticker == 'PreSale'"
+                        :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
+                        class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em]">
+                        <p :style="hoveredIndex === i ? {
+                          background: `linear-gradient(135deg, ${page[0].data.sticker_text_color}, #ffffff, ${page[0].data.sticker_text_color})`,
+                          backgroundClip: 'text',
+                          color: 'transparent',
+                          backgroundSize: '200% 100%',
+                          animation: 'shimmer 5s linear infinite'
+                        } : {}">PRE SALE</p>
+                      </div>
+                      <div v-else-if="page[0].data.sticker == 'Custom'"
+                        :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color }"
+                        class="border border-black min-w-[150px] text-center tracking-[-0.025em] px-2">
+                        <p :style="hoveredIndex === i ? {
+                          background: `linear-gradient(135deg, ${page[0].data.sticker_text_color}, #ffffff, ${page[0].data.sticker_text_color})`,
+                          backgroundClip: 'text',
+                          color: 'transparent',
+                          backgroundSize: '200% 100%',
+                          animation: 'shimmer 5s linear infinite'
+                        } : {}">
+                          <PrismicRichText class="uppercase" :field="page[0].data.purple_text" />
+                        </p>
+                      </div>
+                      <div v-else-if="page[0].data.sticker == 'DuoBook'"
+                        :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
+                        class="rotate-[-30deg] border border-black min-w-[680px] text-center tracking-[-0.025em] px-2">
+                        <p :style="hoveredIndex === i ? {
+                          background: `linear-gradient(135deg, ${page[0].data.sticker_text_color}, #ffffff, ${page[0].data.sticker_text_color})`,
+                          backgroundClip: 'text',
+                          color: 'transparent',
+                          backgroundSize: '200% 100%',
+                          animation: 'shimmer 5s linear infinite'
+                        } : {}">DUO BOOK DUO BOOK DUO BOOK DUO BOOK</p>
+                      </div>
+                      <div v-if="page[0].data.status == 'PRE-ORDER' || page[0].data.status == 'customize'"
                         class="flex flex-col text-center gap-[23px]">
                         <div class="text-lg indexcounter pt-[7px]"></div>
-                        <div class="text-lg font-garamond">
+                        <div class="text-lg">
                           <PrismicRichText :field="page[0].data.preordertext" />
                         </div>
                       </div>
