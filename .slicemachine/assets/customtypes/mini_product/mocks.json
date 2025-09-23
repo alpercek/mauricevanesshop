@@ -1,0 +1,121 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "substance"
+  },
+  "title": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Consequat mollit fugiat aliquip consequat culpa est ullamco sit magna amet nulla labore ex occaecat."
+        }
+      }
+    ]
+  },
+  "color": {
+    "__TYPE__": "FieldContent",
+    "value": "#cc4d17",
+    "type": "Color"
+  },
+  "image": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
+      "width": 3277,
+      "height": 4092
+    },
+    "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
+    "width": 3277,
+    "height": 4092,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "description": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Proident sit laborum tempor nulla laborum id proident ex. Fugiat fugiat occaecat sunt culpa sunt."
+        }
+      }
+    ]
+  },
+  "inventory": {
+    "__TYPE__": "FieldContent",
+    "value": "anything",
+    "type": "Text"
+  },
+  "price": {
+    "__TYPE__": "FieldContent",
+    "value": "64",
+    "type": "Number"
+  },
+  "sticker": {
+    "__TYPE__": "FieldContent",
+    "value": "lesson",
+    "type": "Text"
+  },
+  "blur": {
+    "__TYPE__": "BooleanContent",
+    "value": false
+  },
+  "slider": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "image",
+            {
+              "__TYPE__": "ImageContent",
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1589321599763-d66926c29613",
+                "width": 3168,
+                "height": 4752
+              },
+              "url": "https://images.unsplash.com/photo-1589321599763-d66926c29613",
+              "width": 3168,
+              "height": 4752,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 0
+                },
+                "background": "transparent"
+              },
+              "thumbnails": {}
+            }
+          ],
+          [
+            "fig",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Cillum ex et nisi duis aliqua aute cupidatat tempor deserunt."
+                  }
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    ]
+  }
+}

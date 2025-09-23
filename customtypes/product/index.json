@@ -205,6 +205,24 @@
           "placeholder": ""
         }
       },
+      "promotions": {
+        "type": "Group",
+        "config": {
+          "label": "promotions",
+          "fields": {
+            "mini_product": {
+              "type": "Link",
+              "config": {
+                "label": "mini product",
+                "select": "document",
+                "customtypes": [
+                  "mini_product"
+                ]
+              }
+            }
+          }
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

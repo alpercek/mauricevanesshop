@@ -86,11 +86,13 @@
           "patternType": "PARAGRAPH",
           "blocks": 1
         }
-      }
+      },
+      "promotions": {}
     },
     "shipping": {},
     "index_page": {
       "products": {}
-    }
+    },
+    "mini_product": {}
   }
 }

@@ -1,0 +1,105 @@
+{
+  "id": "mini_product",
+  "label": "mini product",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "uid",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "color": {
+        "type": "Color",
+        "config": {
+          "label": "color",
+          "placeholder": ""
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "inventory": {
+        "type": "Text",
+        "config": {
+          "label": "inventory",
+          "placeholder": "192 of 500 copies left"
+        }
+      },
+      "price": {
+        "type": "Number",
+        "config": {
+          "label": "price",
+          "placeholder": ""
+        }
+      },
+      "sticker": {
+        "type": "Text",
+        "config": {
+          "label": "sticker",
+          "placeholder": ""
+        }
+      },
+      "blur": {
+        "type": "Boolean",
+        "config": {
+          "label": "blur",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "slider": {
+        "type": "Group",
+        "config": {
+          "label": "slider",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "fig": {
+              "type": "StructuredText",
+              "config": {
+                "label": "fig",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
