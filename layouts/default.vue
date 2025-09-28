@@ -7,7 +7,7 @@
     />
     <main><nuxt /></main>
     <div v-if="splash">
-    <div v-if="event" id="alper" class="fixed w-screen h-screen bg-white z-10 transition-[bottom] ease-in duration-[2000ms] overflow-hidden bottom-0">
+    <div v-if="event" id="alper" class="fixed w-screen h-screen bg-white z-[12] transition-[bottom] ease-in duration-[2000ms] overflow-hidden bottom-0">
       <Maradona :settings="settings" @goToSite="animation()" />
     </div>
     <div v-else id="alper" class="pointer-events-none fixed opacity-0 w-screen h-screen bg-white z-10 transition-[bottom] ease-in duration-[2000ms] delay-[2000ms] overflow-hidden bottom-0">

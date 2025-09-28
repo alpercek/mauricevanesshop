@@ -3,43 +3,30 @@
     <!-- slider-->
     <template>
       <div v-if="page.data.slices[0]" class="pb-5">
-        <div class="relative md:w-[56vw] m-auto">
-          <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed"
-            :speed="1500" :autoplay="true">
-            <div v-for="(item, i) in page.data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">
+        <div @mouseenter="hoveredIndex = 1" @mouseleave="hoveredIndex = null" class="relative md:w-[56vw] m-auto">
 
-              <div class="relative">
-                <PrismicImage :field="item.image"
-                  class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full" />
-                <div :class="{
-                  'backdrop-brightness-130 backdrop-blur-sm bg-white/50':
-                    (page.data.status != 'ORDER') &&
-                    (
-                      page.data.blurring == 'all slides' ||
-                      (page.data.blurring == 'only first slide' && i == 0)
-                    )
-                }" @mouseenter="hoveredIndex = i" @mouseleave="hoveredIndex = null"
+          <div
                   :style="{ 'color': page.data.color }"
-                  class="group absolute inset-0 flex justify-center items-center text-[1.313rem] font-aotf flex flex-col gap-4 overflow-hidden">
+                  class="z-10 group absolute inset-0 flex justify-center items-center text-[1rem] font-aotf flex flex-col gap-4 overflow-hidden">
                   <div v-if="page.data.sticker == 'OnSale'"
-                    class="bg-[#FCEE22] border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
+                    class="bg-[#FCEE22] border border-black text-black min-w-[120px] text-center tracking-[-0.025em]">
                     <p class="shimmer">ON SALE</p>
                   </div>
                   <div v-else-if="page.data.sticker == 'PreOrder'"
-                    class="bg-white border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
+                    class="bg-white border border-black text-black min-w-[120px] text-center tracking-[-0.025em]">
                     <p class="shimmer">PRE ORDER</p>
                   </div>
                   <div v-else-if="page.data.sticker == 'SoldOut'"
-                    class="bg-slate-300 border border-black text-black min-w-[150px] text-center tracking-[-0.025em]">
+                    class="bg-slate-300 border border-black text-black min-w-[120px] text-center tracking-[-0.025em]">
                     <p class="shimmer">SOLD OUT</p>
                   </div>
                   <template v-else-if="page.data.sticker == 'TwinPack'">
                     <div
-                      class="bg-[#00FF4E] border border-black text-black min-w-[150px] text-center mb-[0.938rem] tracking-[-0.025em]">
+                      class="bg-[#00FF4E] border border-black text-black min-w-[120px] text-center mb-[0.938rem] tracking-[-0.025em]">
                       <p class="shimmer">TWIN PACK</p>
                     </div>
                     <div
-                      class="bg-[#00FF4E] border border-black text-black min-w-[150px] text-center px-2 tracking-[-0.025em]">
+                      class="bg-[#00FF4E] border border-black text-black min-w-[120px] text-center px-2 tracking-[-0.025em]">
                       <p class="shimmer">
                         <PrismicRichText class="uppercase" :field="page.data.purple_text" />
                       </p>
@@ -48,23 +35,27 @@
                   <div v-else-if="page.data.sticker == 'PreSale'"
                     :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
                     class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em]">
-                    <p :style="hoveredIndex === i ? {
+                    <p :style="hoveredIndex === 1 ? {
+                      backgroundColor: 'black',
+                    backgroundRepeat: 'no-repeat',
                       background: `linear-gradient(135deg, ${page.data.sticker_text_color}, #ffffff, ${page.data.sticker_text_color})`,
                       backgroundClip: 'text',
                       color: 'transparent',
                       backgroundSize: '200% 100%',
-                      animation: 'shimmer 5s linear infinite'
+                      animation: 'shimmer 4.5s linear infinite'
                     } : {}">PRE SALE</p>
                   </div>
                   <div v-else-if="page.data.sticker == 'Custom'"
                     :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color }"
-                    class="border border-black min-w-[150px] text-center tracking-[-0.025em] px-2">
-                    <p :style="hoveredIndex === i ? {
+                    class="border border-black min-w-[120px] text-center tracking-[-0.025em] px-2">
+                    <p :style="hoveredIndex === 1 ? {
+                      backgroundColor: 'black',
+                    backgroundRepeat: 'no-repeat',
                       background: `linear-gradient(135deg, ${page.data.sticker_text_color}, #ffffff, ${page.data.sticker_text_color})`,
                       backgroundClip: 'text',
                       color: 'transparent',
                       backgroundSize: '200% 100%',
-                      animation: 'shimmer 5s linear infinite'
+                      animation: 'shimmer 4.5s linear infinite'
                     } : {}">
                       <PrismicRichText class="uppercase" :field="page.data.purple_text" />
                     </p>
@@ -72,12 +63,14 @@
                   <div v-else-if="page.data.sticker == 'DuoBook'"
                     :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
                     class="rotate-[-30deg] border border-black min-w-[680px] text-center tracking-[-0.025em] px-2">
-                    <p :style="hoveredIndex === i ? {
+                    <p :style="hoveredIndex === 1 ? {
+                      backgroundColor: 'black',
+                    backgroundRepeat: 'no-repeat',
                       background: `linear-gradient(135deg, ${page.data.sticker_text_color}, #ffffff, ${page.data.sticker_text_color})`,
                       backgroundClip: 'text',
                       color: 'transparent',
                       backgroundSize: '200% 100%',
-                      animation: 'shimmer 5s linear infinite'
+                      animation: 'shimmer 4.5s linear infinite'
                     } : {}">DUO BOOK DUO BOOK DUO BOOK DUO BOOK</p>
                   </div>
                   <div v-if="page.data.status == 'PRE-ORDER' || page.data.status == 'customize'"
@@ -85,6 +78,22 @@
                     <div class="text-lg alpercounter pt-[7px]"></div>
                   </div>
                 </div>
+
+          <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed"
+            :speed="1500" :autoplay="true">
+            <div v-for="(item, i) in page.data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">
+
+              <div class="relative">
+                <PrismicImage :field="item.image"
+                  class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full" />
+                  <div :class="{
+                  'backdrop-brightness-130 backdrop-blur-sm bg-white/50':
+                    (page.data.status != 'ORDER') &&
+                    (
+                      page.data.blurring == 'all slides' ||
+                      (page.data.blurring == 'only first slide' && i == 0)
+                    )
+                }" class="absolute inset-0"></div>
               </div>
 
             </div>
@@ -103,7 +112,7 @@
             </div>
           </VueSlickCarousel>
           <div v-if="page.data.slices[0].items.length > 1"
-            class="md:flex justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2 hidden"> <button
+            class="md:flex z-[11] justify-between px-4 h-12 w-full -translate-y-1/2 absolute top-1/2 hidden"> <button
               @click="showPrev" class="hidden md:block"><i class="arrow left"></i></button><button @click="showNext"
               class="hidden md:block"><i class="arrow right"></i></button></div>
         </div>
