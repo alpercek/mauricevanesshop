@@ -284,10 +284,10 @@
       class="mt-[45px] min-[1270px]:mt-0 md:max-w-[450px] min-[1270px]:max-w-[283px] md:mx-auto min-[1270px]:absolute min-[1270px]:right-0 min-[1500px]:right-auto min-[1500px]:left-[1250px] min-[1270px]:top-[calc(50vh+3.5rem)]">
       <div class="font-garamondit uppercase tracking-[-0.01em] text-center mb-[25px] min-[1270px]:mb-[11px]">Collectors
         Editions</div>
-      <div class="grid grid-cols-2 px-[18px] gap-[14px] md:gap-[31px]">
-        <div v-for="(item, i) in mini" :key="`slice-item-${i}`" class="group border-b break-inside-avoid mb-[20px]">
+      <div class="grid grid-cols-2 px-[18px] gap-x-[14px] md:gap-x-[31px] tracking-[-0.01em]">
+        <div v-for="(item, i) in mini" :key="`slice-item-${i}`" class="group border-b break-inside-avoid mb-[20px] md:mb-[9px] grid">
           <div :style="{ 'color': item.data.color }"
-            class="uppercase text-center font-cooperbt mb-[4px] min-[1270px]:text-sm group-hover:underline">
+            class="uppercase text-center font-cooperbt mb-[4px] min-[1270px]:text-[15px] group-hover:underline">
             <PrismicRichText :field="item.data.title"></PrismicRichText>
           </div>
           <div class="px-[9px] mb-[15px] min-[1270px]:mb-[9px]">
@@ -296,23 +296,23 @@
               <div v-if="item.data.blur"
                 class="absolute inset-0 z-20 backdrop-brightness-130 backdrop-blur-sm bg-white/50 animate-pulse"></div>
               <div v-if="item.data.sticker"
-                class="rotate-45 absolute bottom-[9px] left-[-23px] z-30 border border-[#E8E8E8] bg-white min-w-[90px] text-center font-garamondit text-base md:text-sm">
+                class="rotate-45 absolute bottom-[9px] left-[-23px] z-30 border border-[#E8E8E8] bg-white min-w-[90px] text-center font-garamondit text-[17px] md:text-[15px]">
                 {{ item.data.sticker }}</div>
             </div>
           </div>
-          <PrismicRichText :field="item.data.description"
-            class="font-garamond text-sm min-[1270px]:text-xs mb-[15px] min-[1270px]:mb-[9px] text-center" />
+          <PrismicRichText  :field="item.data.description"
+            class="!leading-[11px] font-garamond text-[15px] min-[1270px]:text-[13px] mb-[15px] min-[1270px]:mb-[9px] text-center" />
           <div
-            class="font-garamond text-sm min-[1270px]:text-xs mb-[15px] min-[1270px]:mb-[8px] text-center text-[#BCBCBC]">
+            class="!leading-[11px] font-garamond text-[15px] min-[1270px]:text-[13px] mb-[15px] min-[1270px]:mb-[8px] text-center text-[#BCBCBC]">
             {{
               item.data.inventory }}</div>
-          <div class="font-cooperbtmid text-center mb-[10px] md:mb-0 min-[1270px]:text-sm">€{{ item.data.price }}</div>
-          <div class="text-center mb-[15px] leading-[0]">
+          <div class="!leading-[11px] font-cooperbtmid text-center mb-[10px] md:mb-0 min-[1270px]:text-[15px]">€{{ item.data.price }}</div>
+          <div class="text-center mb-[15px] md:mb-[11px] leading-[11px]">
             <form @submit="addToCart($event)">
               <button v-if="isMobile"
-                class="mx-auto font-metrik text-xs border border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">ADD
+                class="mx-auto font-metrik text-[13px] border border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">ADD
                 TO CART</button>
-              <button v-else class="font-garamond text-xs text-center text-[#BCBCBC] group-hover:text-black">(+ADD TO
+              <button v-else class="font-garamond text-[13px] text-center text-[#BCBCBC] group-hover:text-black">(+ADD TO
                 CART)
               </button>
               <input type="hidden" name="uid" :value="item.id" />
