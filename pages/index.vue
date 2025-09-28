@@ -64,7 +64,7 @@
                 </div>
                 <div v-else-if="page[0].data.sticker == 'DuoBook'"
                   :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                  class="rotate-[-30deg] border border-black min-w-[680px] text-center tracking-[-0.025em] px-2">
+                  class="rotate-[-30deg] border border-black min-w-[1000px] text-center tracking-[-0.025em] px-2">
                   <p :style="hoveredIndex === 99 ? {
                     backgroundColor: 'black',
                     backgroundRepeat: 'no-repeat',

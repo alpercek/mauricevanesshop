@@ -4,6 +4,10 @@
 
 
 @font-face {
+  font-family: "AOTFDB";
+  src: url("../styles/AOTFShinGoProDeBold.otf");
+}
+@font-face {
   font-family: "AOTF";
   src: url("../styles/AOTFShinGoProRegular.otf");
 }
