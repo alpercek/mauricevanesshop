@@ -21,7 +21,7 @@
                   <p :style="centerNumber(item.data.number)">{{ item.data.number }}</p>
                 </div><prismic-rich-text :style="{ 'color': item.data.color }" :field="item.data.title" />
               </div>
-              <div v-if="item.data.number_book2" class="md:w-64 lg:flex lg:gap-1 lg:justify-center">
+              <div v-if="item.data.number_book_2" class="md:w-64 lg:flex lg:gap-1 lg:justify-center">
                 <div :style="{ 'background-color': item.data.color_book_2 }"
                   class="rounded-full w-5 h-5 text-white m-auto lg:m-0 font-cooperbtmid tracking-[-0.1em]">
                   <p :style="centerNumber(item.data.number_book_2)">{{ item.data.number_book_2 }}</p>
