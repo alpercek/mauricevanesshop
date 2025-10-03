@@ -63,7 +63,7 @@
         </select>
         <input type="hidden" name="sku" value="DEMO002" />
         <button id="asdf"
-          class="font-metrik text-base border border-black rounded-full py-1 px-2 hover:bg-sky-200 hidden mt-12 mx-auto md:mr-0"
+          class="font-metrik text-base border border-black rounded-full py-1 px-2 hover:bg-[#FCEE22] hidden mt-12 mx-auto md:mr-0"
           type="submit">CHECKOUT</button>
       </form>
       <div id="sdf" class="font-metrik text-xs mt-3">There are no items in the cart. Hit the <NuxtLink to="/"

@@ -44,7 +44,7 @@
                     backgroundClip: 'text',
                     color: 'transparent',
                     backgroundSize: '200% 100%',
-                    animation: 'shimmer 4.5s linear infinite'
+                    animation: 'shimmer 3.5s linear infinite'
                   } : {}">PRE SALE</p>
                 </div>
                 <div v-else-if="page[0].data.sticker == 'Custom'"
@@ -57,7 +57,7 @@
                     backgroundClip: 'text',
                     color: 'transparent',
                     backgroundSize: '200% 100%',
-                    animation: 'shimmer 4.5s linear infinite'
+                    animation: 'shimmer 3.5s linear infinite'
                   } : {}">
                     <PrismicRichText class="uppercase" :field="page[0].data.purple_text" />
                   </p>
@@ -72,7 +72,7 @@
                     backgroundClip: 'text',
                     color: 'transparent',
                     backgroundSize: '200% 100%',
-                    animation: 'shimmer 4.5s linear infinite'
+                    animation: 'shimmer 3.5s linear infinite'
                   } : {}">DUO BOOK DUO BOOK DUO BOOK DUO BOOK</p>
                 </div>
                 <div v-if="page[0].data.status == 'PRE-ORDER' || page[0].data.status == 'customize'"
@@ -91,7 +91,7 @@
                     <PrismicImage :field="item.image"
                       class="md:m-auto h-[62vh] md:h-[75vh] object-cover md:object-scale-down w-full" />
                     <div :class="{
-                      'backdrop-brightness-130 backdrop-blur-sm bg-white/50':
+                      'backdrop-brightness-[110%] backdrop-blur-[0.2px] bg-white/50':
                         (page[0].data.status != 'ORDER') &&
                         (
                           page[0].data.blurring == 'all slides' ||
@@ -156,7 +156,7 @@
                   <PrismicImage :field="item.data.duo_book_image" class="w-full h-full object-cover" />
                 </div>
               </div>
-              <div :class="{ 'backdrop-brightness-130 backdrop-blur-sm bg-white/50': item.data.status != 'ORDER' }"
+              <div :class="{ 'backdrop-brightness-[110%] backdrop-blur-[0.2px] bg-white/75': item.data.status != 'ORDER' }"
                 class="group absolute inset-0 flex flex-col justify-center items-center text-[1rem] font-aotf overflow-hidden"
                 @mouseenter="hoveredIndex = i" @mouseleave="hoveredIndex = null">
                 <div v-if="item.data.sticker == 'OnSale'"
@@ -397,7 +397,7 @@ export default {
   background-repeat: no-repeat;
   color: transparent;
   background-size: 200% 100%;
-  animation: shimmer 4.5s linear infinite;
+  animation: shimmer 3.5s linear infinite;
 }
 
 @keyframes shimmer {

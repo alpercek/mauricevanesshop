@@ -41,7 +41,7 @@
                 backgroundClip: 'text',
                 color: 'transparent',
                 backgroundSize: '200% 100%',
-                animation: 'shimmer 4.5s linear infinite'
+                animation: 'shimmer 3.5s linear infinite'
               } : {}">PRE SALE</p>
             </div>
             <div v-else-if="page.data.sticker == 'Custom'"
@@ -54,7 +54,7 @@
                 backgroundClip: 'text',
                 color: 'transparent',
                 backgroundSize: '200% 100%',
-                animation: 'shimmer 4.5s linear infinite'
+                animation: 'shimmer 3.5s linear infinite'
               } : {}">
                 <PrismicRichText class="uppercase" :field="page.data.purple_text" />
               </p>
@@ -69,7 +69,7 @@
                 backgroundClip: 'text',
                 color: 'transparent',
                 backgroundSize: '200% 100%',
-                animation: 'shimmer 4.5s linear infinite'
+                animation: 'shimmer 3.5s linear infinite'
               } : {}">DUO BOOK DUO BOOK DUO BOOK DUO BOOK</p>
             </div>
             <div v-if="page.data.status == 'PRE-ORDER' || page.data.status == 'customize'"
@@ -86,7 +86,7 @@
                 <PrismicImage :field="item.image"
                   class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full" />
                 <div :class="{
-                  'backdrop-brightness-130 backdrop-blur-sm bg-white/50':
+                  'backdrop-brightness-[110%] backdrop-blur-[0.2px] bg-white/50':
                     (page.data.status != 'ORDER') &&
                     (
                       page.data.blurring == 'all slides' ||
@@ -235,16 +235,16 @@
         <form @submit="addToCart($event)" class="pl-5 md:pl-0 mt-1 md:mt-0 flex">
           <input type="hidden" name="uid" :value="page.id" />
           <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status == 'ORDER'"
-            class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">ORDER</button>
+            class="font-metrik text-[18px] md:text-xs border w-min border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop hover:bg-[#FCEE22]">ORDER</button>
           <div v-if="page.data.status == 'PRE-ORDER'" class="flex h-min text-center items-center gap-[8px]">
             <div
-              class="font-metrik text-xs border w-min border-black rounded-full py-1 px-2 opacity-[0.2] pointer-events-none">
+              class="font-metrik text-[18px] md:text-xs border w-min border-black rounded-full py-1 px-2 opacity-[0.2] pointer-events-none">
               ORDER</div><button onclick="this.parentNode.parentNode.querySelector('span').style.opacity = 1"
-              class="font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">PRE-ORDER</button>
+              class="font-metrik text-[18px] md:text-xs border w-max border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop hover:bg-[#FCEE22]">PRE-ORDER</button>
           </div>
           <button onclick="this.parentNode.querySelector('span').style.opacity = 1"
             v-if="page.data.status == 'customize' && page.data.price != null"
-            class="uppercase font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">{{
+            class="uppercase font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop hover:bg-[#FCEE22]">{{
               page.data.customized_text }}</button>
           <span class="ml-1 font-garamondit text-[#BCBCBC] text-lg transition-opacity opacity-0">Item has been added to
             cart</span>
@@ -261,7 +261,7 @@
               :placeholder="page.data.status == 'customize' ? page.data.customized_text : 'Receive e-mail when in stock'"
               class="py-1 px-2 border w-max rounded-full" />
             <button type="submit"
-              class="font-metrik border w-max border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">Send</button>
+              class="font-metrik border w-max border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop hover:bg-[#FCEE22]">Send</button>
           </div>
           <div class="hidden">
             <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
@@ -282,7 +282,7 @@
     </div>
     <div v-if="mini.length > 0"
       class="mt-[45px] min-[1270px]:mt-0 md:max-w-[450px] min-[1270px]:max-w-[283px] md:mx-auto min-[1270px]:absolute min-[1270px]:right-0 min-[1500px]:right-auto min-[1500px]:left-[1250px] min-[1270px]:top-[calc(50vh+3.5rem)]">
-      <div class="font-garamondit uppercase tracking-[-0.01em] text-center mb-[25px] min-[1270px]:mb-[11px]">Collectors
+      <div class="font-garamondit uppercase tracking-[-0.01em] text-center mb-[25px] min-[1270px]:mb-[11px]">Special
         Editions</div>
       <div class="grid grid-cols-2 px-[18px] gap-x-[14px] md:gap-x-[31px] tracking-[-0.01em]">
         <div v-for="(item, i) in mini" :key="`slice-item-${i}`" class="group border-b break-inside-avoid mb-[20px] md:mb-[9px] grid">
@@ -294,7 +294,7 @@
             <div class="relative overflow-hidden" @click="enlargemini = i">
               <PrismicImage :field="item.data.image" class="m-auto object-cover object-center w-full border" />
               <div v-if="item.data.blur"
-                class="absolute inset-0 z-20 backdrop-brightness-130 backdrop-blur-sm bg-white/50 animate-pulse"></div>
+                class="absolute inset-0 z-20 backdrop-brightness-[110%] backdrop-blur-[0.2px] bg-white/50 animate-pulse"></div>
               <div v-if="item.data.sticker"
                 class="rotate-45 absolute bottom-[9px] left-[-23px] z-30 border border-[#E8E8E8] bg-white min-w-[90px] text-center font-garamondit text-[17px] md:text-[15px]">
                 {{ item.data.sticker }}</div>
@@ -310,7 +310,7 @@
           <div class="text-center mb-[15px] md:mb-[11px] leading-[11px]">
             <form @submit="addToCart($event)">
               <button v-if="isMobile"
-                class="mx-auto font-metrik text-[13px] border border-black rounded-full py-1 px-2 active:bg-sky-700 focus:cursor-no-drop hover:bg-sky-200">ADD
+                class="mx-auto font-metrik text-[18px] border border-black rounded-full py-3 px-2 active:bg-[#F8F18B] focus:cursor-no-drop hover:bg-[#FCEE22]">ADD
                 TO CART</button>
               <button v-else class="font-garamond text-[13px] text-center text-[#BCBCBC] group-hover:text-black">(+ADD TO
                 CART)
@@ -321,12 +321,12 @@
           <div v-if="enlargemini == i" :style="{ 'color': item.data.color }"
             class="fixed top-0 left-0 w-screen h-screen z-50 bg-white/75">
             <div  class="absolute inset-0">
-              <div @click="enlargemini = null" class="w-full h-1/3 cursor-zoom-out"></div>
+              <div @click="enlargemini = null" class="w-full h-1/3 cursor-pointer"></div>
               <div class="w-full h-1/3 flex">
-                <div @click="showPrev2(i)" class="w-1/2 cursor-e-resize"></div>
-                <div @click="showNext2(i)" class="w-1/2 cursor-e-resize"></div>
+                <div @click="showPrev2(i)" class="w-1/2 cursor-pointer"></div>
+                <div @click="showNext2(i)" class="w-1/2 cursor-pointer"></div>
               </div>
-              <div @click="enlargemini = null" class="w-full h-1/3 cursor-zoom-out"></div>
+              <div @click="enlargemini = null" class="w-full h-1/3 cursor-pointer"></div>
             </div>
             <div v-if="item.data.slider.length > 0"
               class="relative h-full md:w-2/3 max-w-[1300px] m-auto content-center md:pointer-events-none">
