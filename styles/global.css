@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@font-face {
+  font-family: "AOTFH";
+  src: url("../styles/AOTFShinGoProHeavy.otf");
+}
 @font-face {
   font-family: "AOTFDB";
   src: url("../styles/AOTFShinGoProDeBold.otf");

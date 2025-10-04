@@ -9,7 +9,7 @@
 
               <div
                 :style="{ 'color': page[0].data.color }"
-                class="z-10 group absolute inset-0 flex justify-center items-center text-[1rem] font-aotf flex flex-col gap-4 overflow-hidden">
+                class="z-10 group absolute inset-0 flex justify-center items-center text-[1rem] font-aotf flex flex-col gap-4 overflow-hidden pointer-events-none md:pointer-events-auto">
                 <div v-if="page[0].data.sticker == 'OnSale'"
                   class="bg-[#FCEE22] border border-black text-black min-w-[120px] text-center tracking-[-0.025em]">
                   <p class="shimmer">ON SALE</p>
@@ -36,8 +36,8 @@
                 </template>
                 <div v-else-if="page[0].data.sticker == 'PreSale'"
                   :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                  class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em]">
-                  <p :style="hoveredIndex === 99 ? {
+                  class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em] font-aotfh">
+                  <p :style="hoveredIndex === 99 || isMobile ? {
                     backgroundColor: 'black',
                     backgroundRepeat: 'no-repeat',
                     background: `linear-gradient(135deg, ${page[0].data.sticker_text_color}, #ffffff, ${page[0].data.sticker_text_color})`,
@@ -50,7 +50,7 @@
                 <div v-else-if="page[0].data.sticker == 'Custom'"
                   :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color }"
                   class="border border-black min-w-[120px] text-center tracking-[-0.025em] px-2">
-                  <p :style="hoveredIndex === 99 ? {
+                  <p :style="hoveredIndex === 99 || isMobile ? {
                     backgroundColor: 'black',
                     backgroundRepeat: 'no-repeat',
                     backgroundImage: `linear-gradient(135deg, ${page[0].data.sticker_text_color}, #ffffff, ${page[0].data.sticker_text_color})`,
@@ -64,8 +64,8 @@
                 </div>
                 <div v-else-if="page[0].data.sticker == 'DuoBook'"
                   :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                  class="rotate-[-30deg] border border-black min-w-[1000px] text-center tracking-[-0.025em] px-2">
-                  <p :style="hoveredIndex === 99 ? {
+                  class="rotate-[-30deg] border border-black min-w-[1000px] text-center tracking-[-0.025em] px-2 font-aotfh">
+                  <p :style="hoveredIndex === 99 || isMobile ? {
                     backgroundColor: 'black',
                     backgroundRepeat: 'no-repeat',
                     background: `linear-gradient(135deg, ${page[0].data.sticker_text_color}, #ffffff, ${page[0].data.sticker_text_color})`,
@@ -160,24 +160,24 @@
                 class="group absolute inset-0 flex flex-col justify-center items-center text-[1rem] font-aotf overflow-hidden"
                 @mouseenter="hoveredIndex = i" @mouseleave="hoveredIndex = null">
                 <div v-if="item.data.sticker == 'OnSale'"
-                  class="bg-[#FCEE22] border border-black text-black min-w-[120px] text-center tracking-[-0.025em]">
+                  class="bg-[#FCEE22] border border-black text-black min-w-[30%] text-center tracking-[-0.025em]">
                   <p class="shimmer">ON SALE</p>
                 </div>
                 <div v-else-if="item.data.sticker == 'PreOrder'"
-                  class="bg-white border border-black text-black min-w-[120px] text-center tracking-[-0.025em]">
+                  class="bg-white border border-black text-black min-w-[30%] text-center tracking-[-0.025em]">
                   <p class="shimmer">PRE ORDER</p>
                 </div>
                 <div v-else-if="item.data.sticker == 'SoldOut'"
-                  class="bg-slate-300 border border-black text-black min-w-[120px] text-center tracking-[-0.025em]">
+                  class="bg-slate-300 border border-black text-black min-w-[30%] text-center tracking-[-0.025em]">
                   <p class="shimmer">SOLD OUT</p>
                 </div>
                 <template v-else-if="item.data.sticker == 'TwinPack'">
                   <div
-                    class="bg-[#00FF4E] border border-black text-black min-w-[120px] text-center mb-[0.938rem] tracking-[-0.025em]">
+                    class="bg-[#00FF4E] border border-black text-black min-w-[30%] text-center mb-[0.938rem] tracking-[-0.025em]">
                     <p class="shimmer">TWIN PACK</p>
                   </div>
                   <div
-                    class="bg-[#00FF4E] border border-black text-black min-w-[120px] text-center px-2 tracking-[-0.025em]">
+                    class="bg-[#00FF4E] border border-black text-black min-w-[30%] text-center px-2 tracking-[-0.025em]">
                     <p class="shimmer">
                       <PrismicRichText class="uppercase" :field="item.data.purple_text" />
                     </p>
@@ -185,8 +185,8 @@
                 </template>
                 <div v-else-if="item.data.sticker == 'PreSale'"
                   :style="{ backgroundColor: item.data.sticker_background_color, color: item.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                  class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em]">
-                  <p :style="hoveredIndex === i ? {
+                  class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em] font-aotfh">
+                  <p :style="hoveredIndex === i || isMobile ? {
                     background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
                     backgroundClip: 'text',
                     color: 'transparent',
@@ -197,7 +197,7 @@
                 <div v-else-if="item.data.sticker == 'Custom'"
                   :style="{ backgroundColor: item.data.sticker_background_color, color: item.data.sticker_text_color }"
                   class="border border-black min-w-[120px] text-center tracking-[-0.025em] px-2">
-                  <p :style="hoveredIndex === i ? {
+                  <p :style="hoveredIndex === i || isMobile ? {
                     background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
                     backgroundClip: 'text',
                     color: 'transparent',
@@ -209,8 +209,8 @@
                 </div>
                 <div v-else-if="item.data.sticker == 'DuoBook'"
                   :style="{ backgroundColor: item.data.sticker_background_color, color: item.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                  class="rotate-[-30deg] border border-black min-w-[680px] text-center tracking-[-0.025em] px-2">
-                  <p :style="hoveredIndex === i ? {
+                  class="rotate-[-30deg] border border-black min-w-[680px] text-center tracking-[-0.025em] px-2 font-aotfh">
+                  <p :style="hoveredIndex === i || isMobile ? {
                     background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
                     backgroundClip: 'text',
                     color: 'transparent',
@@ -390,16 +390,28 @@ export default {
 }
 
 /* Shimmer effect class, only active on hover */
-.group:hover .shimmer {
-  background-color: black;
-  background-image: linear-gradient(135deg, #000000, #ffffff, #000000);
-  background-clip: text;
-  background-repeat: no-repeat;
-  color: transparent;
-  background-size: 200% 100%;
-  animation: shimmer 3.5s linear infinite;
+@media (min-width: 641px) {
+  .group:hover .shimmer {
+    background-color: black;
+    background-image: linear-gradient(135deg, #000000, #ffffff, #000000);
+    background-clip: text;
+    background-repeat: no-repeat;
+    color: transparent;
+    background-size: 200% 100%;
+    animation: shimmer 3.5s linear infinite;
+  }
 }
-
+@media (max-width: 640px) {
+  .group .shimmer {
+    background-color: black;
+    background-image: linear-gradient(135deg, #000000, #ffffff, #000000);
+    background-clip: text;
+    background-repeat: no-repeat;
+    color: transparent;
+    background-size: 200% 100%;
+    animation: shimmer 3.5s linear infinite;
+  }
+}
 @keyframes shimmer {
  0% {
     background-position: 200% 0;

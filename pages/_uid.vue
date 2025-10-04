@@ -6,7 +6,7 @@
         <div @mouseenter="hoveredIndex = 1" @mouseleave="hoveredIndex = null" class="relative md:w-[56vw] m-auto">
 
           <div :style="{ 'color': page.data.color }"
-            class="z-10 group absolute inset-0 flex justify-center items-center text-[1rem] font-aotf flex flex-col gap-4 overflow-hidden">
+            class="z-10 group absolute inset-0 flex justify-center items-center text-[1rem] font-aotf flex flex-col gap-4 overflow-hidden pointer-events-none md:pointer-events-auto">
             <div v-if="page.data.sticker == 'OnSale'"
               class="bg-[#FCEE22] border border-black text-black min-w-[120px] text-center tracking-[-0.025em]">
               <p class="shimmer">ON SALE</p>
@@ -33,8 +33,8 @@
             </template>
             <div v-else-if="page.data.sticker == 'PreSale'"
               :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-              class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em]">
-              <p :style="hoveredIndex === 1 ? {
+              class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em] font-aotfh">
+              <p :style="hoveredIndex === 1 || isMobile ? {
                 backgroundColor: 'black',
                 backgroundRepeat: 'no-repeat',
                 background: `linear-gradient(135deg, ${page.data.sticker_text_color}, #ffffff, ${page.data.sticker_text_color})`,
@@ -61,8 +61,8 @@
             </div>
             <div v-else-if="page.data.sticker == 'DuoBook'"
               :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-              class="rotate-[-30deg] border border-black min-w-[1000px] text-center tracking-[-0.025em] px-2">
-              <p :style="hoveredIndex === 1 ? {
+              class="rotate-[-30deg] border border-black min-w-[1000px] text-center tracking-[-0.025em] px-2 font-aotfh">
+              <p :style="hoveredIndex === 1 || isMobile ? {
                 backgroundColor: 'black',
                 backgroundRepeat: 'no-repeat',
                 background: `linear-gradient(135deg, ${page.data.sticker_text_color}, #ffffff, ${page.data.sticker_text_color})`,
@@ -281,10 +281,10 @@
       </div>
     </div>
     <div v-if="mini.length > 0"
-      class="mt-[45px] min-[1270px]:mt-0 md:max-w-[450px] min-[1270px]:max-w-[283px] md:mx-auto min-[1270px]:absolute min-[1270px]:right-0 min-[1500px]:right-auto min-[1500px]:left-[1250px] min-[1270px]:top-[calc(50vh+3.5rem)]">
+      class="mt-[45px] min-[1270px]:mt-0 md:max-w-[450px] min-[1270px]:max-w-[283px] md:mx-auto min-[1270px]:absolute min-[1270px]:top-[calc(50vh+3.5rem)] left-[calc(50vw+350px)]">
       <div class="font-garamondit uppercase tracking-[-0.01em] text-center mb-[25px] min-[1270px]:mb-[11px]">Special
         Editions</div>
-      <div class="grid grid-cols-2 px-[18px] gap-x-[14px] md:gap-x-[31px] tracking-[-0.01em]">
+      <div class="columns-2 px-[18px] gap-x-[14px] md:gap-x-[31px] tracking-[-0.01em]">
         <div v-for="(item, i) in mini" :key="`slice-item-${i}`" class="group border-b break-inside-avoid mb-[20px] md:mb-[9px] grid">
           <div :style="{ 'color': item.data.color }"
             class="uppercase text-center font-cooperbt mb-[4px] min-[1270px]:text-[15px] group-hover:underline">

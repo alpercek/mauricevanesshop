@@ -10,6 +10,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
+      aotfh: ["AOTFH"],
       aotfdb: ["AOTFDB"],
       aotf: ["AOTF"],
       cooperbt: ["COOPERBT"],
