@@ -330,8 +330,7 @@
     </div>
     <div v-if="mini.length > 0"
       class="mt-[45px] min-[1270px]:mt-0 md:max-w-[450px] min-[1270px]:max-w-[283px] md:mx-auto min-[1270px]:absolute min-[1270px]:top-[calc(50vh+3.5rem)] left-[calc(50vw+350px)]">
-      <div class="font-garamondit uppercase tracking-[-0.01em] text-center mb-[25px] min-[1270px]:mb-[11px]">Special
-        Editions</div>
+      <div class="font-garamondit uppercase tracking-[-0.01em] text-center mb-[25px] min-[1270px]:mb-[11px]">Extra's</div>
       <div class="columns-2 px-[18px] gap-x-[14px] md:gap-x-[31px] tracking-[-0.01em]">
         <div v-for="(item, i) in mini" :key="`slice-item-${i}`"
           class="group border-b break-inside-avoid mb-[20px] md:mb-[9px] grid">
@@ -418,6 +417,7 @@
         </div>
       </div>
     </div>
+    <div class="hidden md:block" :style="{ 'height': ((mini.length <= 4) ? 0 : Math.ceil((mini.length - 4) / 2) * 220) + 'px' }"></div>
   </div>
 </template>
 
