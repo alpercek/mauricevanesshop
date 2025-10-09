@@ -3,7 +3,7 @@
     <img src="../static/cart.png" class="hidden"/>
   <div class="px-2.5 py-2 md:p-5">
     <div class="flex flex-wrap items-start justify-between md:gap-x-10 gap-y-3 leading-none">
-      <NuxtLink to="/" class="text-xl md:text-2xl !no-underline font-platform">
+      <NuxtLink to="/" class="text-xl md:text-2xl !no-underline font-platform text-[#FF0000]">
         {{ $prismic.asText(settings.data.siteTitle) }}
       </NuxtLink>
       <nav>

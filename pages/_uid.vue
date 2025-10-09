@@ -276,16 +276,16 @@
         <form @submit="addToCart($event)" class="pl-5 md:pl-0 mt-1 md:mt-0 flex">
           <input type="hidden" name="uid" :value="page.id" />
           <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status == 'ORDER'"
-            class="font-metrik text-[18px] md:text-xs border w-min border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop hover:bg-[#FCEE22]">ORDER</button>
+            class="font-metrik text-[18px] md:text-xs border w-min border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop md:hover:bg-[#FCEE22]">ORDER</button>
           <div v-if="page.data.status == 'PRE-ORDER'" class="flex h-min text-center items-center gap-[8px]">
             <div
               class="font-metrik text-[18px] md:text-xs border w-min border-black rounded-full py-1 px-2 opacity-[0.2] pointer-events-none">
               ORDER</div><button onclick="this.parentNode.parentNode.querySelector('span').style.opacity = 1"
-              class="font-metrik text-[18px] md:text-xs border w-max border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop hover:bg-[#FCEE22]">PRE-ORDER</button>
+              class="font-metrik text-[18px] md:text-xs border w-max border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop md:hover:bg-[#FCEE22]">PRE-ORDER</button>
           </div>
           <button onclick="this.parentNode.querySelector('span').style.opacity = 1"
             v-if="page.data.status == 'customize' && page.data.price != null"
-            class="uppercase font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop hover:bg-[#FCEE22]">{{
+            class="uppercase font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop md:hover:bg-[#FCEE22]">{{
               page.data.customized_text }}</button>
           <span class="ml-1 font-garamondit text-[#BCBCBC] text-lg transition-opacity opacity-0">Item has been added to
             cart</span>
@@ -302,7 +302,7 @@
               :placeholder="page.data.status == 'customize' ? page.data.customized_text : 'Receive e-mail when in stock'"
               class="py-1 px-2 border w-max rounded-full" />
             <button type="submit"
-              class="font-metrik border w-max border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop hover:bg-[#FCEE22]">Send</button>
+              class="font-metrik border w-max border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop md:hover:bg-[#FCEE22]">Send</button>
           </div>
           <div class="hidden">
             <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
@@ -360,7 +360,7 @@
           <div class="text-center mb-[15px] md:mb-[11px] leading-[11pt]">
             <form @submit="addToCart($event)">
               <button v-if="isMobile"
-                class="mx-auto font-metrik text-[18px] border border-black rounded-full py-3 px-2 active:bg-[#F8F18B] focus:cursor-no-drop hover:bg-[#FCEE22]">ADD
+                class="mx-auto font-metrik text-[18px] border border-black rounded-full py-3 px-2 active:bg-[#F8F18B] focus:cursor-no-drop md:hover:bg-[#FCEE22]">ADD
                 TO CART</button>
               <button v-else class="font-garamond text-[13px] text-center text-[#BCBCBC] group-hover:text-black">(+ADD
                 TO
