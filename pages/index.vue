@@ -63,8 +63,8 @@
                   </p>
                 </div>
                 <div v-else-if="page[0].data.sticker == 'DuoBook'"
-                  :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                  class="rotate-[-30deg] border border-black min-w-[1000px] text-center tracking-[-0.025em] px-2 font-aotfh">
+                  :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color, textStroke: '1px rgb(0, 0, 0)' }"
+                  class="rotate-[-30deg] border border-black min-w-[1000px] text-center tracking-[-0.025em] px-2 font-aotfh text-2xl">
                   <p :style="hoveredIndex === 99 || isMobile ? {
                     backgroundColor: 'black',
                     backgroundRepeat: 'no-repeat',
@@ -120,7 +120,7 @@
               </div><prismic-rich-text :field="page[0].data.title" class="" />
             </div>
             <div v-if="page[0].data.title_book_2.length > 0" :style="{ 'color': page[0].data.color_book_2 }"
-              class="flex justify-center font-cooperbt text-xl items-center gap-0.5">
+              class="flex justify-center font-cooperbt text-xl/[28pt] items-center gap-0.5">
               <div :style="{ 'background-color': page[0].data.color_book_2 }"
                 class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.08em]">
                 <p :style="centerNumber(page[0].data.number_book_2)">{{ page[0].data.number_book_2 }}</p>
@@ -208,8 +208,8 @@
                   </p>
                 </div>
                 <div v-else-if="item.data.sticker == 'DuoBook'"
-                  :style="{ backgroundColor: item.data.sticker_background_color, color: item.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                  class="rotate-[-30deg] border border-black min-w-[680px] text-center tracking-[-0.025em] px-2 font-aotfh">
+                  :style="{ backgroundColor: item.data.sticker_background_color, color: item.data.sticker_text_color, textStroke: '1px rgb(0, 0, 0)' }"
+                  class="rotate-[-30deg] border border-black min-w-[680px] text-center tracking-[-0.025em] px-2 font-aotfh text-2xl">
                   <p :style="hoveredIndex === i || isMobile ? {
                     background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
                     backgroundClip: 'text',
@@ -223,14 +223,14 @@
             <!-- title usual-->
             <div>
               <div :style="{ 'color': item.data.color }"
-                class="flex justify-center pt-4 md:pt-5 font-cooperbt text-xl items-center gap-0.5"><span>
+                class="flex justify-center pt-4 md:pt-5 font-cooperbt text-xl/[28pt] items-center gap-0.5"><span>
                   <div :style="{ 'background-color': item.data.color }"
                     class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.08em]">
                     <p :style="centerNumber(item.data.number)">{{ item.data.number }}</p>
                   </div>
                 </span><prismic-rich-text :field="item.data.title" /></div>
               <div :style="{ 'color': item.data.color_book_2 }"
-                class="flex justify-center font-cooperbt text-xl items-center gap-0.5"><span>
+                class="flex justify-center font-cooperbt text-xl/[28pt] items-center gap-0.5"><span>
                   <div :style="{ 'background-color': item.data.color_book_2 }"
                     class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.08em]">
                     <p :style="centerNumber(item.data.number_book_2)">{{ item.data.number_book_2 }}</p>

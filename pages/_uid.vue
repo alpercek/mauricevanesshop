@@ -10,17 +10,17 @@
             <div v-if="page.data.duo_book_image.url" class="relative w-full h-[62vh] md:h-[50vh] flex justify-center items-center">
               <div>
                 <div class="absolute top-0 left-0 w-full h-full justify-items-center" style="overflow: hidden;">
-                  <PrismicImage :field="page.data.image" class="h-full w-[330px]" />
+                  <PrismicImage :field="page.data.image" class="h-full w-[330px] mx-auto" />
                 </div>
                 <div class="absolute top-0 left-0 w-full h-full justify-items-center">
                   <PrismicImage :field="page.data.duo_book_image"
-                    class="scale-y-[-1] w-[330px] h-full object-cover clip" />
+                    class="scale-y-[-1] w-[330px] h-full object-cover clip mx-auto" />
                 </div>
               </div>
               <div class="border border-black absolute inset-0 flex justify-center items-center w-[330px] m-auto overflow-hidden pointer-events-none md:pointer-events-auto">
               <div
-                :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                class="rotate-[-30deg] border border-black min-w-[600px] text-center tracking-[-0.025em] px-2 font-aotfh">
+                :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color, textStroke: '1px rgb(0, 0, 0)' }"
+                class="rotate-[-30deg] border border-black min-w-[700px] text-center tracking-[-0.025em] px-2 font-aotfh text-2xl">
                 <p :style="hoveredIndex === 1 || isMobile ? {
                   backgroundColor: 'black',
                   backgroundRepeat: 'no-repeat',
@@ -92,8 +92,8 @@
                     </p>
                   </div>
                   <div v-else-if="page.data.sticker == 'DuoBook'"
-                    :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                    class="rotate-[-30deg] border border-black min-w-[1000px] text-center tracking-[-0.025em] px-2 font-aotfh">
+                    :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color, textStroke: '1px rgb(0, 0, 0)' }"
+                    class="rotate-[-30deg] border border-black min-w-[1000px] text-center tracking-[-0.025em] px-2 font-aotfh text-2xl">
                     <p :style="hoveredIndex === 1 || isMobile ? {
                       backgroundColor: 'black',
                       backgroundRepeat: 'no-repeat',
@@ -270,7 +270,7 @@
           <PrismicRichText :field="page.data.preordertext" />
         </div>
         <div v-if="page.data.price != null"
-          class="font-cooperbt text-base tracking-[-0.01em] font-bold md:pb-5 pl-5 md:pl-0"><span
+          class="font-cooperbt text-base tracking-[-0.01em] font-bold pb-3 pt-2 pl-5 md:pl-0"><span
             v-if="page.data.old_price != null" class="text-[#FF0000] line-through decoration-2">€{{ page.data.old_price
             }}</span> €{{ page.data.price }},–</div>
         <form @submit="addToCart($event)" class="pl-5 md:pl-0 mt-1 md:mt-0 flex">
@@ -312,14 +312,14 @@
         <!-- number and title -->
         <div class="absolute md:static top-[62vh] pl-3 md:pl-0 pt-11 md:pt-0">
           <div :style="{ 'color': page.data.color }"
-            class="md:absolute md:top-[calc(50vh+3.5rem)] right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5">
+            class="md:absolute md:top-[calc(50vh+3.5rem)] right-[66.25vw] font-cooperbt text-[1.25rem]/[28pt] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5">
             <div :style="{ 'background-color': page.data.color }"
               class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.08em]">
               <p :style="centerNumber(page.data.number)">{{ page.data.number }}</p>
             </div><prismic-rich-text :field="page.data.title" class="translate-y-0.5" />
           </div>
           <div :style="{ 'color': page.data.color_book_2 }"
-            class="md:absolute md:top-[calc(50vh+5rem)] right-[66.25vw] font-cooperbt text-[1.25rem] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5 pt-[5px]">
+            class="md:absolute md:top-[calc(50vh+5rem)] right-[66.25vw] font-cooperbt text-[1.25rem]/[28pt] tracking-[-0.01em] flex pl-1 md:pl-0 items-center gap-0.5 pt-[5px]">
             <div :style="{ 'background-color': page.data.color_book_2 }"
               class="rounded-full w-6 h-6 text-white flex justify-center items-center font-cooperbtmid tracking-[-0.08em]">
               <p :style="centerNumber(page.data.number_book_2)">{{ page.data.number_book_2 }}</p>
@@ -335,7 +335,7 @@
         <div v-for="(item, i) in mini" :key="`slice-item-${i}`"
           class="group border-b break-inside-avoid mb-[20px] md:mb-[9px] grid">
           <div :style="{ 'color': item.data.color }"
-            class="uppercase text-center font-cooperbt mb-[4px] text-[15px]/[13px] group-hover:underline">
+            class="uppercase text-center font-cooperbt mb-[4px] text-[15px]/[13pt] group-hover:underline">
             <PrismicRichText :field="item.data.title"></PrismicRichText>
           </div>
           <div class="px-[9px] mb-[15px] min-[1270px]:mb-[9px]">
@@ -350,14 +350,14 @@
             </div>
           </div>
           <PrismicRichText :field="item.data.description"
-            class="!leading-[11px] font-garamond text-[15px] min-[1270px]:text-[13px] mb-[15px] min-[1270px]:mb-[9px] text-center" />
+            class="!leading-[11pt] font-garamond text-[15px] min-[1270px]:text-[13px] mb-[15px] min-[1270px]:mb-[9px] text-center" />
           <div
-            class="!leading-[11px] font-garamond text-[15px] min-[1270px]:text-[13px] mb-[15px] min-[1270px]:mb-[8px] text-center text-[#BCBCBC]">
+            class="!leading-[11pt] font-garamond text-[15px] min-[1270px]:text-[13px] mb-[15px] min-[1270px]:mb-[8px] text-center text-[#BCBCBC]">
             {{
               item.data.inventory }}</div>
-          <div class="!leading-[16px] font-cooperbtmid text-center mb-[10px] md:mb-0 min-[1270px]:text-[15px]">€{{
+          <div class="!leading-[16pt] font-cooperbtmid text-center mb-[10px] md:mb-0 min-[1270px]:text-[15px]">€{{
             item.data.price }}</div>
-          <div class="text-center mb-[15px] md:mb-[11px] leading-[11px]">
+          <div class="text-center mb-[15px] md:mb-[11px] leading-[11pt]">
             <form @submit="addToCart($event)">
               <button v-if="isMobile"
                 class="mx-auto font-metrik text-[18px] border border-black rounded-full py-3 px-2 active:bg-[#F8F18B] focus:cursor-no-drop hover:bg-[#FCEE22]">ADD
