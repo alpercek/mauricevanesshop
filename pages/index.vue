@@ -7,8 +7,7 @@
           <div @mouseenter="hoveredIndex = 99" @mouseleave="hoveredIndex = null" class="relative md:w-[56vw] m-auto">
             <NuxtLink :to="'/' + page[0].uid">
 
-              <div
-                :style="{ 'color': page[0].data.color }"
+              <div :style="{ 'color': page[0].data.color }"
                 class="z-10 group absolute inset-0 flex justify-center items-center text-[1rem] font-aotf flex flex-col gap-4 overflow-hidden pointer-events-none md:pointer-events-auto">
                 <div v-if="page[0].data.sticker == 'OnSale'"
                   class="bg-[#FCEE22] border border-black text-black min-w-[120px] text-center tracking-[-0.025em]">
@@ -36,7 +35,7 @@
                 </template>
                 <div v-else-if="page[0].data.sticker == 'PreSale'"
                   :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                  class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em] font-aotfh">
+                  class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em] font-aotfh text-xl/[1.5rem]">
                   <p :style="hoveredIndex === 99 || isMobile ? {
                     backgroundColor: 'black',
                     backgroundRepeat: 'no-repeat',
@@ -45,7 +44,7 @@
                     color: 'transparent',
                     backgroundSize: '200% 100%',
                     animation: 'shimmer 3.5s linear infinite'
-                  } : {}">PRE SALE</p>
+                  } : {}">PRE-SALE!</p>
                 </div>
                 <div v-else-if="page[0].data.sticker == 'Custom'"
                   :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color }"
@@ -64,7 +63,7 @@
                 </div>
                 <div v-else-if="page[0].data.sticker == 'DuoBook'"
                   :style="{ backgroundColor: page[0].data.sticker_background_color, color: page[0].data.sticker_text_color, textStroke: '1px rgb(0, 0, 0)' }"
-                  class="rotate-[-30deg] border border-black min-w-[1000px] text-center tracking-[-0.025em] px-2 font-aotfh text-2xl">
+                  class="rotate-[-30deg] border border-black min-w-[1000px] text-center tracking-[-0.025em] px-2 font-aotfh text-xl/[1.5rem]">
                   <p :style="hoveredIndex === 99 || isMobile ? {
                     backgroundColor: 'black',
                     backgroundRepeat: 'no-repeat',
@@ -156,7 +155,8 @@
                   <PrismicImage :field="item.data.duo_book_image" class="w-full h-full object-cover" />
                 </div>
               </div>
-              <div :class="{ 'backdrop-brightness-[110%] backdrop-blur-[0.2px] bg-white/75': item.data.status != 'ORDER' }"
+              <div
+                :class="{ 'backdrop-brightness-[110%] backdrop-blur-[0.2px] bg-white/75': item.data.status != 'ORDER' }"
                 class="group absolute inset-0 flex flex-col justify-center items-center text-[1rem] font-aotf overflow-hidden"
                 @mouseenter="hoveredIndex = i" @mouseleave="hoveredIndex = null">
                 <div v-if="item.data.sticker == 'OnSale'"
@@ -185,37 +185,43 @@
                 </template>
                 <div v-else-if="item.data.sticker == 'PreSale'"
                   :style="{ backgroundColor: item.data.sticker_background_color, color: item.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                  class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em] font-aotfh">
+                  class="absolute bottom-[32px] left-[-52px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em] font-aotfh text-xl/[1.5rem]">
                   <p :style="hoveredIndex === i || isMobile ? {
-                    background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
+                    backgroundImage: `linear-gradient(180deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
                     backgroundClip: 'text',
                     color: 'transparent',
                     backgroundSize: '200% 100%',
-                    animation: 'shimmer 5s linear infinite'
-                  } : {}">PRE SALE</p>
+                    animation: 'shimmer 3.5s linear infinite',
+                    backgroundColor: item.data.sticker_text_color,
+                    backgroundRepeat: 'no-repeat'
+                  } : {}">PRE-SALE!</p>
                 </div>
                 <div v-else-if="item.data.sticker == 'Custom'"
                   :style="{ backgroundColor: item.data.sticker_background_color, color: item.data.sticker_text_color }"
                   class="border border-black min-w-[120px] text-center tracking-[-0.025em] px-2">
                   <p :style="hoveredIndex === i || isMobile ? {
-                    background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
+                    backgroundImage: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
                     backgroundClip: 'text',
                     color: 'transparent',
                     backgroundSize: '200% 100%',
-                    animation: 'shimmer 5s linear infinite'
-                  } : {}">
+                    animation: 'shimmer 3.5s linear infinite',
+                    backgroundColor: 'black',
+                    backgroundRepeat: 'no-repeat'
+                  } : { }">
                     <PrismicRichText class="uppercase" :field="item.data.purple_text" />
                   </p>
                 </div>
                 <div v-else-if="item.data.sticker == 'DuoBook'"
                   :style="{ backgroundColor: item.data.sticker_background_color, color: item.data.sticker_text_color, textStroke: '1px rgb(0, 0, 0)' }"
-                  class="rotate-[-30deg] border border-black min-w-[680px] text-center tracking-[-0.025em] px-2 font-aotfh text-2xl">
+                  class="rotate-[-30deg] border border-black min-w-[680px] text-center tracking-[-0.025em] px-2 font-aotfh text-xl/[1.5rem]">
                   <p :style="hoveredIndex === i || isMobile ? {
-                    background: `linear-gradient(135deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
+                    backgroundImage: `linear-gradient(105deg, ${item.data.sticker_text_color}, #ffffff, ${item.data.sticker_text_color})`,
                     backgroundClip: 'text',
                     color: 'transparent',
                     backgroundSize: '200% 100%',
-                    animation: 'shimmer 5s linear infinite'
+                    animation: 'shimmer 3.5s linear infinite',
+                    backgroundColor: item.data.sticker_text_color,
+                    backgroundRepeat: 'no-repeat'
                   } : {}">DUO BOOK DUO BOOK DUO BOOK DUO BOOK</p>
                 </div>
               </div>
@@ -401,6 +407,7 @@ export default {
     animation: shimmer 3.5s linear infinite;
   }
 }
+
 @media (max-width: 640px) {
   .group .shimmer {
     background-color: black;
@@ -412,13 +419,16 @@ export default {
     animation: shimmer 3.5s linear infinite;
   }
 }
+
 @keyframes shimmer {
- 0% {
+  0% {
     background-position: 200% 0;
   }
+
   55% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }

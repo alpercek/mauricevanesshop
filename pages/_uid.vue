@@ -7,37 +7,50 @@
           <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed"
             :speed="1500" :autoplay="false">
 
-            <div v-if="page.data.duo_book_image.url" class="relative w-full h-[62vh] md:h-[50vh] flex justify-center items-center">
+            <div v-if="['DuoBook', 'PreSale'].includes(page.data.sticker)" class="relative w-full h-[62vh] md:h-[50vh] flex justify-center items-center">
               <div>
                 <div class="absolute top-0 left-0 w-full h-full justify-items-center" style="overflow: hidden;">
-                  <PrismicImage :field="page.data.image" class="h-full w-[330px] mx-auto" />
+                  <PrismicImage :field="page.data.image" class="h-full w-full md:w-[330px] mx-auto" />
                 </div>
-                <div class="absolute top-0 left-0 w-full h-full justify-items-center">
+                <div v-if="page.data.duo_book_image.url" class="absolute top-0 left-0 w-full h-full justify-items-center">
                   <PrismicImage :field="page.data.duo_book_image"
-                    class="scale-y-[-1] w-[330px] h-full object-cover clip mx-auto" />
+                    class="scale-y-[-1] w-full md:w-[330px] h-full object-cover clip mx-auto" />
                 </div>
               </div>
-              <div class="border border-black absolute inset-0 flex justify-center items-center w-[330px] m-auto overflow-hidden pointer-events-none md:pointer-events-auto">
-              <div
+              <div class="border border-black absolute inset-0 flex justify-center items-center w-full md:w-[330px] m-auto overflow-hidden pointer-events-none md:pointer-events-auto">
+              <div v-if="page.data.sticker == 'DuoBook'"
                 :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color, textStroke: '1px rgb(0, 0, 0)' }"
-                class="rotate-[-30deg] border border-black min-w-[700px] text-center tracking-[-0.025em] px-2 font-aotfh text-2xl">
+                class="rotate-[-30deg] border border-black min-w-[700px] text-center tracking-[-0.025em] px-2 font-aotfh text-xl/[1.5rem]">
                 <p :style="hoveredIndex === 1 || isMobile ? {
-                  backgroundColor: 'black',
-                  backgroundRepeat: 'no-repeat',
-                  background: `linear-gradient(135deg, ${page.data.sticker_text_color}, #ffffff, ${page.data.sticker_text_color})`,
-                  backgroundClip: 'text',
-                  color: 'transparent',
-                  backgroundSize: '200% 100%',
-                  animation: 'shimmer 3.5s linear infinite'
+                  backgroundImage: `linear-gradient(105deg, ${page.data.sticker_text_color}, #ffffff, ${page.data.sticker_text_color})`,
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    backgroundSize: '200% 100%',
+                    animation: 'shimmer 3.5s linear infinite',
+                    backgroundColor: page.data.sticker_text_color,
+                    backgroundRepeat: 'no-repeat'
                 } : {}">DUO BOOK DUO BOOK DUO BOOK DUO BOOK</p>
               </div>
+              <div v-else-if="page.data.sticker == 'PreSale'"
+                    :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
+                    class="absolute bottom-[32px] left-[-52px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em] font-aotfh text-xl/[1.5rem]">
+                    <p :style="hoveredIndex === 1 || isMobile ? {
+                      backgroundImage: `linear-gradient(105deg, ${page.data.sticker_text_color}, #ffffff, ${page.data.sticker_text_color})`,
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    backgroundSize: '200% 100%',
+                    animation: 'shimmer 3.5s linear infinite',
+                    backgroundColor: page.data.sticker_text_color,
+                    backgroundRepeat: 'no-repeat'
+                    } : {}">PRE-SALE!</p>
+                  </div>
               </div>
             </div>
 
             <div v-for="(item, i) in page.data.slices[0].items" :key="`slice-item-${i}`" class="m-auto pt-1.5">
               <div class="relative">
 
-                <div v-if="i === 0 && page.data.sticker != 'DuoBook'" :style="{ 'color': page.data.color }"
+                <div v-if="i === 0 && !['DuoBook', 'PreSale'].includes(page.data.sticker)" :style="{ 'color': page.data.color }"
                   class="z-10 group absolute inset-0 flex justify-center items-center text-[1rem] font-aotf flex flex-col gap-4 overflow-hidden pointer-events-none md:pointer-events-auto">
                   <div v-if="page.data.sticker == 'OnSale'"
                     class="bg-[#FCEE22] border border-black text-black min-w-[120px] text-center tracking-[-0.025em]">
@@ -63,46 +76,20 @@
                       </p>
                     </div>
                   </template>
-                  <div v-else-if="page.data.sticker == 'PreSale'"
-                    :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color, textStroke: '0.7px rgb(0, 0, 0)' }"
-                    class="absolute bottom-[40px] left-[-40px] rotate-45 border border-black text-black min-w-[196px] text-center tracking-[-0.025em] font-aotfh">
-                    <p :style="hoveredIndex === 1 || isMobile ? {
-                      backgroundColor: 'black',
-                      backgroundRepeat: 'no-repeat',
-                      background: `linear-gradient(135deg, ${page.data.sticker_text_color}, #ffffff, ${page.data.sticker_text_color})`,
-                      backgroundClip: 'text',
-                      color: 'transparent',
-                      backgroundSize: '200% 100%',
-                      animation: 'shimmer 3.5s linear infinite'
-                    } : {}">PRE SALE</p>
-                  </div>
                   <div v-else-if="page.data.sticker == 'Custom'"
                     :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color }"
                     class="border border-black min-w-[120px] text-center tracking-[-0.025em] px-2">
                     <p :style="hoveredIndex === 1 ? {
-                      backgroundColor: 'black',
-                      backgroundRepeat: 'no-repeat',
-                      background: `linear-gradient(135deg, ${page.data.sticker_text_color}, #ffffff, ${page.data.sticker_text_color})`,
-                      backgroundClip: 'text',
-                      color: 'transparent',
-                      backgroundSize: '200% 100%',
-                      animation: 'shimmer 3.5s linear infinite'
+                      backgroundImage: `linear-gradient(105deg, ${page.data.sticker_text_color}, #ffffff, ${page.data.sticker_text_color})`,
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    backgroundSize: '200% 100%',
+                    animation: 'shimmer 3.5s linear infinite',
+                    backgroundColor: 'black',
+                    backgroundRepeat: 'no-repeat'
                     } : {}">
                       <PrismicRichText class="uppercase" :field="page.data.purple_text" />
                     </p>
-                  </div>
-                  <div v-else-if="page.data.sticker == 'DuoBook'"
-                    :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color, textStroke: '1px rgb(0, 0, 0)' }"
-                    class="rotate-[-30deg] border border-black min-w-[1000px] text-center tracking-[-0.025em] px-2 font-aotfh text-2xl">
-                    <p :style="hoveredIndex === 1 || isMobile ? {
-                      backgroundColor: 'black',
-                      backgroundRepeat: 'no-repeat',
-                      background: `linear-gradient(135deg, ${page.data.sticker_text_color}, #ffffff, ${page.data.sticker_text_color})`,
-                      backgroundClip: 'text',
-                      color: 'transparent',
-                      backgroundSize: '200% 100%',
-                      animation: 'shimmer 3.5s linear infinite'
-                    } : {}">DUO BOOK DUO BOOK DUO BOOK DUO BOOK</p>
                   </div>
                   <div v-if="page.data.status == 'PRE-ORDER' || page.data.status == 'customize'"
                     class="flex flex-col text-center gap-[23px]">
