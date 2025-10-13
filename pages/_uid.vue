@@ -5,7 +5,7 @@
       <div v-if="page.data.slices[0]" class="pb-5">
         <div @mouseenter="hoveredIndex = 1" @mouseleave="hoveredIndex = null" class="relative md:w-[56vw] m-auto">
           <VueSlickCarousel ref="carousel" :arrows="false" :adaptiveHeight="true" :dots="true" :autoplaySpeed="speed"
-            :speed="1500" :autoplay="false">
+            :speed="1500" :autoplay="true">
 
             <div v-if="['DuoBook', 'PreSale'].includes(page.data.sticker)" class="relative w-full h-[62vh] md:h-[50vh] flex justify-center items-center">
               <div>
@@ -18,7 +18,7 @@
                     class="scale-y-[-1] h-full clip object-cover" />
                 </div>
               </div>
-              <div :style="{ aspectRatio: aspectRatio }" class="border border-black absolute inset-0 flex justify-center items-center w-full md:w-auto md:h-full m-auto overflow-hidden pointer-events-none md:pointer-events-auto">
+              <div :style="!isMobile ? { aspectRatio: aspectRatio } : {}" class="border border-black absolute inset-0 flex justify-center items-center w-full md:w-auto md:h-full m-auto overflow-hidden pointer-events-none md:pointer-events-auto">
               <div v-if="page.data.sticker == 'DuoBook'"
                 :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color, textStroke: '1px rgb(0, 0, 0)' }"
                 class="rotate-[-30deg] border border-black min-w-[700px] text-center tracking-[-0.025em] px-2 font-aotfh text-xl/[1.5rem]">
