@@ -352,6 +352,7 @@
           <div class="text-center mb-[15px] md:mb-[11px] leading-[11pt]">
             <form @submit="addToCart($event)">
               <button v-if="isMobile"
+                ontouchstart=""
                 class="select-none mx-auto font-metrik text-[18px] border border-black rounded-full py-3 px-2 active:!bg-[#F8F18B] focus:outline-none"
                 style="-webkit-tap-highlight-color: transparent;">
                 ADD TO CART
