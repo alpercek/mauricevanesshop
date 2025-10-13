@@ -10,14 +10,15 @@
             <div v-if="['DuoBook', 'PreSale'].includes(page.data.sticker)" class="relative w-full h-[62vh] md:h-[50vh] flex justify-center items-center">
               <div>
                 <div class="absolute top-0 left-0 w-full h-full justify-items-center" style="overflow: hidden;">
-                  <PrismicImage :field="page.data.image" class="h-full w-full md:w-[330px] mx-auto" />
+                  <PrismicImage :field="page.data.image" class="h-full w-full mx-auto object-scale-down" />
                 </div>
                 <div v-if="page.data.duo_book_image.url" class="absolute top-0 left-0 w-full h-full justify-items-center">
                   <PrismicImage :field="page.data.duo_book_image"
-                    class="scale-y-[-1] w-full md:w-[330px] h-full object-cover clip mx-auto" />
+                    :style="{ aspectRatio: aspectRatio }"
+                    class="scale-y-[-1] h-full clip object-cover" />
                 </div>
               </div>
-              <div class="border border-black absolute inset-0 flex justify-center items-center w-full md:w-[330px] m-auto overflow-hidden pointer-events-none md:pointer-events-auto">
+              <div :style="{ aspectRatio: aspectRatio }" class="border border-black absolute inset-0 flex justify-center items-center w-full md:w-auto md:h-full m-auto overflow-hidden pointer-events-none md:pointer-events-auto">
               <div v-if="page.data.sticker == 'DuoBook'"
                 :style="{ backgroundColor: page.data.sticker_background_color, color: page.data.sticker_text_color, textStroke: '1px rgb(0, 0, 0)' }"
                 class="rotate-[-30deg] border border-black min-w-[700px] text-center tracking-[-0.025em] px-2 font-aotfh text-xl/[1.5rem]">
@@ -99,14 +100,14 @@
 
                 <PrismicImage :field="item.image"
                   class="md:m-auto h-[62vh] md:h-[50vh] object-cover md:object-scale-down w-full" />
-                <div :class="{
+                <!-- blur removed<div :class="{
                   'backdrop-brightness-[110%] backdrop-blur-[0.2px] bg-white/50':
                     (page.data.status != 'ORDER') &&
                     (
                       page.data.blurring == 'all slides' ||
                       (page.data.blurring == 'only first slide' && i == 0)
                     ) && (page.data.sticker != 'DuoBook')
-                }" class="absolute inset-0"></div>
+                }" class="absolute inset-0"></div> -->
               </div>
 
             </div>
@@ -263,16 +264,16 @@
         <form @submit="addToCart($event)" class="pl-5 md:pl-0 mt-1 md:mt-0 flex">
           <input type="hidden" name="uid" :value="page.id" />
           <button onclick="this.parentNode.querySelector('span').style.opacity = 1" v-if="page.data.status == 'ORDER'"
-            class="font-metrik text-[18px] md:text-xs border w-min border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop md:hover:bg-[#FCEE22]">ORDER</button>
+            class="font-metrik text-[18px] md:text-xs border w-min border-black rounded-full py-1 px-2 active:!bg-[#F8F18B] md:hover:bg-[#FCEE22]">ORDER</button>
           <div v-if="page.data.status == 'PRE-ORDER'" class="flex h-min text-center items-center gap-[8px]">
             <div
               class="font-metrik text-[18px] md:text-xs border w-min border-black rounded-full py-1 px-2 opacity-[0.2] pointer-events-none">
               ORDER</div><button onclick="this.parentNode.parentNode.querySelector('span').style.opacity = 1"
-              class="font-metrik text-[18px] md:text-xs border w-max border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop md:hover:bg-[#FCEE22]">PRE-ORDER</button>
+              class="font-metrik text-[18px] md:text-xs border w-max border-black rounded-full py-1 px-2 active:!bg-[#F8F18B] md:hover:bg-[#FCEE22]">PRE-ORDER</button>
           </div>
           <button onclick="this.parentNode.querySelector('span').style.opacity = 1"
             v-if="page.data.status == 'customize' && page.data.price != null"
-            class="uppercase font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:bg-[#F8F18B] focus:cursor-no-drop md:hover:bg-[#FCEE22]">{{
+            class="uppercase font-metrik text-xs border w-max border-black rounded-full py-1 px-2 active:!bg-[#F8F18B] md:hover:bg-[#FCEE22]">{{
               page.data.customized_text }}</button>
           <span class="ml-1 font-garamondit text-[#BCBCBC] text-lg transition-opacity opacity-0">Item has been added to
             cart</span>
@@ -347,7 +348,7 @@
           <div class="text-center mb-[15px] md:mb-[11px] leading-[11pt]">
             <form @submit="addToCart($event)">
               <button v-if="isMobile"
-                class="mx-auto font-metrik text-[18px] border border-black rounded-full py-3 px-2 active:bg-[#F8F18B] focus:cursor-no-drop md:hover:bg-[#FCEE22]">ADD
+                class="mx-auto font-metrik text-[18px] border border-black rounded-full py-3 px-2 active:!bg-[#F8F18B] md:hover:bg-[#FCEE22]">ADD
                 TO CART</button>
               <button v-else class="font-garamond text-[13px] text-center text-[#BCBCBC] group-hover:text-black">(+ADD
                 TO
@@ -454,6 +455,14 @@ export default {
     }
   },
   computed: {
+    aspectRatio() {
+      const width = this.page.data.image.dimensions.width;
+      const height = this.page.data.image.dimensions.height;
+      if (width && height) {
+        return width / height;
+      }
+      return null; // or a default value
+    },
     videoUrl() {
       if (this.page.data.slices[0].primary.vimeoid != null) {
         return `https://player.vimeo.com/video/${this.page.data.slices[0].primary.vimeoid}`;

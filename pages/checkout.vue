@@ -67,7 +67,7 @@
           type="submit">CHECKOUT</button>
       </form>
       <div id="sdf" class="font-metrik text-xs mt-3">There are no items in the cart. Hit the <NuxtLink to="/"
-          class="border w-min border-black rounded-full py-1 px-2 active:bg-sky-700 hover:bg-sky-200">ORDER</NuxtLink>
+          class="border w-min border-black rounded-full py-1 px-2 active:!bg-[#F8F18B] md:hover:bg-[#FCEE22]">ORDER</NuxtLink>
         button in product pages to add items to the cart.</div>
     </div>
   </div>

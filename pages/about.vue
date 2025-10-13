@@ -6,7 +6,7 @@
   <label for="email" class="sr-only"> Email </label>
   <div class="">
     <input required type="email" name="email" id="email" placeholder="Sign up for newsletter" class="py-1 px-2 rounded-full" />
-    <button type="submit" class="border rounded-full border-black py-1 px-2 hover:bg-sky-200 active:bg-sky-700">Sign Up</button>
+    <button type="submit" class="border rounded-full border-black py-1 px-2 active:!bg-[#F8F18B] md:hover:bg-[#FCEE22]">Sign Up</button>
   </div>
   <div class="hidden">
     <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
