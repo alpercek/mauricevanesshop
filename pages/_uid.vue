@@ -8,15 +8,15 @@
             :speed="1500" :autoplay="true">
 
             <div v-if="['DuoBook', 'PreSale'].includes(page.data.sticker)"
-              class="relative w-full h-[62vh] md:h-[50vh] flex justify-center items-center">
+              class="relative w-full h-[62vh] md:h-[50vh] flex justify-center items-center mt-1.5">
               <div>
                 <div class="absolute top-0 left-0 w-full h-full justify-items-center" style="overflow: hidden;">
-                  <PrismicImage :field="page.data.image" class="h-full w-full mx-auto object-scale-down" />
+                  <PrismicImage :field="page.data.image" class="h-full w-full mx-auto object-cover md:object-scale-down" />
                 </div>
                 <div v-if="page.data.duo_book_image.url"
                   class="absolute top-0 left-0 w-full h-full justify-items-center">
                   <PrismicImage :field="page.data.duo_book_image" :style="{ aspectRatio: aspectRatio }"
-                    class="scale-y-[-1] h-full clip object-cover" />
+                    class="scale-y-[-1] h-full w-full md:w-auto clip object-cover" />
                 </div>
               </div>
               <div :style="!isMobile ? { aspectRatio: aspectRatio } : {}"
@@ -649,7 +649,15 @@ export default {
   display: none;
 }
 
+/* Default style (for laptop/desktops) */
 .clip {
   clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 0% 30%);
+}
+
+/* Style for mobile devices */
+@media (max-width: 768px) {
+  .clip {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 74%, 0% 26%);
+  }
 }
 </style>
