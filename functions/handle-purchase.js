@@ -1,20 +1,4 @@
 
-
-exports.handler = async () => {
-  try {
-    const data = await mg.messages.create("sandbox7018145a16424b9db6c86d84f4b5b4d1.mailgun.org", {
-      from: "Mailgun Sandbox <postmaster@sandbox7018145a16424b9db6c86d84f4b5b4d1.mailgun.org>",
-      to: ["Alper Cekinmez <alpercekinmez7@gmail.com>"],
-      subject: "Hello Alper Cekinmez",
-      text: "Congratulations Alper Cekinmez, you just sent an email with Mailgun! You are truly awesome!",
-    });
-
-    console.log(data); // logs response data
-  } catch (error) {
-    console.log(error); //logs any error
-  }
-}
-
 /*
  * This function implements a Stripe webhook handler to handle
  * fulfillment for our successful payments.
@@ -55,7 +39,7 @@ exports.handler = async ({ body, headers }) => {
       console.log(`📦 Fulfill purchase:`, JSON.stringify(purchase, null, 2));
       // Send and email to our fulfillment provider using Sendgrid.
 
-      await mg.messages.create("scannedfootballphotos.com", {
+      await mg.messages.create("transactional.scannedfootballphotos.com", {
       from: process.env.FROM_EMAIL_ADDRESS,
       to: [process.env.FULFILLMENT_EMAIL_ADDRESS],
       subject: `New purchase from ${shippingDetails.name}`,
