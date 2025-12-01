@@ -7,10 +7,10 @@
     />
     <main><nuxt /></main>
     <div v-if="splash">
-    <div v-if="event" id="alper" class="fixed w-screen h-screen bg-white z-[12] transition-[bottom] ease-in duration-[2000ms] overflow-hidden bottom-0">
+    <div v-if="settings.data.eventSplash" id="alper" class="fixed w-screen h-screen bg-white z-[12] transition-[bottom] ease-in duration-[2000ms] overflow-hidden bottom-0">
       <Maradona :settings="settings" @goToSite="animation()" />
     </div>
-    <div v-else id="alper" class="pointer-events-none fixed opacity-0 w-screen h-screen bg-white z-10 transition-[bottom] ease-in duration-[2000ms] delay-[2000ms] overflow-hidden bottom-0">
+    <div v-else id="alper" class="pointer-events-none opacity-0 fixed w-screen h-screen bg-white z-10 transition-[bottom] ease-in duration-[2000ms] delay-[2000ms] overflow-hidden bottom-0">
       <div :style="{'color':settings.data.splashcolor}" class="absolute z-20 inset-0 flex items-center justify-center font-cooperbt flex-col p-5">
         <div class="px-2.5 py-2 md:p-5 fixed top-0 left-0 puff pointer-events-none">
           <div class="flex flex-wrap items-start justify-between md:gap-x-10 gap-y-3 leading-none">
@@ -58,7 +58,7 @@ export default {
     }
   },
   mounted() {
-    if (this.splash && !this.event) {
+    if (this.splash && !this.settings.data.eventSplash) {
       this.animation()
     }
   },
